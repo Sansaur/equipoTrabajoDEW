@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <!--
+          ESTO YA ESTÁ FUNCIONANDO
+        Atención a:
+          El "client_id" proporcionado en esta URL es el del documento.
+          https://github.com/login/oauth/authorize?scope=user:email&client_id=d671fd09fe12180a0a2f
+          
+          También mantiene datos en caché.
+        
+          Para limpiar todo usar Clear Storage en "Application" en Panel de Desarrollador de Google Chrome (No he probado en otros)
+        
+            El archivo "server.rb" hace algo, pero no se que es.
+        
+        -->
+    </head>
+    <body>
+        <p>
+            Well, hello there!
+        </p>
+        <p>
+            We're going to now talk to the GitHub API. Ready?
+            <a href="https://github.com/login/oauth/authorize?scope=user:email&client_id=d671fd09fe12180a0a2f">Click here</a> to begin!
+        </p>
+        <p>
+            If that link doesn't work, remember to provide your own <a href="/apps/building-integrations/setting-up-and-registering-oauth-apps/about-authorization-options-for-oauth-apps/">Client ID</a>!
+        </p>
+    </body>
+</html>

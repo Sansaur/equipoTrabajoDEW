@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="../js/libs/jquery-1.12.4.js"></script>
+        <script>
+            // Tiene varias APIs
+
+            // Taxonomy API = "Nos devuelve un objeto JSON que contiene todas las relaciones entre nombres de categorías, sus padres y sus IDs
+            // http://api.walmartlabs.com/v1/taxonomy?apiKey=rfpejk24jysvvba6u9gftq6a
+
+            // Product Lookup API = "Devuelve hasta 20 productos por ID" (https://developer.walmartlabs.com/docs/read/Home)
+            //  http://api.walmartlabs.com/v1/items?apiKey=rfpejk24jysvvba6u9gftq6a&ids=12417832,19336123
+            // apiKey, format, ids, upc
+
+            // Search API = "Búscame por una consulta, devuelte hasta 25 objetos (numItems), por defecto devuelve 10" (https://developer.walmartlabs.com/docs/read/Search_API)
+            // http://api.walmartlabs.com/v1/search?apiKey=rfpejk24jysvvba6u9gftq6a&query=tv&facet=on&facet.range=price:[150 TO 250]
+            // apiKey, query, categoryId, start, sort, order, numItems, format, responseGroup
+
+            // Paginated Products API = "Catálogo filtrado por categoría, marca u ofertas" (https://developer.walmartlabs.com/docs/read/Paginated_Products_API)
+            // http://api.walmartlabs.com/v1/paginated/items?brand=foo&apiKey=rfpejk24jysvvba6u9gftq6a
+            // Parametros: apiKey, category, brand, specialOffer, format
+
+            function testTaxonomy() {
+                // Aquí se mostraría el spinner.
+                $.ajax({
+                    method: "GET",
+                    url: "http://api.walmartlabs.com/v1/taxonomy?apiKey=rfpejk24jysvvba6u9gftq6a",
+                    complete: function () {
+                        // Aquí se quitaría el spinner.
+                    },
+                    success: function (response) {
+                        console.log(response);
+                    },
+                    error: function (code, algo, algo2) {
+                        console.error(code);
+                        console.error(algo);
+                        console.error(algo2);
+                    }
+                });
+            }
+        </script>
+    </head>
+    <body onload="testTaxonomy()">
+        <div>TODO write content</div>
+    </body>
+</html>
