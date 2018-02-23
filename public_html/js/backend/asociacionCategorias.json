@@ -1,0 +1,17 @@
+{
+    "Electronicos":{
+        "eBay":"58058",
+        "Walmart":"3944",
+        "hijosWalmart":{"3D Printing":"3944_1228636","Accesorios de electronica":"3944_1086506","Marca Apple":"3944_1229722","Audio":"3944_133251","Camaras y Camcorder":"3944_133277"}
+    },
+    "Videojuegos":{
+        "eBay":"1249",
+        "Walmart":"2636",
+        "hijosWalmart":{"Gaming Gift cards":"2636_1228600","NDS":"2636_1086580","PC":"2636_1077504","PlayStation 4":"2636_1102672","Pokemon":"2636_5231682"}
+    },
+    "Deportes":{
+        "eBay":"888",
+        "Walmart":"4125",
+        "hijosWalmart":{"Bicicletas":"4125_1081404","Ejercicio y Fitness":"4125_4134","Al aire libre":"4125_546956","Ocio":"4125_1224931","Tienda para fans del deporte":"4125_1063984"}
+    }
+}

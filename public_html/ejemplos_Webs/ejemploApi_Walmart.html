@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="../js/libs/jquery-1.12.4.js"></script>
+        <script src="../js/backend/API_Walmart.js"></script>
         <script>
             // Tiene varias APIs
 
@@ -33,27 +34,45 @@
             // URLS FALLIDAS:
             // http://api.walmartlabs.com/v1/taxonomy?apiKey=rfpejk24jysvvba6u9gftq6a
             
-            function testTaxonomy() {
-                $.ajax({
-                    url: "https://api.walmartlabs.com/v1/search?apiKey=rfpejk24jysvvba6u9gftq6a&query=a&categoryId=2636_1228600&numItems=25", 
-                    jsonp: "callback", 
-                    dataType: "jsonp", 
-                    success: function(response) {
-                        console.log(response);
-                    },
-                    complete: function (){
-                        
-                    },
-                    error: function(error, codigo, algo) {
-                        console.error(error);
-                        console.error(codigo);
-                        console.error(algo);
-                    }
-                })
-            }
         </script>
     </head>
-    <body onload="testTaxonomy()">
-        <div>TODO write content</div>
+    <body>
+        <button onclick="productLookup([12417832,19336123])">Buscar por ids 12417832 y 19336123</button>
+        <button onclick="search('Red pants',null,5,'customerRating','desc',20)">Búsqueda normal por "Red pants" con 20 resultados, empezando desde el objeto 5, ordenando por customerRating, orden descendiente</button>
+        <button onclick="busquedaPaginada('3944_1228636')" style="color:red;">Búsqueda paginada con la categoría de 3944_1228636 - 3D Printing ESTO DA ERROR LA FUNCIÓN HA SIDO COMENTADA</button>
+        <form>
+            <fieldset>
+                <legend>Zona de pruebas Walmart</legend>
+                <label>IDs DE PRODUCTOS separadas por comas<input id="Ids" type="text" value="12417832,19336123"></label><br>
+                <label>Palabras a preguntar<span style="color:red;">*</span><input id="query" type="text" value="Red pants"></label><br>
+                <label>Cuantos elementos a saltarse<input id="start" type="number" value="5"></label><br>
+                <label>Cuantos elementos tienen que salir<input id="number" type="number" value="5"></label><br>
+                <label> Manera de la que se ordenan los productos
+                <select id="sort">
+                    <option value="customerRating">Votos de los clientes</option>
+                    <option value="relevance">Relevancia</option>
+                    <option value="price">Precio</option>
+                    <option value="bestseller">Más ventas</option>
+                </select> 
+                    </label><br>
+                    <label> Orden ascendiente o descendiente
+                <select id="order">
+                    <option value="asc">Ascendente</option>
+                    <option value="desc">Descendente</option>
+                </select>
+                    </label><br>
+                <label> Categoría
+                <select id="category">
+                    <option value="3944">Electronics</option>
+                    <option value="3944_1228636">3D Printing</option>
+                </select>
+                    </label><br>
+                <button onclick="pruebaProductLookup()" type="button">Hacer productLookup()</button><br>
+                <button onclick="pruebaSearch()" type="button">Hacer search()</button><br>
+            </fieldset>
+        </form>
+        <div id="resultado">
+            
+        </div>
     </body>
 </html>
