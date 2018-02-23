@@ -209,6 +209,16 @@ function traducirPrecio(precio, moneda) {
             return (p * 0.0156936).toFixed(2);
         case "AUD":
             return (p * 0.638016).toFixed(2);
+        case "CAD":
+            return (p * 0.638636792).toFixed(2);
+        case "CHF":
+            return (p * 0.86717168).toFixed(2);
+        case "HKD":
+            return (p * 0.104741058).toFixed(2);
+        case "INR":
+            return (p * 0.0125761414).toFixed(2);
+        case "PLN":
+            return (p * 0.23888).toFixed(2);
         default:
              return p.toFixed(2);
     }
