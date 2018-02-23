@@ -1,0 +1,35 @@
+Filtros de Walmart: (http://api.walmartlabs.com/v1/taxonomy?apiKey=rfpejk24jysvvba6u9gftq6a)
+
+    3944 - Electronics
+        3944_1228636 - 3D Printing
+        3944_1086506 - Electronics/Accessories
+        3944_1229722 - Apple Brand
+        3944_133251  - Audio
+        3944_133277  - Cameras & Camcorder
+    
+    2636 - Video Games
+        2636_1228600 - Gaming Gift Cards
+        2636_1086580 - Nintendo DS
+        2636_1077504 - PC Digital Gaming
+        2636_1102672 - PlayStation 4
+        2636_5231682 - Pokemon videogames
+
+    4125 - Sports & Outdoors
+        4125_1081404 - Bikes
+        4125_4134 - Exercise & Fitness
+        4125_546956 - Outdoor Sports
+        4125_1224931 - Recreation
+        4125_1063984 - Sports Fan Shop
+
+Filtros de eBay (http://open.api.ebay.com/Shopping?callname=GetCategoryInfo&appid=ArmandoS-equipoTr-PRD-d5d80d3bd-e53316c1&siteid=186&CategoryID=-1&version=729&IncludeSelector=ChildCategories)
+    
+    58058 - Informatica y tablets
+    1249 - Consola y videojuegos
+    888 - Deportes 
+
+Hacer método que busque por ID de elemento también.
+
+
+<button id="3944_1228636">
+->
+https://api.walmartlabs.com/v1/search?apiKey=rfpejk24jysvvba6u9gftq6a&query=camera&categoryId=3944_1228636
