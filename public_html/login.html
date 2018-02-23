@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="es">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="Styles/Css general.css" type="text/css"/>
+        <script src="../js/libs/jquery-1.12.4.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-messaging.js"></script>
+        <script 
+            async 
+            defer 
+            src="https://apis.google.com/js/api.js" 
+            onload="this.onload = function () {}; loginGoogle.handleClientLoad()" 
+            onreadystatechange="if (this.readyState === 'complete') this.onload()">
+        </script>
+        <script src="js/backend/Login.js"></script>
+    </head>
+    <body>
+        <div id="contenedorTotal">
+            <label>Correo electrónico: <input type="text" id="email"></label>
+            <label>Contraseña: <input type="password" id="password"></label>
+            <input type="submit" value="Identificarse" />
+            <button onclick="ejecutarLogin()">boton Twitter</button>
+            <button onclick="loginGitHub.iniciar()">Ir al login de gitHub</button>
+            <button id="signin-button" onclick="loginGoogle.handleSignInClick()">Sign In</button>
+            <fb:login-button scope="public_profile,email" onlogin="loginFacebook.checkLogin();"></fb:login-button>
+        </div>
+    </body>
+</html>

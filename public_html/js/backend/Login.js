@@ -40,7 +40,7 @@ var loginFacebook = {
 
 var loginGitHub = {
     iniciar: function () {
-        location.replace("https://github.com/login/oauth/authorize?scope=read:user&client_id=d671fd09fe12180a0a2f");
+        location.replace("https://github.com/login/oauth/authorize?scope=user&client_id=d671fd09fe12180a0a2f");
     }
 };
 
@@ -82,10 +82,13 @@ var loginGoogle = {
     },
 
     handleSignInClick: function (event) {
-        // Ideally the button should only show up after gapi.client.init finishes, so that this
-        // handler won't be called before OAuth is initialized.
-        gapi.auth2.getAuthInstance().signIn();
+        // NO SE SI ESTO VA A FUNCIONAR SIEMPRE, HAGAN PRUEBAS.
         console.log(gapi.auth2.getAuthInstance().isSignedIn);
+        let estamosLogueados = gapi.auth2.getAuthInstance().isSignedIn.Ab;
+        let nombreGoogle = gapi.auth2.getAuthInstance().currentUser.Ab.w3.ig.split(' ')[0];
+        console.log(nombreGoogle);
+        console.log(estamosLogueados);
+        gapi.auth2.getAuthInstance().signIn();
     },
 
     handleSignOutClick: function (event) {
@@ -95,6 +98,7 @@ var loginGoogle = {
     makeApiCall: function () {
         // Make an API call to the People API, and print the user's given name.
         console.log(gapi.auth2.getAuthInstance().isSignedIn);
+        console.log(gapi.auth2.getAuthInstance());
         gapi.client.people.people.get({
             'resourceName': 'people/me',
             'requestMask.includeField': 'person.names'
@@ -167,6 +171,8 @@ var loginGoogle = {
         }
         // The signed-in user info.
         var user = result.user;
+        console.warn(user);
+        console.wanr(user.displayName);
     }).catch(function (error) {
         // Handle Errors here.
         var errorCode = error.code;
