@@ -212,6 +212,19 @@ body{
     color:white;
 }
 
+/*
+    ESTE CSS DE AQUI ES SOLO PARA LAS PRUEBAS, QUITARLO CUANDO VAYAIS A TRABAJAR SOBRE LOS CONSTRUCTORES
+*/
+#contenidos{
+    width: 90%;
+    margin-left: 5%;
+    background-color: #eeeeee;
+}
+#contenidos div{
+    border: 5px solid black;
+    margin-bottom: 1%;
+}
+
 /* RESPONSIVE TABLETS */
 @media only screen and (max-width: 1000px) {
     body{

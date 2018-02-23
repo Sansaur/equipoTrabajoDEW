@@ -6,6 +6,11 @@
  * 
  * Funcionalidad: Pulsar botón -> checkLogin -> callback -> testAPI
  */
+
+function appLogout(){
+    localStorage.setItem('UsuarioLogueado',null);
+}
+
 var loginFacebook = {
     // Esta es la primera función a la que se llama. Al pulsar el botón pasa por aquí.
     // Una vez FB (El objeto del login) ha terminado de realizar sus operaciones, pasa a la función callback()

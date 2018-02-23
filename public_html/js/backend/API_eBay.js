@@ -7,7 +7,7 @@
  */
 var filtrosCategoria = [];
 
-$.getJSON("../js/backend/asociacionCategorias.json", function (data) {
+$.getJSON("js/backend/asociacionCategorias.json", function (data) {
     $.each(data, function (key, val) {
         filtrosCategoria[key] = val;
     });
@@ -18,7 +18,7 @@ $.getJSON("../js/backend/asociacionCategorias.json", function (data) {
 //Array de filtros que vayamos a usar. Tienen uso en buildURLArray()
 var filterarray = [];
 // Variable que se le añade a la URL para aplicar los filtros, se construye en buildURLArray
-var urlfilter = "";
+var url2filter = "";
 
 /**
  * Función de pruebas.
@@ -53,12 +53,12 @@ function construirFiltros(nombre, valor) {
 }
 
 /**
- * Esta función construye la variable urlfilter a partir de los objetos en el array de filtros
+ * Esta función construye la variable url2filter a partir de los objetos en el array de filtros
  * @returns {undefined}
  */
 function  buildURLArray() {
     // Limpiamos UrlFilter
-    urlfilter = "";
+    url2filter = "";
     // Pasamos por cada filtro
     for (var i = 0; i < filterarray.length; i++) {
         // Cogemos el objeto al que apunte el filtro
@@ -68,26 +68,26 @@ function  buildURLArray() {
             // ... Revisamos si tienen valor
             if (itemfilter[index] !== "") {
                 // ... Comprobamos si es un Array
-                // Si es un array, hacemos iteración por cada uno de sus valores y los añadimos a urlfilter
+                // Si es un array, hacemos iteración por cada uno de sus valores y los añadimos a url2filter
                 if (itemfilter[index] instanceof Array) {
                     for (var r = 0; r < itemfilter[index].length; r++) {
                         var value = itemfilter[index][r];
-                        urlfilter += "&itemFilter\(" + i + "\)." + index + "\(" + r + "\)=" + value;
+                        url2filter += "&itemFilter\(" + i + "\)." + index + "\(" + r + "\)=" + value;
                     }
                 }
-                // Si no, urlfilter será rellenada con el valor de por si.
+                // Si no, url2filter será rellenada con el valor de por si.
                 else {
-                    urlfilter += "&itemFilter\(" + i + "\)." + index + "=" + itemfilter[index];
+                    url2filter += "&itemFilter\(" + i + "\)." + index + "=" + itemfilter[index];
                 }
             }
         }
     }
 
-    console.log("URL de filtros:" + urlfilter);
+    console.log("URL de filtros:" + url2filter);
 }
 
 // Esta es la URL completa que se usará para contactar con la API de eBay.
-var url = "";
+var url2 = "";
 /**
  * Limite de numero de resultados = 100
  * 
@@ -98,45 +98,45 @@ var url = "";
  */
 function buscarPorClave(parametro, numeroResultados, numeroPagina) {
     // Qué operación vamos a realizar.
-    url = "http://svcs.ebay.com/services/search/FindingService/v1";
-    url += "?OPERATION-NAME=findItemsByKeywords";
-    url += "&SERVICE-VERSION=1.0.0";
+    url2 = "http://svcs.ebay.com/services/search/FindingService/v1";
+    url2 += "?OPERATION-NAME=findItemsByKeywords";
+    url2 += "&SERVICE-VERSION=1.0.0";
     // Nuestra Application Key
-    url += "&SECURITY-APPNAME=ArmandoS-equipoTr-PRD-d5d80d3bd-e53316c1";
+    url2 += "&SECURITY-APPNAME=ArmandoS-equipoTr-PRD-d5d80d3bd-e53316c1";
     // Nos vamos a conectar a los servidores de españa de eBay.
-    url += "&GLOBAL-ID=EBAY-ES";
-    url += "&RESPONSE-DATA-FORMAT=JSON";
-    url += "&REST-PAYLOAD";
+    url2 += "&GLOBAL-ID=EBAY-ES";
+    url2 += "&RESPONSE-DATA-FORMAT=JSON";
+    url2 += "&REST-PAYLOAD";
     // Tendremos que cambiar las palabras claves
     parametro.replace(' ', '%20');
-    url += "&keywords=" + parametro;
-    url += "&paginationInput.entriesPerPage=" + numeroResultados;
-    url += "&paginationInput.pageNumber=" + numeroPagina;
-    url += "&outputSelector=SellerInfo";
+    url2 += "&keywords=" + parametro;
+    url2 += "&paginationInput.entriesPerPage=" + numeroResultados;
+    url2 += "&paginationInput.pageNumber=" + numeroPagina;
+    url2 += "&outputSelector=SellerInfo";
     // Añadimos nuestros filtros.
-    url += urlfilter;
+    url2 += url2filter;
     peticionAJAX("findItemsByKeywordsResponse");
 }
 function busquedaPorClaveYCategoria(parametro, categoria, numeroResultados, numeroPagina) {
     // Qué operación vamos a realizar.
-    url = "http://svcs.ebay.com/services/search/FindingService/v1";
-    url += "?OPERATION-NAME=findItemsAdvanced";
-    url += "&SERVICE-VERSION=1.0.0";
+    url2 = "http://svcs.ebay.com/services/search/FindingService/v1";
+    url2 += "?OPERATION-NAME=findItemsAdvanced";
+    url2 += "&SERVICE-VERSION=1.0.0";
     // Nuestra Application Key
-    url += "&SECURITY-APPNAME=ArmandoS-equipoTr-PRD-d5d80d3bd-e53316c1";
+    url2 += "&SECURITY-APPNAME=ArmandoS-equipoTr-PRD-d5d80d3bd-e53316c1";
     // Nos vamos a conectar a los servidores de españa de eBay.
-    url += "&GLOBAL-ID=EBAY-ES";
-    url += "&RESPONSE-DATA-FORMAT=JSON";
-    url += "&REST-PAYLOAD";
+    url2 += "&GLOBAL-ID=EBAY-ES";
+    url2 += "&RESPONSE-DATA-FORMAT=JSON";
+    url2 += "&REST-PAYLOAD";
     // Tendremos que cambiar las palabras claves
     parametro.replace(' ', '%20');
-    url += "&keywords=" + parametro;
-    url += "&categoryId=" + categoria;
-    url += "&paginationInput.entriesPerPage=" + numeroResultados;
-    url += "&paginationInput.pageNumber=" + numeroPagina;
-    url += "&outputSelector=SellerInfo";
+    url2 += "&keywords=" + parametro;
+    url2 += "&categoryId=" + categoria;
+    url2 += "&paginationInput.entriesPerPage=" + numeroResultados;
+    url2 += "&paginationInput.pageNumber=" + numeroPagina;
+    url2 += "&outputSelector=SellerInfo";
     // Añadimos nuestros filtros.
-    url += urlfilter;
+    url2 += url2filter;
     return peticionAJAX("findItemsAdvancedResponse");
 }
 
@@ -144,12 +144,14 @@ function busquedaPorClaveYCategoria(parametro, categoria, numeroResultados, nume
 
 // Aquí realizamos la llamada a la URL construida previamente, en el success pondremos la generación de datos.
 function peticionAJAX(tipoOperacion) {
+    console.warn(url2);
     $.ajax({
-        url: url,
+        url: url2,
         jsonp: "callback",
         dataType: "jsonp",
         success: function (response) {
-            return transformarRespuesta(response, tipoOperacion);
+            console.warn(response);
+            construccion(transformarRespuesta(response, tipoOperacion));
         },
         complete: function () {
 
@@ -181,10 +183,11 @@ function transformarRespuesta(response, tipoOperacion) {
             // ATENCIÓN, EBAY DEVUELVE "ACTIVE" O "INACTIVE"
             stock: objetoActual.sellingStatus[0].sellingState ? objetoActual.sellingStatus[0].sellingState[0] : null,
             descripcionCorta: "Este es un objeto de eBay, su nombre es: "+objetoActual.title[0]+"", // eBay tiene las descripciones en un sitio diferente a los objetos, parece ser que se tiene que usar la SHOPPING API, nosotros usamos la FINDING API
-            descripcion: null
+            descripcion: null,
+            tienda: "eBay"
         };
         let estado = objetoActual.condition ? objetoActual.condition[0].conditionDisplayName[0] : "desconocido";
-        let DESC = "Este es un objeto de eBay para pagar por él " + objetoActual.autoPay[0] ? "se permite auto-pago" : "no se permite auto-pago,  ";
+        var DESC = "Este es un objeto de eBay para pagar por él " + objetoActual.autoPay[0] ? "se permite auto-pago" : "no se permite auto-pago,  ";
         DESC += "se encuentra en estado: "+ estado + " y se encuentra a la venta en "+ objetoActual.location ? objetoActual.location[0] : "algún sitio ";
         DESC += "para pagar por el se usa "+ objetoActual.paymentMethod[0] + " y el objeto pertenece a la categoría " + objetoActual.primaryCategory[0].categoryName[0];
         nuevoObjeto.descripcion = DESC;

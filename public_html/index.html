@@ -3,6 +3,9 @@
     <head>
         <link href="https://fonts.googleapis.com/css?family=Dosis|Patua+One" rel="stylesheet">
         <script src="js/libs/jquery-1.12.4.js"></script>
+        <script src="js/backend/API_Walmart.js"></script>
+        <script src="js/backend/API_eBay.js"></script>
+        <script src="js/frontend/construccionElementos.js"></script>
         <link rel="stylesheet" href="Styles/Css general.css" type="text/css"/>
         <title>Purchase</title>
         <meta charset="UTF-8">
@@ -93,9 +96,24 @@
                 <img src="addons/icons/row-down.svg" alt="abrirFiltro" class="formatoIcono"/> 
             </div>
         </div>
-        
-        <div id="[id]" class="elemento">
+        <script>
+            // CAMBIAR ESTO DE SITIO, IMPORTANTE:
             
+            function prueba(){
+                // Search para buscar por "controller" de playstation 4 en Walmart
+                // Y luego buscando por clave y categoría para buscar la palabra "ayuda" en videojuegos de eBay
+                search("controller",filtrosCategoria_Walmart['Videojuegos']['hijosWalmart']['PlayStation 4'],null,'customerRating','asc',5);
+                busquedaPorClaveYCategoria("ayuda",filtrosCategoria['Videojuegos']['eBay'],5,1);
+            }
+        </script>
+        <div id="contenidos">
+            <!-- AÑADIENDO ESTO SOLO PARA PROBAR EL USO DE LAS FUNCIOONES
+            DE JS/FRONTEND/CONSTRUCCIONELEMENTOS
+            
+            MANEJAR ESTO Y CAMBIAR EL CÓDIGO COMO TIENE QUE SER-->
+        </div>
+        <div id="[id]" class="elemento">
+            <button onclick="prueba()">PRUEBA</button>
         </div>
     </body>
 </html>

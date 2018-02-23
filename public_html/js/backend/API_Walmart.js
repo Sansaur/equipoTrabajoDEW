@@ -2,42 +2,42 @@ const API_KEY = "rfpejk24jysvvba6u9gftq6a";
 /*
  * Este array contiene los objetos JSON definidos en asociacionCategorias, para poder recibir el valor algo tal que así:
  * 
- * filtrosCategoria["Electronicos"]["Walmart"]
+ * filtrosCategoria_Walmart["Electronicos"]["Walmart"]
  * @type Array
  */
-var filtrosCategoria = [];
-$.getJSON("../js/backend/asociacionCategorias.json", function (data) {
+var filtrosCategoria_Walmart = [];
+$.getJSON("js/backend/asociacionCategorias.json", function (data) {
     $.each(data, function (key, val) {
-        filtrosCategoria[key] = val;
+        filtrosCategoria_Walmart[key] = val;
     });
-    console.warn(filtrosCategoria);
-    console.warn("Cargados los filtros de categoría, ejemplo, dime el filtro de eBay de deportes: "+filtrosCategoria["Deportes"].eBay);
+    console.warn(filtrosCategoria_Walmart);
+    console.warn("Cargados los filtros de categoría, ejemplo, dime el filtro de eBay de deportes: "+filtrosCategoria_Walmart["Deportes"].eBay);
 });
 /**
  * ids es OBLIGATORIO, si no, hace return null.
- * Se le envía IDS de productos y termina retornando el resultado de la cadena this() -> peticionAJAX() -> transformarRespuesta()
+ * Se le envía IDS de productos y termina retornando el resultado de la cadena this() -> peticionAJAX_Walmart() -> transformarRespuesta_Walmart()
  * Esta es la función para la búsqueda de objetos específicos.
  * @param {Array} ids
  * @returns Array
  */
 function productLookup(ids) {
-    var url = "http://api.walmartlabs.com/v1/items";
-    url += "?apiKey=" + API_KEY;
+    var url_walmart = "http://api.walmartlabs.com/v1/items";
+    url_walmart += "?apiKey=" + API_KEY;
     if (!ids) {
         return null;
     } else {
-        url += "&ids=";
+        url_walmart += "&ids=";
         for (var i = 0; i < ids.length; i++) {
             if (i === ids.length) {
                 alert("A");
-                url += ids[i];
+                url_walmart += ids[i];
 
             } else {
-                url += ids[i] + ",";
+                url_walmart += ids[i] + ",";
             }
         }
-        console.log(url);
-        return peticionAJAX(url);
+        console.log(url_walmart);
+        return peticionAJAX_Walmart(url_walmart);
     }
 }
 /**
@@ -48,7 +48,7 @@ function productLookup(ids) {
  * categoryId es la categoría por donde vamos a buscar.
  * start es el número de respuestas que se salta empezando desde 0 (para el paginado)
  * sort es la manera de la que las respuestas se ordenarán (ver las elecciones en el ejemplo de Walmart)
- * order es la manera de la que se ordena el sort (ascendiente o descendiente)
+ * order es la manera de la que se ordena el sort (ascendiente o descendiente) (asc o desc)
  * numItems es cuantos objetos deberán mostrarse (hasta un máximo de 25)
  * @param {type} query
  * @param {type} categoryId
@@ -59,29 +59,29 @@ function productLookup(ids) {
  * @returns {undefined}
  */
 function search(query, categoryId, start, sort, order, numItems) {
-    var url = "http://api.walmartlabs.com/v1/search";
-    url += "?apiKey=" + API_KEY;
+    var url_walmart = "http://api.walmartlabs.com/v1/search";
+    url_walmart += "?apiKey=" + API_KEY;
     if (!query) {
         return null;
     } else {
-        url += "&query=" + query;
+        url_walmart += "&query=" + query;
         if (categoryId) {
-            url += "&categoryId=" + categoryId;
+            url_walmart += "&categoryId=" + categoryId;
         }
         if (start) {
-            url += "&start=" + start;
+            url_walmart += "&start=" + start;
         }
         if (sort) {
-            url += "&sort=" + sort;
+            url_walmart += "&sort=" + sort;
         }
         if (order) {
-            url += "&order=" + order;
+            url_walmart += "&order=" + order;
         }
         if (numItems) {
-            url += "&numItems" + numItems;
+            url_walmart += "&numItems=" + numItems;
         }
-        console.log(url);
-        return peticionAJAX(url);
+        console.log(url_walmart);
+        return peticionAJAX_Walmart(url_walmart);
     }
 }
 
@@ -116,33 +116,33 @@ function pasarValorANumeros(valor){
  * No usar esto, no devuelve JSONP
  * 
 function busquedaPaginada(category, brand) {
-    var url = "http://api.walmartlabs.com/v1/paginated/items";
-    url += "?apiKey=" + API_KEY;
+    var url_walmart = "http://api.walmartlabs.com/v1/paginated/items";
+    url_walmart += "?apiKey=" + API_KEY;
     if (category) {
-        url += "&categoryId=" + category;
+        url_walmart += "&categoryId=" + category;
     }
     if (brand) {
-        url += "&start=" + brand;
+        url_walmart += "&start=" + brand;
     }
-    console.log(url);
-    return peticionAJAX(url);
+    console.log(url_walmart);
+    return peticionAJAX_Walmart(url_walmart);
 }
 */
 
 /**
  * Esta función se encarga de usar la URL que construimos en otras funciones de petición a las APIs para hacerlas pasar por AJAX
- * @param {String} url
+ * @param {String} url_walmart
  * @returns {undefined}
  */
-function peticionAJAX(url) {
+function peticionAJAX_Walmart(url_walmart) {
     $.ajax({
-        url: url,
+        url: url_walmart,
         jsonp: "callback",
         dataType: "jsonp",
         success: function (response) {
             console.log("Respuesta incial");
             console.log(response);
-            return transformarRespuesta(response);
+            construccion(transformarRespuesta_Walmart(response));
         },
         complete: function () {
 
@@ -157,9 +157,9 @@ function peticionAJAX(url) {
 /**
  * Esta función transforma el array de objetos de la respuesta de la petición AJAX en un array de objetos normalizados para nuestro uso.
  * @param {Object} response
- * @returns {Array|transformarRespuesta.arrayObjetosRetorno}
+ * @returns {Array|transformarRespuesta_Walmart.arrayObjetosRetorno}
  */
-function transformarRespuesta(response) {
+function transformarRespuesta_Walmart(response) {
     var arrayObjetosRetorno = [];
     for (var i in response.items) {
         console.log(response.items[i]);
@@ -177,7 +177,8 @@ function transformarRespuesta(response) {
             puntuacion: objetoActual.customerRating ? objetoActual.customerRating : 0,
             // Cambiamos el precio aquí.
             precio: objetoActual.salePrice ? traducirPrecio(objetoActual.salePrice) : 0,
-            stock: objetoActual.stock ? objetoActual.stock : "No se sabe si hay o no" // Esto devuelve "Not Available" o "Available"
+            stock: objetoActual.stock ? objetoActual.stock : "No se sabe si hay o no", // Esto devuelve "Not Available" o "Available"
+            tienda: "Walmart"
         };
         arrayObjetosRetorno.push(nuevoObjeto);
     }
