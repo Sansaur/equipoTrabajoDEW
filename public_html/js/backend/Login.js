@@ -33,6 +33,8 @@ var loginFacebook = {
         console.log('Welcome!  Fetching your information.... ');
         FB.api('/me', function (response) {
             console.log(response);
+            console.log(response.name);
+            localStorage.setItem('UsuarioLogueado', response.name);
             // Aquí es cuando se usan los datos de la respuesta para decir "Conectado correctamente" o algo parecido.
         });
     }
@@ -88,6 +90,10 @@ var loginGoogle = {
         let nombreGoogle = gapi.auth2.getAuthInstance().currentUser.Ab.w3.ig.split(' ')[0];
         console.log(nombreGoogle);
         console.log(estamosLogueados);
+        if (nombreGoogle) {
+            localStorage.setItem('UsuarioLogueado', nombreGoogle);
+
+        }
         gapi.auth2.getAuthInstance().signIn();
     },
 
@@ -104,6 +110,7 @@ var loginGoogle = {
             'requestMask.includeField': 'person.names'
         }).then(function (response) {
             console.log('Hello, ' + response.result.names[0].givenName);
+            localStorage.setItem('UsuarioLogueado', response.result.names[0].givenName);
         }, function (reason) {
             console.log('Error: ' + reason.result.error.message);
         });
@@ -125,13 +132,13 @@ var loginGoogle = {
  * 
  * Se tiene que importar
  * <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-database.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-firestore.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-messaging.js"></script>
-        
-    Al HTML (Se supone que debebería valor solo con auth, pero no me arriesgo)
-
+ <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-auth.js"></script>
+ <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-database.js"></script>
+ <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-firestore.js"></script>
+ <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-messaging.js"></script>
+ 
+ Al HTML (Se supone que debebería valor solo con auth, pero no me arriesgo)
+ 
  * Aquí abajo se configura el firebase, le decimos la apiKey y el dominio que se encarga de realizar las autenticaciones
  * Luego creamos la variable provider con el método TwitterAuthProvider()
  * en los parámetros del provider le ponemos que tenga idioma "es" (Español) y que requiera de hacer login (Para que no haga login automático, aunque esté conectada la cuenta ya)
@@ -143,47 +150,48 @@ var loginGoogle = {
  * No hace redireccionamiento a ningun sitio por ahora.
  * 
  */
-    var config = {
-        apiKey: "AIzaSyBVfY6k8e1ZnuymVFoaqWIrTvxAz2hCUR8",
-        authDomain: "dew06-t02.firebaseapp.com"
-    };
-    firebase.initializeApp(config);
+var config = {
+    apiKey: "AIzaSyBVfY6k8e1ZnuymVFoaqWIrTvxAz2hCUR8",
+    authDomain: "dew06-t02.firebaseapp.com"
+};
+firebase.initializeApp(config);
 
-    var provider = new firebase.auth.TwitterAuthProvider();
-    firebase.auth().languageCode = 'pt';
-    provider.setCustomParameters({
-        'lang': 'es',
-        'force_login':'true'
-    });
-    function ejecutarLogin() {
-        firebase.auth().signInWithRedirect(provider);
-    }
-    firebase.auth().getRedirectResult().then(function (result) {
-        if (result.credential) {
-            // This gives you a the Twitter OAuth 1.0 Access Token and Secret.
-            // You can use these server side with your app's credentials to access the Twitter API.
-            console.log(result.credential);
-            var token = result.credential.accessToken;
-            var secret = result.credential.secret;
-            // ...
-            console.log(token);
-            console.log(secret);
-        }
-        // The signed-in user info.
-        var user = result.user;
-        console.warn(user);
-        console.wanr(user.displayName);
-    }).catch(function (error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // The email of the user's account used.
-        var email = error.email;
-        // The firebase.auth.AuthCredential type that was used.
-        var credential = error.credential;
+var provider = new firebase.auth.TwitterAuthProvider();
+firebase.auth().languageCode = 'pt';
+provider.setCustomParameters({
+    'lang': 'es',
+    'force_login': 'true'
+});
+function ejecutarLogin() {
+    firebase.auth().signInWithRedirect(provider);
+}
+firebase.auth().getRedirectResult().then(function (result) {
+    if (result.credential) {
+        // This gives you a the Twitter OAuth 1.0 Access Token and Secret.
+        // You can use these server side with your app's credentials to access the Twitter API.
+        console.log(result.credential);
+        var token = result.credential.accessToken;
+        var secret = result.credential.secret;
         // ...
-        console.log(errorCode);
-    });
+        console.log(token);
+        console.log(secret);
+    }
+    // The signed-in user info.
+    var user = result.user;
+    console.warn(user);
+    console.warn(user.displayName);
+    localStorage.setItem('UsuarioLogueado', user.displayName);
+}).catch(function (error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // The email of the user's account used.
+    var email = error.email;
+    // The firebase.auth.AuthCredential type that was used.
+    var credential = error.credential;
+    // ...
+    console.log(errorCode);
+});
 
 /**
  * 

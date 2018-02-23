@@ -2,6 +2,7 @@
 <html>
     <head>
         <link href="https://fonts.googleapis.com/css?family=Dosis|Patua+One" rel="stylesheet">
+        <script src="js/libs/jquery-1.12.4.js"></script>
         <link rel="stylesheet" href="Styles/Css general.css" type="text/css"/>
         <title>Purchase</title>
         <meta charset="UTF-8">
@@ -30,6 +31,13 @@
                 <div id="login">
                     <a id="loginLink" style="color:inherit;text-decoration:inherit;" href="login.html"> <img src="addons/icons/usuario.svg" alt="usuario" class="formatoIcono"/> 
                         <span>Hola. Identifícate</span></a>
+                    <script>
+                        // CAMBIAR ESTO DE SITIO:
+                        let user = localStorage.getItem('UsuarioLogueado')
+                        if(user && user !== "undefined"){
+                            $('#loginLink').find('span').text('Bienvenido '+user);
+                        }
+                    </script>
                     <img src="addons/icons/salir.svg" alt="salir" class="formatoIcono" style="display:none"/> 
                 </div>
             </div>
