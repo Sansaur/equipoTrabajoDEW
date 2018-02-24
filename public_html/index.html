@@ -9,19 +9,77 @@
     </head>
     <body>
         <div class="contenedor">            
-            <div id="nav">
-                <div id="logotipo">
+            <div id="nav" class="sombra">
+                <a id="logotipo" href="index.html">
                     <img src="addons/images/icono-Oscuro.png" alt="logotipo"/>
-                </div>                
+                </a>  
+                
                 <div id="bucador">
                     <input type="text" id="TbxBuscar">
-                    <label id="lupa"><img src="addons/icons/lupa.svg" alt="lupa buscar"/></label>                    
+                    <span id="lupa"> <!--crear evento click-->
+                        <img src="addons/icons/lupa.svg" alt="lupa buscar" class="formatoIcono">
+                    </span>
+                </div>
+                
+                <div id="cesta">
+                    <span id="numObjCesta">0</span>
+                    <img src="addons/icons/carro.svg" alt="carrito" class="formatoIcono"/> 
+                    Carrito
                 </div>
                 
                 <div id="login">
-                    <img src="addons/icons/usuario.svg" alt="usuario"/>
-                    <input type="button" id="iniciarSesion" value="Iniciar Sesión">
+                    <img src="addons/icons/usuario.svg" alt="usuario" class="formatoIcono"/> 
+                    <span>Hola. Identifícate</span>
+                    <img src="addons/icons/salir.svg" alt="usuario" class="formatoIcono" style="display:none"/> 
                 </div>
+            </div>
+            
+            <div id="bloqueFiltro">
+                <h4>Filtros</h4>
+                <div class="columna">
+                    <h2>Electrónica</h2>
+                    <ul>
+                        <li>a</li>    
+                        <li>b</li>
+                        <li>b</li>
+                        <li>d</li>
+                        <li>e</li>
+                    </ul>
+                </div>
+                
+                <div class="columna">
+                    <h2>Video Juego</h2>
+                    <ul>
+                        <li>a</li>    
+                        <li>b</li>
+                        <li>b</li>
+                        <li>d</li>
+                        <li>e</li>
+                    </ul>
+                </div>
+                
+                <div class="columna">
+                    <h2>Deporte</h2>
+                    <ul>
+                        <li>a</li>    
+                        <li>b</li>
+                        <li>b</li>
+                        <li>d</li>
+                        <li>e</li>
+                    </ul>
+                </div>
+                
+                <div class="columna">
+                    <h2>Otros</h2>
+                    <ul>
+                        <li>a</li>    
+                        <li>b</li>
+                        <li>b</li>
+                        <li>d</li>
+                        <li>e</li>
+                    </ul>
+                </div>
+                
             </div>
         </div>
     </body>
