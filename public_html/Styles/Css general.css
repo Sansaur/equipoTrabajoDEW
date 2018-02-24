@@ -1,15 +1,20 @@
 /* 
     PALETA DE COLORES     
-    azul ocsuro         -> #324D5C
-    azul verdoso        -> #46B29D
-    amarillo mostaza    -> #F0CA4D
-    naranja             -> #E37B40
-    rojo                -> #F53855
+    blanco roto -> #EBF4F7
+    rojo        -> #E00B27
+    azul marino -> #1A2A40
+    azul flojo  -> #2474A6
+    mostaza     -> #F2A30F
 */
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Dosis', sans-serif;
+}
+
+body{
+    background-color: #EBF4F7;
 }
 
 .formatoIcono{
@@ -17,19 +22,25 @@
     height: 20px;
 }
 
-.sombra{
+.fuenteTitulos{
+    font-family: 'Patua One', cursive;
+}
+
+
+.sombra1{
     -webkit-box-shadow: 0px 0px 6px 2px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 0px 6px 2px rgba(0,0,0,0.75);
     box-shadow: 0px 0px 6px 2px rgba(0,0,0,0.75);
 }
 
-.contenedor{
-    background-color: #EDEDE6;
-    height: 100vh;
+.sombra{
+    -webkit-box-shadow: 0px 2px 11px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 2px 11px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 2px 11px 0px rgba(0,0,0,0.75);
 }
 
 #nav{
-    background-color: #F53855;
+    background-color: #E00B27;
     display: flex;
     justify-content:space-around;
     align-items: center;
@@ -64,8 +75,8 @@
     border-radius: 0px 7px 7px 0px;
     padding-left: 12px;
     padding-top: 5px;
-    background-color: #F0CA4D;
-    cursor: pointer; 
+    background-color: #F2A30F;
+    cursor: pointer;
 }
 
 #lupa > img:hover{
@@ -75,13 +86,17 @@
 }
 
 @keyframes agitar {
-  from {
-    transform: rotate(0deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
 
-  to {
-    transform: rotate(80deg);
-  }
+    50%{
+        transform: rotate(80deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
 }
 
 #cesta{
@@ -129,11 +144,74 @@
 }
 
 /*BLOQUE FILTRO*/
+.AbrirFiltro{
+    width: 75px;
+    display: flex;
+    padding-right: 5px;
+    background-color: #E00B27;
+    border-radius: 0 0 5px 5px;
+    margin-left: 15px;
+    padding: 3px;
+    font-weight: bold;
+    color:white;
+    border:0.5px solid black;
+    border-top: none;
+}
+
+.AbrirFiltro:hover{
+    cursor:pointer;
+}
+
+.AbrirFiltro >div{
+    width: 70%;
+    padding-left: 5px;
+}
+
+#bloqueFiltro{
+    padding: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 0.5px solid black;
+    background-color: #2474A6;
+    justify-content:space-around;
+}
+
+#bloqueFiltro > h3{
+    width: 100%;
+    padding-left: 10px;
+}
+
+.columna{
+    width: 100%;
+    max-width: 500px;
+    background-color: rgba(255,255,255,0.5);
+    margin-top: 5px;
+}
+
+.columna > h3{
+    text-align: left;
+    padding-left: 10px;
+    margin-bottom: 5px;
+}
+
+.columna > ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    list-style: none;
+}
+
+.columna > ul > li{
+    border:2px solid red;
+    padding: 2px;
+    cursor: pointer;
+    margin: 5px;
+}
 
 /* RESPONSIVE TABLETS */
 @media only screen and (max-width: 1000px) {
-    .contenedor{
-        background-color: red;
+    body{
+        background-color: gray;
     }
 
     #logotipo{
@@ -148,19 +226,19 @@
 
 /* RESPONSIVE TELEFONOS */
 @media only screen and (max-width: 500px) {
-    .contenedor{
+    body{
         background-color: blue;
     }
-    
+
     #nav{
         justify-content: center;
     }
-    
+
     #bucador{
         width: 70%;      
         margin-bottom: 5px;
     }    
-    
+
     #cesta{
         justify-content: center;
         width: 50%;        
