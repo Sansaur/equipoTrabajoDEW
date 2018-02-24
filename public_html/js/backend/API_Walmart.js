@@ -152,7 +152,7 @@ function transformarRespuesta(response) {
         let objetoActual = response.items[i];
         // Valores que considero que pueden ser importantes
         var nuevoObjeto = {
-            id: objetoActual.itemId ? objetoActual.itemId : "No tiene ID",
+            id: objetoActual.itemId ? objetoActual.itemId : null,
             nombre: objetoActual.name ? objetoActual.name : "No tiene nombre",
             descripcionCorta: objetoActual.shortDescription ? objetoActual.shortDescription : "No tiene descripción corta",
             descripcion: objetoActual.longDescription ? objetoActual.longDescription : "No tiene descripción larga",

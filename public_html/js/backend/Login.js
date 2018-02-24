@@ -109,114 +109,75 @@ var loginGoogle = {
 
 /*************************************
  * DEJO EL LOGIN DE TWITTER PARA EL FINAL
+ * FIREBASE GOOGLE:
+ * https://dew06-t02.firebaseapp.com/__/auth/handler
  * @returns {undefined}
  * *******************************
  */
+/**
+ * Vale, Login hecho.
+ * De la manera que funciona es usando Google Firebase, que al parecer es como un servidor que se encarga de servicios de autenticación de varias cosas
+ * Ya se podría haber avisado de esto desde antes, la verdad.
+ * 
+ * Se tiene que importar
+ * <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-messaging.js"></script>
+        
+    Al HTML (Se supone que debebería valor solo con auth, pero no me arriesgo)
 
-//var loginTwitter = {
-//    clavesPeticion: {
-//        oauth_callback: "Ninguna"
-//    },
-//    precarga: function () {
-////        post("https://api.twitter.com/oauth/request_token?oauth_nonce=49059468077626450401519411838&oauth_timestamp=1519411838&oauth_signature_method=HMAC-SHA1&oauth_consumer_key=kG3fjcP4RWMFEAv5IdBTPZS2m&oauth_version=1.0&oauth_signature=IIzRYvgd/ruu/UAyxk534059tEs=&oauth_token=966623389430550528-xzFrcifPVzO6GTMLcyhWS8ZzQSqbE7B", {
-////            //oauth_consumer_key: "kG3fjcP4RWMFEAv5IdBTPZS2m",
-////            //oauth_token: "966623389430550528-xzFrcifPVzO6GTMLcyhWS8ZzQSqbE7B",
-////            oauth_callback: "https://trello.com/b/0bSrWBXK/tareas-del-equipo-de-dew"
-////        });
-//        $.post({
-//            url: "https://api.twitter.com/oauth/request_token",
-//            data: "",
-//            dataType: "json",
-//            crossDomain: true,
-//            success: function () {
-//
-//            },
-//            error: function (e1, e2, e3) {
-//                console.error(e1);
-//                console.error(e2);
-//                console.error(e3);
-//            }
-//        })
-//    }
-//};
-///*
-//  This example shows how to use YQL to
-//  make queries to the GEO Web service.
-//  The call to the YQL Web service uses
-//  2-legged OAuth and is made with OpenSocial
-//  functions.
-//*/
-//function makeQuery(e){
-//  e.preventDefault(); // do not send off form
-//  var container = document.getElementById('results');
-//  var location = document.getElementById('query').value || 'SFO';
-//  var content = '';
-//
-//  var BASE_URI = 'http://query.yahooapis.com/v1/yql';
-//
-//  // function calling the opensocial makerequest method
-//  function runQuery(query, handler) {
-//    gadgets.io.makeRequest(BASE_URI, handler, {
-//        METHOD: 'POST',
-//        POST_DATA: toQueryString({q: query, format: 'json'}),
-//        CONTENT_TYPE: 'JSON',
-//        AUTHORIZATION: 'OAuth'
-//    });
-//  };
-//
-//  // Tool function to create a request string
-//  function toQueryString(obj) {
-//    var parts = [];
-//    for(var each in obj) if (obj.hasOwnProperty(each)) {
-//      parts.push(encodeURIComponent(each) + '=' +
-//                 encodeURIComponent(obj[each]));
-//    }
-//    return parts.join('&');
-//  };
-//
-//  // Run YQL query to GeoPlanet API and extract data from response
-//  runQuery('select * from geo.places where text="' + location + '"',
-//    function(rsp) {
-//      if(rsp.data){
-//        var place = rsp.data.query.results.place;
-//        if(place[0]){
-//          place = place[0];
-//        }
-//        var name      = place.name || 'Unknown';
-//        var country   = place.country.content || place[0].country.content ||
-//                        'Unknown';
-//        var latitude  = place.centroid.latitude || 'Unknown';
-//        var longitude = place.centroid.longitude || 'Unknown';
-//        var city      = place.locality1.content || 'Unknown';
-//        var state     = place.admin1.content || 'Unknown';
-//        var county    = place.admin2.content || 'Unknown';
-//        var zip       = place.postal ? place.postal.content : 'Unknown';
-//
-//        content = '<ul><li><strong>Place Name: </strong>' + name + '</li>'+
-//        '<li><strong>City/Town: </strong>' + city + '</li>' +
-//        '<li><strong>County/District: </strong>' + county + '</li>' +
-//        '<li><strong>State/Province: </strong>' + state + '</li>' +
-//        '<li><strong>Zipcode: </strong>' + zip + '</li>' +
-//        '<li><strong>Country: </strong>' + country + '</li>' +
-//        '<li><strong>Latitude: </strong>' + latitude + '</li>' +
-//        '<li><strong>Longitude: </strong>' + longitude + '</li></ul>';
-//        container.innerHTML = content;
-//      }
-//      else {
-//        container.innerHTML = gadgets.json.stringify(rsp);
-//      }
-//  });
-//}
-// Create an event handler for submitting the form
-//var form = document.getElementById('geosearch');
-//form.addEventListener('submit',makeQuery,false);
+ * Aquí abajo se configura el firebase, le decimos la apiKey y el dominio que se encarga de realizar las autenticaciones
+ * Luego creamos la variable provider con el método TwitterAuthProvider()
+ * en los parámetros del provider le ponemos que tenga idioma "es" (Español) y que requiera de hacer login (Para que no haga login automático, aunque esté conectada la cuenta ya)
+ * ejecutarLogin() es a lo que debe hacer referencia el botón que haga la acción de loguearse en Twitter, nos lleva a la página de Twiter y hacemos login.
+ * 
+ * Luego, entra en firebase.auth().getRedirectResult.then()
+ * Que tiene preparada para coger las claves de las credenciales del resultado.
+ * 
+ * No hace redireccionamiento a ningun sitio por ahora.
+ * 
+ */
+    var config = {
+        apiKey: "AIzaSyBVfY6k8e1ZnuymVFoaqWIrTvxAz2hCUR8",
+        authDomain: "dew06-t02.firebaseapp.com"
+    };
+    firebase.initializeApp(config);
 
-
-
-
-
-
-
+    var provider = new firebase.auth.TwitterAuthProvider();
+    firebase.auth().languageCode = 'pt';
+    provider.setCustomParameters({
+        'lang': 'es',
+        'force_login':'true'
+    });
+    function ejecutarLogin() {
+        firebase.auth().signInWithRedirect(provider);
+    }
+    firebase.auth().getRedirectResult().then(function (result) {
+        if (result.credential) {
+            // This gives you a the Twitter OAuth 1.0 Access Token and Secret.
+            // You can use these server side with your app's credentials to access the Twitter API.
+            console.log(result.credential);
+            var token = result.credential.accessToken;
+            var secret = result.credential.secret;
+            // ...
+            console.log(token);
+            console.log(secret);
+        }
+        // The signed-in user info.
+        var user = result.user;
+    }).catch(function (error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        // ...
+        console.log(errorCode);
+    });
 
 /**
  * 

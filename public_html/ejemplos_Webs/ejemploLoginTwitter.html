@@ -24,15 +24,15 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="../js/libs/jquery-1.12.4.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-messaging.js"></script>
         <script src="../js/backend/Login.js"></script>
     </head>
     <body>
-        <h1>ESTE LOGIN NO ESTÁ FUNCIONANDO</h1>
-        <form action="https://api.twitter.com/oauth/request_token" method="POST">
-            <input type="text" name="oauth_consumer_key:" value="kG3fjcP4RWMFEAv5IdBTPZS2m">
-            <input value="el login de twitter es redirigir a la página de twitter y luego de ahí nos redirigirá a la página que hayamos puesto en las opciones de la aplicación." type="submit">
-        </form>
-        <a href="https://api.twitter.com/oauth/authorize?oauth_token=966623389430550528-xzFrcifPVzO6GTMLcyhWS8ZzQSqbE7B">prueba 2</a>
-        <button onclick="loginTwitter.precarga()">aaa</button>
+        <h1>Login de Twitter</h1>
+        <button onclick="ejecutarLogin()">boton Twitter</button>
     </body>
 </html>
