@@ -1,21 +1,19 @@
 // URL Con documentación sobre todo este rollo: https://developer.ebay.com/Devzone/finding/CallRef/index.html
-
 /*
+ * Este array contiene los objetos JSON definidos en asociacionCategorias, para poder recibir el valor algo tal que así:
  * 
- {"name": "MaxPrice",
- "value": "25",
- "paramName": "Currency",
- "paramValue": "USD"},
- {"name": "FreeShippingOnly",
- "value": "true",
- "paramName": "",
- "paramValue": ""},
- {"name": "ListingType",
- "value": ["AuctionWithBIN", "FixedPrice", "StoreInventory"],
- "paramName": "",
- "paramValue": ""},
- * 
+ * filtrosCategoria["Electronicos"]["Walmart"]
+ * @type Array
  */
+var filtrosCategoria = [];
+
+$.getJSON("../js/backend/asociacionCategorias.json", function (data) {
+    $.each(data, function (key, val) {
+        filtrosCategoria[key] = val;
+    });
+    console.warn(filtrosCategoria);
+    console.warn("Cargados los filtros de categoría, ejemplo, dime el filtro de eBay de deportes: "+filtrosCategoria["Deportes"].eBay);
+});
 
 //Array de filtros que vayamos a usar. Tienen uso en buildURLArray()
 var filterarray = [];
@@ -143,7 +141,7 @@ function peticionAJAX(tipoOperacion) {
         dataType: "jsonp",
         success: function (response) {
             console.log(response);
-            transformarRespuesta(response,tipoOperacion);
+            transformarRespuesta(response, tipoOperacion);
         },
         complete: function () {
 
@@ -156,10 +154,10 @@ function peticionAJAX(tipoOperacion) {
     });
 }
 
-function transformarRespuesta(response,tipoOperacion) {
+function transformarRespuesta(response, tipoOperacion) {
     var arrayObjetosRetorno = [];
     // response['findItemsByKeywordsResponse'][0].searchResult[0].item
-    for(var i in response[tipoOperacion][0].searchResult[0].item){
+    for (var i in response[tipoOperacion][0].searchResult[0].item) {
         var objetoActual = response[tipoOperacion][0].searchResult[0].item[i];
         var nuevoObjeto = {
             id: objetoActual.itemId ? objetoActual.itemId : null, // Si no tiene ID ponemos null para que sea más fácil
@@ -174,7 +172,7 @@ function transformarRespuesta(response,tipoOperacion) {
             // Cambiamos el precio aquí.
             precio: objetoActual.sellingStatus[0].currentPrice[0] ? traducirPrecio(objetoActual.sellingStatus[0].currentPrice[0]['__value__'], objetoActual.sellingStatus[0].currentPrice[0]['@currencyId']) : 0,
             // ATENCIÓN, EBAY DEVUELVE "ACTIVE" O "INACTIVE"
-            stock: objetoActual.sellingStatus[0].sellingState ? objetoActual.sellingStatus[0].sellingState : "No se sabe si hay o no" 
+            stock: objetoActual.sellingStatus[0].sellingState ? objetoActual.sellingStatus[0].sellingState : "No se sabe si hay o no"
         };
         arrayObjetosRetorno.push(nuevoObjeto);
     }
@@ -184,13 +182,18 @@ function transformarRespuesta(response,tipoOperacion) {
     return arrayObjetosRetorno;
 }
 
-function traducirPrecio(precio, moneda){
+function traducirPrecio(precio, moneda) {
     let p = parseInt(precio);
-    switch(moneda){
-        case "GBP": return (p * 1.13589).toFixed(2);
-        case "EUR": return p;
-        case "USD": return (p * 0.81331891).toFixed(2);
-        case "PHP": return (p * 0.0156936).toFixed(2);
-        case "AUD": return (p * 0.638016).toFixed(2);
+    switch (moneda) {
+        case "GBP":
+            return (p * 1.13589).toFixed(2);
+        case "EUR":
+            return p;
+        case "USD":
+            return (p * 0.81331891).toFixed(2);
+        case "PHP":
+            return (p * 0.0156936).toFixed(2);
+        case "AUD":
+            return (p * 0.638016).toFixed(2);
     }
 }

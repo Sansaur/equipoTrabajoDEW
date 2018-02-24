@@ -1,4 +1,19 @@
 const API_KEY = "rfpejk24jysvvba6u9gftq6a";
+/*
+ * Este array contiene los objetos JSON definidos en asociacionCategorias, para poder recibir el valor algo tal que así:
+ * 
+ * filtrosCategoria["Electronicos"]["Walmart"]
+ * @type Array
+ */
+var filtrosCategoria = [];
+
+$.getJSON("../js/backend/asociacionCategorias.json", function (data) {
+    $.each(data, function (key, val) {
+        filtrosCategoria[key] = val;
+    });
+    console.warn(filtrosCategoria);
+    console.warn("Cargados los filtros de categoría, ejemplo, dime el filtro de eBay de deportes: "+filtrosCategoria["Deportes"].eBay);
+});
 /**
  * ids es OBLIGATORIO, si no, hace return null.
  * Se le envía IDS de productos y termina retornando el resultado de la cadena this() -> peticionAJAX() -> transformarRespuesta()
