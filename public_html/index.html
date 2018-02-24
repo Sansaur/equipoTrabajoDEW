@@ -1,16 +1,86 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
+        <link rel="stylesheet" href="Styles/Css general.css" type="text/css"/>
+
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>Hola, has sido redirigido aquí por los logins</div>
+        <div class="contenedor">            
+            <div id="nav" class="sombra">
+                <a id="logotipo" href="index.html">
+                    <img src="addons/images/icono-Oscuro.png" alt="logotipo"/>
+                </a>  
+                
+                <div id="bucador">
+                    <input type="text" id="TbxBuscar">
+                    <span id="lupa"> <!--crear evento click-->
+                        <img src="addons/icons/lupa.svg" alt="lupa buscar" class="formatoIcono">
+                    </span>
+                </div>
+                
+                <div id="cesta">
+                    <span id="numObjCesta">0</span>
+                    <img src="addons/icons/carro.svg" alt="carrito" class="formatoIcono"/> 
+                    Carrito
+                </div>
+                
+                <div id="login">
+                    <img src="addons/icons/usuario.svg" alt="usuario" class="formatoIcono"/> 
+                    <span>Hola. Identifícate</span>
+                    <img src="addons/icons/salir.svg" alt="usuario" class="formatoIcono" style="display:none"/> 
+                </div>
+            </div>
+            
+            <div id="bloqueFiltro">
+                <h4>Filtros</h4>
+                <div class="columna">
+                    <h2>Electrónica</h2>
+                    <ul>
+                        <li>a</li>    
+                        <li>b</li>
+                        <li>b</li>
+                        <li>d</li>
+                        <li>e</li>
+                    </ul>
+                </div>
+                
+                <div class="columna">
+                    <h2>Video Juego</h2>
+                    <ul>
+                        <li>a</li>    
+                        <li>b</li>
+                        <li>b</li>
+                        <li>d</li>
+                        <li>e</li>
+                    </ul>
+                </div>
+                
+                <div class="columna">
+                    <h2>Deporte</h2>
+                    <ul>
+                        <li>a</li>    
+                        <li>b</li>
+                        <li>b</li>
+                        <li>d</li>
+                        <li>e</li>
+                    </ul>
+                </div>
+                
+                <div class="columna">
+                    <h2>Otros</h2>
+                    <ul>
+                        <li>a</li>    
+                        <li>b</li>
+                        <li>b</li>
+                        <li>d</li>
+                        <li>e</li>
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
     </body>
 </html>

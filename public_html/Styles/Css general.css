@@ -1,0 +1,168 @@
+/* 
+    PALETA DE COLORES     
+    azul ocsuro         -> #324D5C
+    azul verdoso        -> #46B29D
+    amarillo mostaza    -> #F0CA4D
+    naranja             -> #E37B40
+    rojo                -> #F53855
+*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.formatoIcono{
+    width: 20px;   
+    height: 20px;
+}
+
+.sombra{
+    -webkit-box-shadow: 0px 0px 6px 2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 6px 2px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 6px 2px rgba(0,0,0,0.75);
+}
+
+.contenedor{
+    background-color: #EDEDE6;
+    height: 100vh;
+}
+
+#nav{
+    background-color: #F53855;
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#logotipo > img{
+    width: 200px;
+}
+
+#bucador{
+    display: flex;
+    width: 50%;
+    max-width: 550px;
+}
+
+#TbxBuscar{
+    border-radius: 7px 0 0 7px;
+    padding: 6px;
+    width: 100%;
+    border: none;
+    background-color: rgba(255,255,255,0.9);
+}
+
+#TbxBuscar:hover{
+    background-color: rgba(255,255,255,1);    
+}
+
+#lupa{
+    display: block;
+    width: 50px;
+    border-radius: 0px 7px 7px 0px;
+    padding-left: 12px;
+    padding-top: 5px;
+    background-color: #F0CA4D;
+    cursor: pointer; 
+}
+
+#lupa > img:hover{
+    animation-duration: .3s;
+    animation-name: agitar;
+    animation-direction: alternate;   
+}
+
+@keyframes agitar {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(80deg);
+  }
+}
+
+#cesta{
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 5px;
+    color:white;
+}
+
+#cesta > span{
+    display: block;
+}
+
+#cesta > img{
+    margin: 0px 3px 0px 7px;
+}
+
+#login{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 5px;
+    color:white;
+}
+
+#login > span{
+    margin: 7px;
+}
+
+#iniciarSesion{
+    border:none;
+    background-color: white;
+    padding: 5px;
+}
+
+#cesta:hover, #login:hover{
+    transition: all .3s;
+    color:black;
+    cursor: pointer;
+}
+
+/*BLOQUE FILTRO*/
+
+/* RESPONSIVE TABLETS */
+@media only screen and (max-width: 1000px) {
+    .contenedor{
+        background-color: red;
+    }
+
+    #logotipo{
+        width: 100%;
+        text-align: center;
+    }
+
+    #bucador{
+        margin-bottom: 5px;
+    }
+}
+
+/* RESPONSIVE TELEFONOS */
+@media only screen and (max-width: 500px) {
+    .contenedor{
+        background-color: blue;
+    }
+    
+    #nav{
+        justify-content: center;
+    }
+    
+    #bucador{
+        width: 70%;      
+        margin-bottom: 5px;
+    }    
+    
+    #cesta{
+        justify-content: center;
+        width: 50%;        
+    }
+}

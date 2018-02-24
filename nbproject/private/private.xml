@@ -2,16 +2,16 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/2dawa/Documents/NetBeansProjects/Aplicacion_DEW_API_eBay/public_html/ejemplos_Webs/ejemploApi_eBay.html</file>
-            <file>file:/C:/Users/2dawa/Documents/NetBeansProjects/Aplicacion_DEW_API_eBay/public_html/ejemplos_Webs/ejemploLoginTwitter.html</file>
-            <file>file:/C:/Users/2dawa/Documents/NetBeansProjects/Aplicacion_DEW_API_eBay/public_html/index.html</file>
-            <file>file:/C:/Users/2dawa/Documents/NetBeansProjects/Aplicacion_DEW_API_eBay/public_html/ejemplos_Webs/ejemploVisualRepartirTrabajo.html</file>
-            <file>file:/C:/Users/2dawa/Documents/NetBeansProjects/Aplicacion_DEW_API_eBay/public_html/ejemplos_Webs/ejemploLoginGitHub.html</file>
-            <file>file:/C:/Users/2dawa/Documents/NetBeansProjects/Aplicacion_DEW_API_eBay/public_html/ejemplos_Webs/ejemploLoginGoogle.html</file>
-            <file>file:/C:/Users/2dawa/Documents/NetBeansProjects/Aplicacion_DEW_API_eBay/public_html/ejemplos_Webs/server.rb</file>
-            <file>file:/C:/Users/2dawa/Documents/NetBeansProjects/Aplicacion_DEW_API_eBay/public_html/ejemplos_Webs/ejemploLoginFacebook.html</file>
+        <group name="PROYECTOS PARA DPL">
+            <file>file:/C:/Users/Sansaur/Documents/NetBeansProjects/equipoTrabajoDEW/public_html/js/backend/global.js</file>
+            <file>file:/C:/Users/Sansaur/Documents/NetBeansProjects/equipoTrabajoDEW/public_html/js/backend/API_eBay.js</file>
+            <file>file:/C:/Users/Sansaur/Documents/NetBeansProjects/equipoTrabajoDEW/public_html/ejemplos_Webs/ejemploApi_eBay.html</file>
+            <file>file:/C:/Users/Sansaur/Documents/NetBeansProjects/equipoTrabajoDEW/public_html/js/backend/API_Walmart.js</file>
+            <file>file:/C:/Users/Sansaur/Documents/NetBeansProjects/equipoTrabajoDEW/public_html/js/backend/asociacionCategorias.json</file>
         </group>
-        <group name="PROYECTOS PARA DPL"/>
+        <group>
+            <file>file:/C:/Users/Usuario/Desktop/git/equipoTrabajoDEW/public_html/index.html</file>
+            <file>file:/C:/Users/Usuario/Desktop/git/equipoTrabajoDEW/public_html/Styles/Css%20general.css</file>
+        </group>
     </open-files>
 </project-private>
