@@ -6,7 +6,6 @@ const API_KEY = "rfpejk24jysvvba6u9gftq6a";
  * @type Array
  */
 var filtrosCategoria = [];
-
 $.getJSON("../js/backend/asociacionCategorias.json", function (data) {
     $.each(data, function (key, val) {
         filtrosCategoria[key] = val;
