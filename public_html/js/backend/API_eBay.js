@@ -12,7 +12,7 @@ $.getJSON("../js/backend/asociacionCategorias.json", function (data) {
         filtrosCategoria[key] = val;
     });
     console.warn(filtrosCategoria);
-    console.warn("Cargados los filtros de categoría, ejemplo, dime el filtro de eBay de deportes: "+filtrosCategoria["Deportes"].eBay);
+    console.warn("Cargados los filtros de categoría, ejemplo, dime el filtro de eBay de deportes: " + filtrosCategoria["Deportes"].eBay);
 });
 
 //Array de filtros que vayamos a usar. Tienen uso en buildURLArray()
@@ -105,6 +105,7 @@ function buscarPorClave(parametro, numeroResultados, numeroPagina) {
     url += "&keywords=" + parametro;
     url += "&paginationInput.entriesPerPage=" + numeroResultados;
     url += "&paginationInput.pageNumber=" + numeroPagina;
+    url += "&outputSelector=SellerInfo";
     // Añadimos nuestros filtros.
     url += urlfilter;
     peticionAJAX("findItemsByKeywordsResponse");
@@ -126,9 +127,10 @@ function busquedaPorClaveYCategoria(parametro, categoria, numeroResultados, nume
     url += "&categoryId=" + categoria;
     url += "&paginationInput.entriesPerPage=" + numeroResultados;
     url += "&paginationInput.pageNumber=" + numeroPagina;
+    url += "&outputSelector=SellerInfo";
     // Añadimos nuestros filtros.
     url += urlfilter;
-    peticionAJAX("findItemsAdvancedResponse");
+    return peticionAJAX("findItemsAdvancedResponse");
 }
 
 
@@ -140,8 +142,7 @@ function peticionAJAX(tipoOperacion) {
         jsonp: "callback",
         dataType: "jsonp",
         success: function (response) {
-            console.log(response);
-            transformarRespuesta(response, tipoOperacion);
+            return transformarRespuesta(response, tipoOperacion);
         },
         complete: function () {
 
@@ -159,29 +160,27 @@ function transformarRespuesta(response, tipoOperacion) {
     // response['findItemsByKeywordsResponse'][0].searchResult[0].item
     for (var i in response[tipoOperacion][0].searchResult[0].item) {
         var objetoActual = response[tipoOperacion][0].searchResult[0].item[i];
+        console.log(objetoActual);
         var nuevoObjeto = {
-            id: objetoActual.itemId ? objetoActual.itemId : null, // Si no tiene ID ponemos null para que sea más fácil
-            nombre: objetoActual.title ? objetoActual.title : "No tiene nombre",
+            id: objetoActual.itemId ? objetoActual.itemId[0] : null, // Si no tiene ID ponemos null para que sea más fácil
+            nombre: objetoActual.title ? objetoActual.title[0] : "No tiene nombre",
             descripcionCorta: null, // eBay tiene las descripciones en un sitio diferente a los objetos, parece ser que se tiene que usar la SHOPPING API, nosotros usamos la FINDING API
             descripcion: null,
-            imagenGrande: objetoActual.galleryURL[0] ? objetoActual.galleryURL[0] : "sin_imagen.jpg", // Sustituir esto por una imagen placeholder
+            imagenGrande: objetoActual.galleryPlusPictureURL ? objetoActual.galleryPlusPictureURL[0] : "sin_imagen.jpg", // Sustituir esto por una imagen placeholder
             imagen: objetoActual.galleryURL[0] ? objetoActual.galleryURL[0] : "sin_imagen.jpg",
-            id_categoria: objetoActual.primaryCategory[0].categoryId ? objetoActual.primaryCategory[0].categoryId : "Sin ID de categoría", // Cogemos la ID de categoría porque las que vienen de Walmart están en ingles, las traducimos nostoros
-            marca: null, // eBay no da marcas.
-            puntuacion: null, // eBay tampoco da puntuación, todo eso se consigue de otro sitio
+            id_categoria: objetoActual.primaryCategory[0].categoryId ? objetoActual.primaryCategory[0].categoryId[0] : "Sin ID de categoría", // Cogemos la ID de categoría porque las que vienen de Walmart están en ingles, las traducimos nostoros
+            marca: objetoActual.sellerInfo ? objetoActual.sellerInfo[0].sellerUserName[0] : "El vendedor es anónimo", // eBay no da marcas, pero da vendedores.
+            puntuacion: objetoActual.sellerInfo ? objetoActual.sellerInfo[0].positiveFeedbackPercent[0] : "No tiene puntuación", // eBay da un porcentaje de satisfacción.
             // Cambiamos el precio aquí.
             precio: objetoActual.sellingStatus[0].currentPrice[0] ? traducirPrecio(objetoActual.sellingStatus[0].currentPrice[0]['__value__'], objetoActual.sellingStatus[0].currentPrice[0]['@currencyId']) : 0,
             // ATENCIÓN, EBAY DEVUELVE "ACTIVE" O "INACTIVE"
-            stock: objetoActual.sellingStatus[0].sellingState ? objetoActual.sellingStatus[0].sellingState : "No se sabe si hay o no"
+            stock: objetoActual.sellingStatus[0].sellingState ? objetoActual.sellingStatus[0].sellingState[0] : "No se sabe si hay o no"
         };
         arrayObjetosRetorno.push(nuevoObjeto);
     }
-    for (var i in arrayObjetosRetorno) {
-        console.warn(arrayObjetosRetorno[i]);
-    }
+    console.warn(arrayObjetosRetorno);
     return arrayObjetosRetorno;
 }
-
 function traducirPrecio(precio, moneda) {
     let p = parseInt(precio);
     switch (moneda) {
@@ -195,5 +194,7 @@ function traducirPrecio(precio, moneda) {
             return (p * 0.0156936).toFixed(2);
         case "AUD":
             return (p * 0.638016).toFixed(2);
+        default:
+             return p.toFixed(2);
     }
 }

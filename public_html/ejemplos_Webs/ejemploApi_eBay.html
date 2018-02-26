@@ -64,10 +64,9 @@
                 <label>Valor del nuevo filtro (Leer el HTML para excepciones)<input type="text" placeholder="true o false" id="valorFiltro"></label><br>
                 <button onclick="addFiltro()" type="button">Añade nuevo filtro (Se muestran en consola)</button><br>
                 <label>¿Que buscas?:<input type="text" id="query"></label><br>
-                
                 <button onclick="buscarPorClave($('#query').val(),20,1)" type="button">Haz peticion AJAX (tambien se muestra en consola)</button><br>
-                
                 <button onclick="busquedaPorClaveYCategoria($('#query').val(),888,20,1)" type="button">Haz peticion AJAX busquedaPorClaveYCategoria() (Buscará en "deportes")</button><br>
+                <button type="button" onclick="myfunc()">aaaa</button>
             </fieldset>
         </form>
         <div id="results"></div>
