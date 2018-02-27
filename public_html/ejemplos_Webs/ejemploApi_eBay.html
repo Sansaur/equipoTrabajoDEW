@@ -62,6 +62,12 @@
                 
                 -->
                 <label>Valor del nuevo filtro (Leer el HTML para excepciones)<input type="text" placeholder="true o false" id="valorFiltro"></label><br>
+                <h2>Ejemplo de radios</h2>
+				<label><input type="checkbox" name="HideDuplicateItems" onclick='construirFiltros($(this).attr("name"),$(this).prop("checked"))' >No muestres objetos duplicados</label><br>
+				<label><input type="checkbox" name="CharityOnly" onclick='construirFiltros($(this).attr("name"),$(this).prop("checked"))' >Solo si el dinero se envía a caridad</label><br>
+				<label><input type="checkbox" name="BestOfferOnly" onclick='construirFiltros($(this).attr("name"),$(this).prop("checked"))' >Solo si está marcado como "Mejor oferta"</label><br>
+				<label><input type="checkbox" name="FreeShippingOnly" onclick='construirFiltros($(this).attr("name"),$(this).prop("checked"))' >Solo si los envíos son gratuitos</label><br>
+				<br>
                 <button onclick="addFiltro()" type="button">Añade nuevo filtro (Se muestran en consola)</button><br>
                 <label>¿Que buscas?:<input type="text" id="query"></label><br>
                 <button onclick="buscarPorClave($('#query').val(),20,1)" type="button">Haz peticion AJAX (tambien se muestra en consola)</button><br>
