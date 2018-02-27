@@ -40,7 +40,9 @@ function construirFiltros(nombre, valor) {
     for (var i in filterarray) {
         if (filterarray[i].name === nuevoObjeto.name) {
             filterarray[i].value = nuevoObjeto.value;
-			console.log(filterarray);
+		buildURLArray(filterarray);
+		
+		console.log(filterarray);
             return;
         }
     }
