@@ -30,6 +30,8 @@ Blockquotes:
 > We're living the future so
 > the present is our past.
 
+~~Strikethrough~~ 
+
 Codigo en linea `<code></code>`
 
 Emojis
