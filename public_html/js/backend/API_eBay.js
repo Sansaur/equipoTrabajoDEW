@@ -163,18 +163,18 @@ function transformarRespuesta(response, tipoOperacion) {
         console.log(objetoActual);
         var nuevoObjeto = {
             id: objetoActual.itemId ? objetoActual.itemId[0] : null, // Si no tiene ID ponemos null para que sea más fácil
-            nombre: objetoActual.title ? objetoActual.title[0] : "No tiene nombre",
+            nombre: objetoActual.title ? objetoActual.title[0] : null,
             descripcionCorta: null, // eBay tiene las descripciones en un sitio diferente a los objetos, parece ser que se tiene que usar la SHOPPING API, nosotros usamos la FINDING API
             descripcion: null,
-            imagenGrande: objetoActual.galleryPlusPictureURL ? objetoActual.galleryPlusPictureURL[0] : "sin_imagen.jpg", // Sustituir esto por una imagen placeholder
-            imagen: objetoActual.galleryURL[0] ? objetoActual.galleryURL[0] : "sin_imagen.jpg",
-            id_categoria: objetoActual.primaryCategory[0].categoryId ? objetoActual.primaryCategory[0].categoryId[0] : "Sin ID de categoría", // Cogemos la ID de categoría porque las que vienen de Walmart están en ingles, las traducimos nostoros
-            marca: objetoActual.sellerInfo ? objetoActual.sellerInfo[0].sellerUserName[0] : "El vendedor es anónimo", // eBay no da marcas, pero da vendedores.
-            puntuacion: objetoActual.sellerInfo ? objetoActual.sellerInfo[0].positiveFeedbackPercent[0] : "No tiene puntuación", // eBay da un porcentaje de satisfacción.
+            imagenGrande: objetoActual.galleryPlusPictureURL ? objetoActual.galleryPlusPictureURL[0] : null, // Sustituir esto por una imagen placeholder
+            imagen: objetoActual.galleryURL[0] ? objetoActual.galleryURL[0] : null,
+            id_categoria: objetoActual.primaryCategory[0].categoryId ? objetoActual.primaryCategory[0].categoryId[0] : null, // Cogemos la ID de categoría porque las que vienen de Walmart están en ingles, las traducimos nostoros
+            marca: objetoActual.sellerInfo ? objetoActual.sellerInfo[0].sellerUserName[0] : null, // eBay no da marcas, pero da vendedores.
+            puntuacion: objetoActual.sellerInfo ? objetoActual.sellerInfo[0].positiveFeedbackPercent[0] : null, // eBay da un porcentaje de satisfacción.
             // Cambiamos el precio aquí.
             precio: objetoActual.sellingStatus[0].currentPrice[0] ? traducirPrecio(objetoActual.sellingStatus[0].currentPrice[0]['__value__'], objetoActual.sellingStatus[0].currentPrice[0]['@currencyId']) : 0,
             // ATENCIÓN, EBAY DEVUELVE "ACTIVE" O "INACTIVE"
-            stock: objetoActual.sellingStatus[0].sellingState ? objetoActual.sellingStatus[0].sellingState[0] : "No se sabe si hay o no"
+            stock: objetoActual.sellingStatus[0].sellingState ? objetoActual.sellingStatus[0].sellingState[0] : null
         };
         arrayObjetosRetorno.push(nuevoObjeto);
     }
