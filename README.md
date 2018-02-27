@@ -20,7 +20,7 @@ Bienvenido, haciendo pruebas de README.md
 1. Lista
   1. Ordenada
   
-![GitHub Logo](/public_html/addons/images/icono-Claro.png)
+![GitHub Logo](/public_html/addons/images/icono-Oscuro.png)
 Format: ![Alt Text](url)
 
 http://github.com
