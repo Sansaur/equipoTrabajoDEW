@@ -167,13 +167,13 @@ function transformarRespuesta(response) {
         // Valores que considero que pueden ser importantes
         var nuevoObjeto = {
             id: objetoActual.itemId ? objetoActual.itemId : null,
-            nombre: objetoActual.name ? objetoActual.name : "No tiene nombre",
-            descripcionCorta: objetoActual.shortDescription ? objetoActual.shortDescription : "No tiene descripción corta",
-            descripcion: objetoActual.longDescription ? objetoActual.longDescription : "No tiene descripción larga",
-            imagenGrande: objetoActual.largeImage ? objetoActual.largeImage : "sin_imagen.jpg", // Sustituir esto por una imagen placeholder
-            imagen: objetoActual.mediumImage ? objetoActual.mediumImage : "sin_imagen.jpg",
-            id_categoria: objetoActual.categoryNode ? objetoActual.categoryNode : "Sin ID de categoría", // Cogemos la ID de categoría porque las que vienen de Walmart están en ingles, las traducimos nostoros
-            marca: objetoActual.brandName ? objetoActual.brandName : "Sin marca",
+            nombre: objetoActual.name ? objetoActual.name : null,
+            descripcionCorta: objetoActual.shortDescription ? objetoActual.shortDescription : null,
+            descripcion: objetoActual.longDescription ? objetoActual.longDescription : null,
+            imagenGrande: objetoActual.largeImage ? objetoActual.largeImage : null, // Sustituir esto por una imagen placeholder
+            imagen: objetoActual.mediumImage ? objetoActual.mediumImage : null,
+            id_categoria: objetoActual.categoryNode ? objetoActual.categoryNode : null, // Cogemos la ID de categoría porque las que vienen de Walmart están en ingles, las traducimos nostoros
+            marca: objetoActual.brandName ? objetoActual.brandName : null,
             puntuacion: objetoActual.customerRating ? objetoActual.customerRating : 0,
             // Cambiamos el precio aquí.
             precio: objetoActual.salePrice ? traducirPrecio(objetoActual.salePrice) : 0,
