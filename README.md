@@ -17,10 +17,10 @@ Bienvenido, haciendo pruebas de README.md
   * Look at the
   * desorden
   
-1 Lista
-  1 Ordenada
+1. Lista
+  1. Ordenada
   
-![GitHub Logo](/images/logo.png)
+![GitHub Logo](/public_html/addons/images/icono-Claro.png)
 Format: ![Alt Text](url)
 
 http://github.com
