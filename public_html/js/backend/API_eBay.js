@@ -27,7 +27,11 @@ var urlfilter = "";
 function addFiltro() {
     construirFiltros($('#nombreFiltro').val(), $('#valorFiltro').val());
 }
-
+/**
+ *  A esta función se le envían los filtros de uno en uno.
+ *  Luego se construye el array de filtros, y se pasa para construir la URL con filtros
+ * @returns {undefined}
+ */
 function construirFiltros(nombre, valor) {
     var nuevoObjeto = {
         name: nombre,
@@ -36,6 +40,7 @@ function construirFiltros(nombre, valor) {
     for (var i in filterarray) {
         if (filterarray[i].name === nuevoObjeto.name) {
             filterarray[i].value = nuevoObjeto.value;
+			console.log(filterarray);
             return;
         }
     }
