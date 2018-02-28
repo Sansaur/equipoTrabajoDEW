@@ -171,8 +171,6 @@ function transformarRespuesta(response, tipoOperacion) {
         var nuevoObjeto = {
             id: objetoActual.itemId ? objetoActual.itemId[0] : null, // Si no tiene ID ponemos null para que sea más fácil
             nombre: objetoActual.title ? objetoActual.title[0] : null,
-            descripcionCorta: null, // eBay tiene las descripciones en un sitio diferente a los objetos, parece ser que se tiene que usar la SHOPPING API, nosotros usamos la FINDING API
-            descripcion: null,
             imagenGrande: objetoActual.galleryPlusPictureURL ? objetoActual.galleryPlusPictureURL[0] : null, // Sustituir esto por una imagen placeholder
             imagen: objetoActual.galleryURL[0] ? objetoActual.galleryURL[0] : null,
             id_categoria: objetoActual.primaryCategory[0].categoryId ? objetoActual.primaryCategory[0].categoryId[0] : null, // Cogemos la ID de categoría porque las que vienen de Walmart están en ingles, las traducimos nostoros
@@ -181,8 +179,15 @@ function transformarRespuesta(response, tipoOperacion) {
             // Cambiamos el precio aquí.
             precio: objetoActual.sellingStatus[0].currentPrice[0] ? traducirPrecio(objetoActual.sellingStatus[0].currentPrice[0]['__value__'], objetoActual.sellingStatus[0].currentPrice[0]['@currencyId']) : 0,
             // ATENCIÓN, EBAY DEVUELVE "ACTIVE" O "INACTIVE"
-            stock: objetoActual.sellingStatus[0].sellingState ? objetoActual.sellingStatus[0].sellingState[0] : null
+            stock: objetoActual.sellingStatus[0].sellingState ? objetoActual.sellingStatus[0].sellingState[0] : null,
+            descripcionCorta: "Este es un objeto de eBay, su nombre es: "+objetoActual.title[0]+"", // eBay tiene las descripciones en un sitio diferente a los objetos, parece ser que se tiene que usar la SHOPPING API, nosotros usamos la FINDING API
+            descripcion: null
         };
+        let estado = objetoActual.condition ? objetoActual.condition[0].conditionDisplayName[0] : "desconocido";
+        let DESC = "Este es un objeto de eBay para pagar por él " + objetoActual.autoPay[0] ? "se permite auto-pago" : "no se permite auto-pago,  ";
+        DESC += "se encuentra en estado: "+ estado + " y se encuentra a la venta en "+ objetoActual.location ? objetoActual.location[0] : "algún sitio ";
+        DESC += "para pagar por el se usa "+ objetoActual.paymentMethod[0] + " y el objeto pertenece a la categoría " + objetoActual.primaryCategory[0].categoryName[0];
+        nuevoObjeto.descripcion = DESC;
         arrayObjetosRetorno.push(nuevoObjeto);
     }
     console.warn(arrayObjetosRetorno);
