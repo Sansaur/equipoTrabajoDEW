@@ -7,6 +7,7 @@
         <script src="js/backend/API_eBay.js"></script>
         <script src="js/frontend/construccionElementos.js"></script>
         <link rel="stylesheet" href="Styles/Css general.css" type="text/css"/>
+        <link href="Styles/elementos.css" rel="stylesheet" type="text/css"/>
         <title>Purchase</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,34 +18,34 @@
                 <a id="logotipo" href="index.html">
                     <img src="addons/images/icono-Claro.png" alt="logotipo"/>
                 </a>  
-                
+
                 <div id="bucador">
                     <input type="text" id="TbxBuscar">
                     <span id="lupa"> <!--crear evento click-->
                         <img src="addons/icons/lupa.svg" alt="lupa buscar" class="formatoIcono">
                     </span>
                 </div>
-                
+
                 <div id="cesta">
                     <span id="numObjCesta">0</span>
                     <img src="addons/icons/carro.svg" alt="carrito" class="formatoIcono"/> 
                     Carrito
                 </div>
-                
+
                 <div id="login">
                     <a id="loginLink" style="color:inherit;text-decoration:inherit;" href="login.html"> <img src="addons/icons/usuario.svg" alt="usuario" class="formatoIcono"/> 
                         <span>Hola. Identifícate</span></a>
                     <script>
                         // CAMBIAR ESTO DE SITIO:
                         let user = localStorage.getItem('UsuarioLogueado')
-                        if(user && user !== "undefined"){
-                            $('#loginLink').find('span').text('Bienvenido '+user);
+                        if (user && user !== "undefined") {
+                            $('#loginLink').find('span').text('Bienvenido ' + user);
                         }
                     </script>
                     <img src="addons/icons/salir.svg" alt="salir" class="formatoIcono" style="display:none"/> 
                 </div>
             </div>
-            
+
             <div id="bloqueFiltro" class="sombra">
                 <h3 class="fuenteTitulos">Filtros</h3>
                 <div class="columna">
@@ -57,7 +58,7 @@
                         <li>subfiltro1</li>
                     </ul>
                 </div>
-                
+
                 <div class="columna">
                     <h3 class="fuenteTitulos">Video Juego</h3>
                     <ul>
@@ -68,7 +69,7 @@
                         <li>subfiltro1</li>
                     </ul>
                 </div>
-                
+
                 <div class="columna">
                     <h3 class="fuenteTitulos">Deporte</h3>
                     <ul>
@@ -79,7 +80,7 @@
                         <li>subfiltro1</li>
                     </ul>
                 </div>
-                
+
                 <div class="columna">
                     <h3 class="fuenteTitulos">Otros</h3>
                     <ul>
@@ -98,22 +99,48 @@
         </div>
         <script>
             // CAMBIAR ESTO DE SITIO, IMPORTANTE:
-            
-            function prueba(){
+
+            function prueba() {
                 // Search para buscar por "controller" de playstation 4 en Walmart
                 // Y luego buscando por clave y categoría para buscar la palabra "ayuda" en videojuegos de eBay
-                search("farcry",filtrosCategoria_Walmart['Videojuegos']['hijosWalmart']['PlayStation 4'],null,'customerRating','asc',5);
-                busquedaPorClaveYCategoria("ayuda",filtrosCategoria['Videojuegos']['eBay'],5,1);
+                search("farcry", filtrosCategoria_Walmart['Videojuegos']['hijosWalmart']['PlayStation 4'], null, 'customerRating', 'asc', 5);
+                busquedaPorClaveYCategoria("ayuda", filtrosCategoria['Videojuegos']['eBay'], 5, 1);
             }
         </script>
-        <div id="contenidos">
-            <!-- AÑADIENDO ESTO SOLO PARA PROBAR EL USO DE LAS FUNCIOONES
-            DE JS/FRONTEND/CONSTRUCCIONELEMENTOS
-            
-            MANEJAR ESTO Y CAMBIAR EL CÓDIGO COMO TIENE QUE SER-->
-        </div>
+
         <div id="[id]" class="elemento">
             <button onclick="prueba()">PRUEBA</button>
         </div>
+
+        <div id="resultado">
+            
+        </div>
     </body>
 </html>
+
+<!-- 
+    HTML DE LOS PRODUCTOS A MONTAR
+<div class="producto">
+                <div class="cabezaproducto">
+                    <img id="ProductoImagen" src="http://thumbs1.ebaystatic.com/m/mmyduWQeHEiPQ6Py0fnfbSQ/140.jpg" alt="imagen"/>            
+                    <img class="Tipoproducto" src="addons/images/ebay_icon.svg" alt=""/>
+                </div>
+
+                <div class="ProductoInfo">
+
+                    <div id="Productonombre">Auricular ayuda auditiva Sennheiser SET 840 TV Wireless Auricular para TV</div>
+                    <div id="Productodescripcion">Este es un objeto de eBay, su nombre es: Auricular ayuda auditiva Sennheiser SET 840 TV Wireless Auricular para TV</div>
+                    <p>
+                        <label>Puntuación: </label>
+                        <label id="Productopuntuacion">9 puntos</label>                        
+                    </p>
+                    <p>
+                        <label>Precio:</label>
+                        <div class="precioCarrito">
+                            <label id="Productoprecio" class="sombraTexto">129€</label>
+                            <img id="addItem" src="addons/icons/add_item.svg" alt=""/>                     
+                        </div>                        
+                    </p>
+                </div>                
+            </div>
+-->

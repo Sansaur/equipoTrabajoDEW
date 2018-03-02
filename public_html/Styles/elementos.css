@@ -1,0 +1,108 @@
+.sombraTexto{    
+  text-shadow:
+   -1.5px -1.5px 0 #000,  
+    1.5px -1.5px 0 #000,
+    -1.5px 1.5px 0 #000,
+     1.5px 1.5px 0 #000;
+}
+
+.producto{
+    width: 90%;
+    margin: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 300px;
+    background-color: #2474A6;
+}
+
+.cabezaproducto{
+    width: 100%;
+    height: 150px;
+    background-color: #1A2A40;
+    position: relative;
+}
+
+#ProductoImagen{
+    display: block;
+    height:100%;
+    margin: auto;
+}
+
+.Tipoproducto{
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    width: 50px;
+    height: 50px;
+}
+
+.ProductoInfo{
+    padding: 5px;
+}
+
+#Productonombre{
+   font-weight: bold;
+   text-align: center;
+   margin-bottom: 5px;
+   font-size: 1.1em;
+   color:#1A2A40;
+}
+
+#Productodescripcion{
+   text-align: center;
+   margin-bottom: 5px;
+   font-size: 0.9em;
+   color:white;
+}
+
+.ProductoInfo > p{
+    color: #1A2A40;
+    font-weight: bold;
+}
+
+.ProductoInfo > p{
+   color: #1A2A40;
+   font-weight:bold;
+   text-align:left;
+   padding-left: 5px;
+}
+
+.ProductoInfo > p:nth-child(1){
+    color:white;
+}
+
+#Productopuntuacion{
+    padding-left: 20px;
+    color: white;
+}
+
+.precioCarrito{
+   display: flex;
+   justify-content:space-between;
+}
+
+#Productoprecio{
+    display: block;
+    font-size: 2em;
+    color: white;
+    width: 50%;
+    text-align: center;
+}
+
+#addItem{
+    height: 50px;
+    padding: 5px;
+}
+
+/* RESPONSIVE TABLETS */
+@media only screen and (max-width: 1000px) {
+    
+}
+
+/* RESPONSIVE TELEFONOS */
+@media only screen and (max-width: 500px) {
+    .producto{
+        max-width: 100%;
+        width: 100%;
+    }
+}
