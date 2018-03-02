@@ -8,11 +8,11 @@
 
 .producto{
     width: 90%;
-    margin: 8px;
     display: flex;
     flex-wrap: wrap;
     max-width: 300px;
     background-color: #2474A6;
+    margin-top: 20px;
 }
 
 .cabezaproducto{
@@ -42,15 +42,16 @@
 
 #Productonombre{
    font-weight: bold;
-   text-align: center;
+   text-align:justify;
    margin-bottom: 5px;
    font-size: 1.1em;
    color:#1A2A40;
+   margin-bottom: 7px;
 }
 
 #Productodescripcion{
-   text-align: center;
-   margin-bottom: 5px;
+   text-align:justify;
+   margin-bottom: 7px;
    font-size: 0.9em;
    color:white;
 }
@@ -64,7 +65,6 @@
    color: #1A2A40;
    font-weight:bold;
    text-align:left;
-   padding-left: 5px;
 }
 
 .ProductoInfo > p:nth-child(1){
@@ -86,7 +86,8 @@
     font-size: 2em;
     color: white;
     width: 50%;
-    text-align: center;
+    text-align:left;
+    padding-left: 30px;
 }
 
 #addItem{
