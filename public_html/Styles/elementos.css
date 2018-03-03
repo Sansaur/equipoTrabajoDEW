@@ -95,9 +95,7 @@
     margin-right: 5px;
     margin-bottom: 5px;
     padding: 5px;
-    padding-left: 0;
-    padding-right: 3;
-    border-radius: 50px;
+    border-radius: 5px;
 }
 
 #addItem:hover{
@@ -106,15 +104,19 @@
 }
 
 /* RESPONSIVE TABLETS */
-@media only screen and (max-width: 1000px) {
-
+@media only screen and (max-width: 772px) {
+    .columna{
+        max-width: 100%;
+        width: 100%;
+    }
 }
 
 /* RESPONSIVE TELEFONOS */
 @media only screen and (max-width: 500px) {
     .producto{
         max-width: 100%;
-        width: 100%;
+        width: 90%;
+        margin-bottom: 50px;
     }
 }
 
