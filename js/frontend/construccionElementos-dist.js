@@ -11,7 +11,7 @@ $(document).ready(function () {
 */
 function getFiltros() {
     $.ajax({
-        url: "js/backend/asociacionCategoriasNuevo.json",
+        url: "/js/backend/asociacionCategoriasNuevo.json",
         dataType: "JSON",
         success: function success(data) {
             _data = data;
@@ -20,7 +20,7 @@ function getFiltros() {
             ReactDOM.render(React.createElement(Cabecera, null), document.body);
         },
         error: function error() {
-            alert("Errorrrr");
+            alert("Construccion de elementos Dist ha dado error cogiendo el JSON");
         }
     });
 }
