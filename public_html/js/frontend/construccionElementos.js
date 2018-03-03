@@ -1,8 +1,11 @@
+//Contiene las propiedades de los filtros
 let _data;
+let objetosAleatorios;
 
 $(document).ready(function(){
     getFiltros();
     nombreUsuarioLogeado();
+    busquedaSinFiltrado();
 });
 
 /*
@@ -14,14 +17,27 @@ function getFiltros(){
         dataType: "JSON",
         success:function(data){
             _data = data;
-            ReactDOM.render(<Cabecera />,document.body);
+            ReactDOM.render(<App />,document.body);
+            $(".subFiltro").on("click", busquedaFiltrada);
         },
         error:function(){
-            alert("Error en cElementos");
+            alert("Error en Elementos");
         }
     })
 }
 
+const App = () => {
+    return (
+        <div className="App">
+            <Cabecera />
+            <Cuerpo />
+        </div>
+    )
+}
+
+/*---------------------------------
+    Cabecera contiene todos los componentes que necesitamos para visualizar los filtros
+-----------------------------------*/
 const Cabecera = () => {
     /*
     ------------- Falta----------
@@ -82,7 +98,7 @@ const Filtro = props => {
     return(
         <div className="columna">
             <h3 className="fuenteTitulos">{props.filtro["nombreFiltro"]}</h3>
-            <ul>
+            <ul data={props.filtro["eBay"]}>
                 {listaSubFiltros}
             </ul>          
         </div>
@@ -91,7 +107,7 @@ const Filtro = props => {
 
 const SubFiltro = props =>{
     return(
-        <li>{props.subFiltro["nombreSubfiltro"]}</li>
+        <li className="subFiltro" data={props.subFiltro["id"]} >{props.subFiltro["nombreSubfiltro"]}</li>
     )
 };
 
@@ -104,6 +120,39 @@ const AbrirFiltro = () =>{
     )
 }
 
+/*---------------------------------
+    Cabecera termina 
+-----------------------------------*/
+
+/*--------------------------------
+    Resultados contiene todos los componentes necesarios para mostrar los productos de la tienda
+..................................*/
+
+const Cuerpo = () =>{
+    return(
+        <div className="Cuerpo" id="Cuerpo">
+            
+        </div>
+    )
+}
+
+const ListaResultados = props =>{
+    const listaResultados = props.list.map((resultado, c) => <Resultado resultado={resultado} key={c}/>)
+    return(
+        <div className="Resultados">
+            {listaResultados}
+        </div>
+    )
+    
+}
+
+const Resultado = props => {
+    return(
+        <div className="producto">
+            <p>{props.resultado["nombre"]}</p>
+        </div>
+    )
+}
 
 function nombreUsuarioLogeado(){
     let user = localStorage.getItem('UsuarioLogueado')
@@ -121,12 +170,34 @@ function construyeFiltros(){
     return x;
 }
 
+function busquedaSinFiltrado(){
+    buscarPorClave("Deporte",10,1);
+}
+
+function busquedaFiltrada(event){
+    let ListaObjetosBuscados = [];
+    //Comprobar que siempre haya texto de búsqueda 
+    let buscadoEnLaBarra = $("#TbxBuscar").val();
+
+    let idSubFiltroWalmart = this.getAttribute("data");
+    let idCategoriaEbay = $(this).parent().attr("data");
+
+    //Método busqueda api Walmart, recoge :
+    listaResultadosWalmart = search(buscadoEnLaBarra, idSubFiltroWalmart, 0, "customerRating","asc",10);
+
+    //Método consulta ebay
+    listaResultadosEBay = busquedaPorClaveYCategoria(buscadoEnLaBarra, idCategoriaEbay,10,1);
+
+    ListaObjetosBuscados.push(listaResultadosWalmart, listaResultadosEBay);
+    return ListaObjetosBuscados;
+}
 
 function construccion(arrayObjetosVenta){
-    for(var i in arrayObjetosVenta){
-        construyeElemento(arrayObjetosVenta[i]);
-    }
+    objetosAleatorios = arrayObjetosVenta;
+    ReactDOM.render(<ListaResultados list={objetosAleatorios}/>,document.getElementById("Cuerpo"));
+    
 }
+
 function construyeElemento(objetoVenta){
     /*let text = '<div>';
     text += "<p><strong>ID:</strong> "+objetoVenta.id+"</p>";
