@@ -219,12 +219,6 @@ body{
     color:white;
 }
 
-#resultado{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content:space-around;    
-    align-items:flex-start;
-}
 
 /* RESPONSIVE TABLETS */
 @media only screen and (max-width: 1000px) {

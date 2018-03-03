@@ -1,3 +1,10 @@
+.resultado{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-around;    
+    align-items:flex-start;
+}
+
 .sombraTexto{    
   text-shadow:
    -1.5px -1.5px 0 #000,  
