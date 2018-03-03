@@ -5,7 +5,9 @@
         <script src="js/libs/jquery-1.12.4.js"></script>
         <script src="js/backend/API_Walmart.js"></script>
         <script src="js/backend/API_eBay.js"></script>
-        <script src="js/frontend/construccionElementos.js"></script>
+        <script src="https://fb.me/react-15.2.0.js"></script>
+        <script src="https://fb.me/react-dom-15.2.0.js"></script>
+        <script src="js/frontend/construccionElementos-dist.js"></script>
         <link rel="stylesheet" href="Styles/Css general.css" type="text/css"/>
         <link href="Styles/elementos.css" rel="stylesheet" type="text/css"/>
         <title>Purchase</title>
@@ -13,7 +15,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div class="cabecera">            
+        <div class="cabecera" id="cabecera">            
             <div id="nav" class="sombra">
                 <a id="logotipo" href="index.html">
                     <img src="addons/images/icono-Claro.png" alt="logotipo"/>
@@ -90,13 +92,15 @@
                         <li>subfiltro1</li>
                         <li>subfiltro1</li>
                     </ul>
-                </div>                
+                </div>   
+                <div id="probando"></div>             
             </div>
             <div class="AbrirFiltro sombra">
                 <div>Filtro</div> 
                 <img src="addons/icons/row-down.svg" alt="abrirFiltro" class="formatoIcono"/> 
             </div>
         </div>
+        
         <script>
             // CAMBIAR ESTO DE SITIO, IMPORTANTE:
 

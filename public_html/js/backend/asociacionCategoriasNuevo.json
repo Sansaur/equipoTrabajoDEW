@@ -1,0 +1,85 @@
+
+[
+    {
+        "nombreFiltro": "Electronicos",
+        "eBay": "58058",
+        "Walmart": "3944",
+        "hijosWalmart": [
+            {
+                "nombreSubfiltro": "3D Printing",
+                "3D Printing": "3944_1228636"
+            },
+            {
+                "nombreSubfiltro": "Accesorios de electronica",
+                "Accesorios de electronica": "3944_1086506"
+            },
+            {
+                "nombreSubfiltro": "Marca Apple",
+                "Marca Apple": "3944_1229722"
+            },
+            {
+                "nombreSubfiltro": "Audio",
+                "Audio": "3944_133251"
+            },
+            {
+                "nombreSubfiltro": "Camaras y Camcorder",
+                "Camaras y Camcorder": "3944_133277"
+            }
+        ]
+    },
+    {
+        "nombreFiltro": "Videojuegos",
+        "eBay": "1249",
+        "Walmart": "2636",
+        "hijosWalmart": [
+            {
+                "nombreSubfiltro": "Gaming Gift cards",
+                "Gaming Gift cards": "2636_1228600"
+            },
+            {
+                "nombreSubfiltro": "NDS",
+                "NDS": "2636_1086580"
+            },
+            {
+                "nombreSubfiltro": "PC",
+                "PC": "2636_1077504"
+            },
+            {
+                "nombreSubfiltro": "PlayStation 4",
+                "PlayStation 4": "2636_1102672"
+            },
+            {
+                "nombreSubfiltro": "Pokemon",
+                "Pokemon": "2636_5231682"
+            }
+        ] 
+    },
+    {
+        "nombreFiltro": "Deportes",
+        "eBay": "888",
+        "Walmart": "4125",
+        "hijosWalmart":[
+            {
+                "nombreSubfiltro": "Bicicletas",
+                "Bicicletas": "4125_1081404"
+            },
+            {
+                "nombreSubfiltro": "Ejercicio y Fitness",
+                "Ejercicio y Fitness": "4125_4134"
+            },
+            {
+                "nombreSubfiltro": "Al aire libre",
+                "Al aire libre": "4125_546956"
+            },
+            {
+                "nombreSubfiltro": "Ocio",
+                "Ocio": "4125_1224931"
+            },
+            {
+                "nombreSubfiltro": "Tienda para fans del deporte",
+                "Tienda para fans del deporte": "4125_1063984"
+            }
+        ] 
+    }
+]
+
