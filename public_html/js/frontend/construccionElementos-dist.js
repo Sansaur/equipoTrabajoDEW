@@ -16,8 +16,6 @@ function getFiltros() {
         dataType: "JSON",
         success: function success(data) {
             _data = data;
-            //let auxLista = construyeFiltros();
-            //ReactDOM.render(<ListaFiltros list={auxLista}/>, document.getElementById('bloqueFiltro'));
             ReactDOM.render(React.createElement(Cabecera, null), document.body);
         },
         error: function error() {
@@ -79,7 +77,7 @@ var Nav = function Nav() {
             { id: "login" },
             React.createElement(
                 "a",
-                { id: "loginLink", style: "color:inherit;text-decoration:inherit;", href: "login.html" },
+                { id: "loginLink", className: "loginLink", href: "login.html" },
                 React.createElement("img", { src: "addons/icons/usuario.svg", alt: "usuario", className: "formatoIcono" }),
                 React.createElement(
                     "span",
@@ -87,7 +85,7 @@ var Nav = function Nav() {
                     "Hola. Identif\xEDcate"
                 )
             ),
-            React.createElement("img", { src: "addons/icons/salir.svg", alt: "salir", className: "formatoIcono", style: "display:none" })
+            React.createElement("img", { src: "addons/icons/salir.svg", alt: "salir", className: "formatoIcono" })
         )
     );
 };

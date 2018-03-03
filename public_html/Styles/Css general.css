@@ -18,8 +18,13 @@ body{
 }
 
 .formatoIcono{
+    display:none;
     width: 20px;   
     height: 20px;
+}
+
+.loginLink{
+    color:inherit;text-decoration:inherit;
 }
 
 .fuenteTitulos{
