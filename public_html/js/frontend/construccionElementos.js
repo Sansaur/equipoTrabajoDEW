@@ -189,13 +189,13 @@ const Resultado = props => {
                     <label>PuntuaciónV:</label>
                     <label id="Productopuntuacion">{props.resultado["puntuacion"]}</label>
                 </p>
-                <p>
+                <div>
                     <label>Precio:</label>
                     <div className="precioCarrito">
                         <label id="Productoprecio" class="sombraTexto">{props.resultado["precio"]}€</label>
                         <img id="addItem" src="addons/icons/add_item.svg"/>
                     </div>
-                </p>
+                </div>
             </div>
             <p>{props.resultado["nombre"]}</p>
         </div>
@@ -225,10 +225,16 @@ function busquedaSinFiltrado(){
 }
 
 function busquedaFiltrada(event){
-    $(this).addClass("marcado");
+    $(".marcadoSinTransition").removeClass("marcadoSinTransition")
+    
+    $(this).addClass("marcadoSinTransition");
     let ListaObjetosBuscados = [];
-    //Comprobar que siempre haya texto de búsqueda 
     let buscadoEnLaBarra = $("#TbxBuscar").val();
+    //Comprobar que siempre haya texto de búsqueda 
+    if(buscadoEnLaBarra.length == 0){
+        toastr.warning("Debe insertar texto de búsqueda");
+    }
+   
 
     let idSubFiltroWalmart = this.getAttribute("data");
     let idCategoriaEbay = $(this).parent().attr("data");
@@ -239,6 +245,10 @@ function busquedaFiltrada(event){
     //Método consulta ebay
     listaResultadosEBay = busquedaPorClaveYCategoria(buscadoEnLaBarra, idCategoriaEbay,12,1);
 
+    /*
+        OJOOO----------------
+        Puede ser por esto que solo muestros los elementos de las busquedass de ebay
+    */
     ListaObjetosBuscados.push(listaResultadosWalmart, listaResultadosEBay);
     return ListaObjetosBuscados;
 }
@@ -247,44 +257,4 @@ function construccion(arrayObjetosVenta){
     objetosAleatorios = arrayObjetosVenta;
     ReactDOM.render(<ListaResultados list={objetosAleatorios}/>,document.getElementById("Cuerpo"));
     
-}
-
-function construyeElemento(objetoVenta){
-    /*let text = '<div>';
-    text += "<p><strong>ID:</strong> "+objetoVenta.id+"</p>";
-    text += "<p><strong>Nombre:</strong> "+objetoVenta.nombre+"</p>";
-    text += "<p><strong>Imagen grande:</strong> "+objetoVenta.imagenGrande+"</p>";
-    text += "<p><strong>Imagen:</strong> "+objetoVenta.imagen+"</p>";
-    text += "<p><strong>ID de categoría:</strong> "+objetoVenta.id_categoria+"</p>";
-    text += "<p><strong>Marca / Vendedor:</strong> "+objetoVenta.marca+"</p>";
-    text += "<p><strong>Puntuación (sobre 5 o sobre 100):</strong> "+objetoVenta.puntuacion+"</p>";
-    text += "<p><strong>Precio:</strong> "+objetoVenta.precio+"€</p>";
-    text += "<p><strong>¿Está en stock?:</strong> "+objetoVenta.stock+"</p>";
-    text += "<p><strong>Descripción corta:</strong> "+objetoVenta.descripcionCorta+"</p>";
-    text += "<p><strong>Descripción:</strong> "+objetoVenta.descripcion+"</p>";
-    text += "<p><strong>Tienda:</strong> "+objetoVenta.tienda+"</p>";
-    text += '</div>';*/
-    
-    var text = `<div class="producto">
-                <div class="cabezaproducto">
-                    <img id="ProductoImagen" src="${objetoVenta.imagen}" alt="imagen"/>            
-                    <img class="Tipoproducto" src="addons/images/ebay_icon.svg" alt=""/>
-                </div>
-                <div class="ProductoInfo">
-                    <div id="Productonombre">${objetoVenta.nombre}</div>
-                    <div id="Productodescripcion">${objetoVenta.descripcionCorta}</div>
-                    <p>
-                        <label>Puntuación: </label>
-                        <label id="Productopuntuacion">${objetoVenta.puntuacion} puntos</label>                        
-                    </p>
-                    <p>
-                        <label>Precio:</label>
-                        <div class="precioCarrito">
-                            <label id="Productoprecio" class="sombraTexto">${objetoVenta.precio} €</label>
-                            <img id="addItem" src="addons/icons/add_item.svg" alt=""/>                     
-                        </div>                        
-                    </p>
-                </div>                
-            </div>`;
-    $('#resultado').append(text);
 }

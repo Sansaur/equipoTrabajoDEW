@@ -7,6 +7,17 @@
     mostaza     -> #F2A30F
 */
 
+.toast-warning{
+    background: black;
+    color:white !important;
+    opacity: 1 !important;
+}
+
+
+.toast{
+    opacity: 1 !important;
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -14,10 +25,10 @@
     font-family: 'Dosis', sans-serif;
 }
 
-.marcado{
-    transition: .4s all;
-    background-color: #1A2A40;
-    color:white;
+
+.marcadoSinTransition{
+    background-color: #1A2A40 ;
+    color:white !important;
 }
 
 body{
