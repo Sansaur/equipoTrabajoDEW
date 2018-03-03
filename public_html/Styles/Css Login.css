@@ -29,8 +29,9 @@
 
 .formulario__input{
     padding: 10px;
-    background:rgba(0,8,0,0.1);
-    border:1px solid rgba(0,8,0,0.3);
+    background:transparent;
+    border:none;
+    border-bottom: 2px solid rgba(0,0,0,0.5);
     margin-top: 40px;
 }
 
@@ -40,11 +41,12 @@
 }
 
 .formulario__input:focus{
-    outline: 1px solid rgba(0,0,0,0.7);
+    outline: none;
+    border-bottom: 2px solid red;
 }
 
 .formulario__input:focus + .formulario__label{
-    margin-top: -75px;
+    margin-top: -75px;    
 }
 
 .formulario__label{
