@@ -12,14 +12,14 @@ $(document).ready(function () {
 */
 function getFiltros() {
     $.ajax({
-        url: "/public_html/js/backend/asociacionCategoriasNuevo.json",
+        url: "js/backend/asociacionCategoriasNuevo.json",
         dataType: "JSON",
         success: function success(data) {
             _data = data;
             ReactDOM.render(React.createElement(Cabecera, null), document.body);
         },
         error: function error() {
-            alert("Errorrrr");
+            alert("Error en cElementos Dist");
         }
     });
 }
