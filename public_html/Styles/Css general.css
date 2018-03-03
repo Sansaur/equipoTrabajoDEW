@@ -273,3 +273,22 @@ body{
         max-width: 100%;
     }
 }
+
+
+/* SCROLL BODY*/
+body::-webkit-scrollbar {
+    /*fondo de la barra*/
+    width: 12px;
+    background: #F2A30F;
+}
+
+body::-webkit-scrollbar-thumb {
+    /*barra en si*/
+    background: #1A2A40; 
+    border-radius: 5px;
+}
+
+body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}

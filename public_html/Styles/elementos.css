@@ -56,7 +56,6 @@
     font-weight: bold;
     color:#1A2A40;
     width: 100%;
-    border:2px solid;
 }
 
 #Productodescripcion{
@@ -120,16 +119,19 @@
 
 /* SCROOL*/
 .producto::-webkit-scrollbar {
-    width: 7px;
-    background: rgba(255,255,255,0.5); /*fondo de la barra*/
+    /*fondo de la barra*/
+    width: 8px;
+    background: rgba(255,255,255,0.5); 
+}
+
+.producto::-webkit-scrollbar-thumb {
+    /*barra en si*/
+    background-color: #E00B27;
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
 }
 
 .producto::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
     border-radius: 10px;
-}
-
-.producto::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
 }
