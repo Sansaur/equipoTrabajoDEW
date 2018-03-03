@@ -184,16 +184,93 @@ var ListaResultados = function ListaResultados(props) {
         { className: "resultado" },
         listaResultados
     );
-};
-
+}; /*
+                  <div class="cabezaproducto">
+                      <img id="ProductoImagen" src="${objetoVenta.imagen}" alt="imagen"/>            
+                      <img class="Tipoproducto" src="addons/images/ebay_icon.svg" alt=""/>
+                  </div>
+                  <div class="ProductoInfo">
+                      <div id="Productonombre">${objetoVenta.nombre}</div>
+                      <div id="Productodescripcion">${objetoVenta.descripcionCorta}</div>
+                      <p>
+                          <label>Puntuación: </label>
+                          <label id="Productopuntuacion">${objetoVenta.puntuacion} puntos</label>                        
+                      </p>
+                      <p>
+                          <label>Precio:</label>
+                          <div class="precioCarrito">
+                              <label id="Productoprecio" class="sombraTexto">${objetoVenta.precio} €</label>
+                              <img id="addItem" src="addons/icons/add_item.svg" alt=""/>                     
+                          </div>                        
+                      </p>
+                  </div>                
+              </div>`;
+              */
+//Hay que distinguir si es eBay o de Walmart para poner la foto de la tienda
+//<img class="Tipoproducto" src="addons/images/ebay_icon.svg" alt=""/>
 var Resultado = function Resultado(props) {
+    var foto = "addons/images/";
+    if (props.resultado["tienda"] == "eBay") {
+        foto += "ebay_icon.svg";
+    } else {
+        foto += "walmart_icon.png";
+    }
     return React.createElement(
         "div",
         { className: "producto" },
         React.createElement(
             "div",
             { className: "cabezaproducto" },
-            React.createElement("img", { id: "ProductoImagen", src: props.resultado["imagen"] })
+            React.createElement("img", { id: "ProductoImagen", src: props.resultado["imagen"] }),
+            React.createElement("img", { className: "Tipoproducto", src: foto })
+        ),
+        React.createElement(
+            "div",
+            { className: "ProductInfo" },
+            React.createElement(
+                "div",
+                { id: "Productonombre" },
+                props.resultado["nombre"]
+            ),
+            React.createElement(
+                "div",
+                { id: "Productodescripcion" },
+                props.resultado["descripcionCorta"]
+            ),
+            React.createElement(
+                "p",
+                null,
+                React.createElement(
+                    "label",
+                    null,
+                    "Puntuaci\xF3nV:"
+                ),
+                React.createElement(
+                    "label",
+                    { id: "Productopuntuacion" },
+                    props.resultado["puntuacion"]
+                )
+            ),
+            React.createElement(
+                "p",
+                null,
+                React.createElement(
+                    "label",
+                    null,
+                    "Precio:"
+                ),
+                React.createElement(
+                    "div",
+                    { className: "precioCarrito" },
+                    React.createElement(
+                        "label",
+                        { id: "Productoprecio", "class": "sombraTexto" },
+                        props.resultado["precio"],
+                        "\u20AC"
+                    ),
+                    React.createElement("img", { id: "addItem", src: "addons/icons/add_item.svg" })
+                )
+            )
         ),
         React.createElement(
             "p",
@@ -221,10 +298,11 @@ function construyeFiltros() {
 
 function busquedaSinFiltrado() {
     construirFiltros("HideDuplicateItems", "true");
-    buscarPorClave("Deporte", 10, 1);
+    buscarPorClave("Deporte", 12, 1);
 }
 
 function busquedaFiltrada(event) {
+    $(this).addClass("marcado");
     var ListaObjetosBuscados = [];
     //Comprobar que siempre haya texto de búsqueda 
     var buscadoEnLaBarra = $("#TbxBuscar").val();
@@ -233,10 +311,10 @@ function busquedaFiltrada(event) {
     var idCategoriaEbay = $(this).parent().attr("data");
 
     //Método busqueda api Walmart, recoge :
-    listaResultadosWalmart = search(buscadoEnLaBarra, idSubFiltroWalmart, 0, "customerRating", "asc", 10);
+    listaResultadosWalmart = search(buscadoEnLaBarra, idSubFiltroWalmart, 0, "customerRating", "asc", 12);
 
     //Método consulta ebay
-    listaResultadosEBay = busquedaPorClaveYCategoria(buscadoEnLaBarra, idCategoriaEbay, 10, 1);
+    listaResultadosEBay = busquedaPorClaveYCategoria(buscadoEnLaBarra, idCategoriaEbay, 12, 1);
 
     ListaObjetosBuscados.push(listaResultadosWalmart, listaResultadosEBay);
     return ListaObjetosBuscados;

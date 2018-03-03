@@ -144,17 +144,63 @@ const ListaResultados = props =>{
         </div>
     )
     
-}
-
+}/*
+                <div class="cabezaproducto">
+                    <img id="ProductoImagen" src="${objetoVenta.imagen}" alt="imagen"/>            
+                    <img class="Tipoproducto" src="addons/images/ebay_icon.svg" alt=""/>
+                </div>
+                <div class="ProductoInfo">
+                    <div id="Productonombre">${objetoVenta.nombre}</div>
+                    <div id="Productodescripcion">${objetoVenta.descripcionCorta}</div>
+                    <p>
+                        <label>Puntuación: </label>
+                        <label id="Productopuntuacion">${objetoVenta.puntuacion} puntos</label>                        
+                    </p>
+                    <p>
+                        <label>Precio:</label>
+                        <div class="precioCarrito">
+                            <label id="Productoprecio" class="sombraTexto">${objetoVenta.precio} €</label>
+                            <img id="addItem" src="addons/icons/add_item.svg" alt=""/>                     
+                        </div>                        
+                    </p>
+                </div>                
+            </div>`;
+            */
+//Hay que distinguir si es eBay o de Walmart para poner la foto de la tienda
+//<img class="Tipoproducto" src="addons/images/ebay_icon.svg" alt=""/>
 const Resultado = props => {
+    let foto = "addons/images/";
+    if(props.resultado["tienda"] == "eBay"){
+        foto += "ebay_icon.svg"
+    }
+    else{
+        foto += "walmart_icon.png"
+    }
     return(
         <div className="producto">
             <div className="cabezaproducto">
                 <img id="ProductoImagen" src={props.resultado["imagen"]}/>
+                <img className="Tipoproducto" src={foto} />
+            </div>
+            <div className="ProductInfo">
+                <div id="Productonombre">{props.resultado["nombre"]}</div>
+                <div id="Productodescripcion">{props.resultado["descripcionCorta"]}</div>
+                <p>
+                    <label>PuntuaciónV:</label>
+                    <label id="Productopuntuacion">{props.resultado["puntuacion"]}</label>
+                </p>
+                <p>
+                    <label>Precio:</label>
+                    <div className="precioCarrito">
+                        <label id="Productoprecio" class="sombraTexto">{props.resultado["precio"]}€</label>
+                        <img id="addItem" src="addons/icons/add_item.svg"/>
+                    </div>
+                </p>
             </div>
             <p>{props.resultado["nombre"]}</p>
         </div>
     )
+    
 }
 
 function nombreUsuarioLogeado(){
@@ -175,10 +221,11 @@ function construyeFiltros(){
 
 function busquedaSinFiltrado(){
     construirFiltros("HideDuplicateItems", "true");
-    buscarPorClave("Deporte",10,1);
+    buscarPorClave("Deporte",12,1);
 }
 
 function busquedaFiltrada(event){
+    $(this).addClass("marcado");
     let ListaObjetosBuscados = [];
     //Comprobar que siempre haya texto de búsqueda 
     let buscadoEnLaBarra = $("#TbxBuscar").val();
@@ -187,10 +234,10 @@ function busquedaFiltrada(event){
     let idCategoriaEbay = $(this).parent().attr("data");
 
     //Método busqueda api Walmart, recoge :
-    listaResultadosWalmart = search(buscadoEnLaBarra, idSubFiltroWalmart, 0, "customerRating","asc",10);
+    listaResultadosWalmart = search(buscadoEnLaBarra, idSubFiltroWalmart, 0, "customerRating","asc",12);
 
     //Método consulta ebay
-    listaResultadosEBay = busquedaPorClaveYCategoria(buscadoEnLaBarra, idCategoriaEbay,10,1);
+    listaResultadosEBay = busquedaPorClaveYCategoria(buscadoEnLaBarra, idCategoriaEbay,12,1);
 
     ListaObjetosBuscados.push(listaResultadosWalmart, listaResultadosEBay);
     return ListaObjetosBuscados;
