@@ -1,11 +1,15 @@
 //Contiene las propiedades de los filtros
 let _data;
-let objetosAleatorios;
+let ObjetosConsultas;
 
 $(document).ready(function(){
     getFiltros();
     nombreUsuarioLogeado();
     busquedaSinFiltrado();
+
+    $( "#bloqueFiltro" ).accordion({
+        collapsible: true
+      });
 });
 
 /*
@@ -85,10 +89,13 @@ const Nav = () => {
 
 const ListaFiltros = props => {
     const listaFiltros = props.list.map((filtro,i) => <Filtro filtro={filtro} key={i}/>)
+
     return (
         <div id="bloqueFiltro" className="sombra">
             <h3 className="fuenteTitulos">Filtros</h3>
+
             {listaFiltros}
+        
         </div>
     )
 };
@@ -197,7 +204,6 @@ const Resultado = props => {
                     </div>
                 </div>
             </div>
-            <p>{props.resultado["nombre"]}</p>
         </div>
     )
     
@@ -222,13 +228,14 @@ function construyeFiltros(){
 function busquedaSinFiltrado(){
     construirFiltros("HideDuplicateItems", "true");
     buscarPorClave("Deporte",12,1);
+    search("Sports",null,1,"customerRating","desc",12);
 }
 
 function busquedaFiltrada(event){
     $(".marcadoSinTransition").removeClass("marcadoSinTransition")
     
     $(this).addClass("marcadoSinTransition");
-    let ListaObjetosBuscados = [];
+
     let buscadoEnLaBarra = $("#TbxBuscar").val();
     //Comprobar que siempre haya texto de búsqueda 
     if(buscadoEnLaBarra.length == 0){
@@ -240,21 +247,36 @@ function busquedaFiltrada(event){
     let idCategoriaEbay = $(this).parent().attr("data");
 
     //Método busqueda api Walmart, recoge :
-    listaResultadosWalmart = search(buscadoEnLaBarra, idSubFiltroWalmart, 0, "customerRating","asc",12);
+    search(buscadoEnLaBarra, idSubFiltroWalmart, 0, "customerRating","asc",12);
 
     //Método consulta ebay
-    listaResultadosEBay = busquedaPorClaveYCategoria(buscadoEnLaBarra, idCategoriaEbay,12,1);
+    busquedaPorClaveYCategoria(buscadoEnLaBarra, idCategoriaEbay,12,1);
 
     /*
         OJOOO----------------
         Puede ser por esto que solo muestros los elementos de las busquedass de ebay
     */
-    ListaObjetosBuscados.push(listaResultadosWalmart, listaResultadosEBay);
-    return ListaObjetosBuscados;
 }
 
+var aux = []
+var contador = 0;
 function construccion(arrayObjetosVenta){
-    objetosAleatorios = arrayObjetosVenta;
-    ReactDOM.render(<ListaResultados list={objetosAleatorios}/>,document.getElementById("Cuerpo"));
-    
+    for(var i in arrayObjetosVenta){
+        aux.push(arrayObjetosVenta[i]);
+    }
+    contador++;
+
+    if(contador == 2){
+        renderizar(aux);
+        contador = 0;
+        aux = [];
+    }
+        
+
+    //ObjetosConsultas = arrayObjetosVenta;
+    //renderizar(ObjetosConsultas);
+}
+
+function renderizar(resultadosBusqueda){
+    ReactDOM.render(<ListaResultados list={resultadosBusqueda}/>,document.getElementById("Cuerpo"));
 }

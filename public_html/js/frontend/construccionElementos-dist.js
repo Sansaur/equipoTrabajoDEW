@@ -2,12 +2,16 @@
 
 //Contiene las propiedades de los filtros
 var _data = void 0;
-var objetosAleatorios = void 0;
+var ObjetosConsultas = void 0;
 
 $(document).ready(function () {
     getFiltros();
     nombreUsuarioLogeado();
     busquedaSinFiltrado();
+
+    $("#bloqueFiltro").accordion({
+        collapsible: true
+    });
 });
 
 /*
@@ -110,6 +114,7 @@ var ListaFiltros = function ListaFiltros(props) {
     var listaFiltros = props.list.map(function (filtro, i) {
         return React.createElement(Filtro, { filtro: filtro, key: i });
     });
+
     return React.createElement(
         "div",
         { id: "bloqueFiltro", className: "sombra" },
@@ -271,11 +276,6 @@ var Resultado = function Resultado(props) {
                     React.createElement("img", { id: "addItem", src: "addons/icons/add_item.svg" })
                 )
             )
-        ),
-        React.createElement(
-            "p",
-            null,
-            props.resultado["nombre"]
         )
     );
 };
@@ -299,13 +299,14 @@ function construyeFiltros() {
 function busquedaSinFiltrado() {
     construirFiltros("HideDuplicateItems", "true");
     buscarPorClave("Deporte", 12, 1);
+    search("Sports", null, 1, "customerRating", "desc", 12);
 }
 
 function busquedaFiltrada(event) {
     $(".marcadoSinTransition").removeClass("marcadoSinTransition");
 
     $(this).addClass("marcadoSinTransition");
-    var ListaObjetosBuscados = [];
+
     var buscadoEnLaBarra = $("#TbxBuscar").val();
     //Comprobar que siempre haya texto de búsqueda 
     if (buscadoEnLaBarra.length == 0) {
@@ -316,20 +317,35 @@ function busquedaFiltrada(event) {
     var idCategoriaEbay = $(this).parent().attr("data");
 
     //Método busqueda api Walmart, recoge :
-    listaResultadosWalmart = search(buscadoEnLaBarra, idSubFiltroWalmart, 0, "customerRating", "asc", 12);
+    search(buscadoEnLaBarra, idSubFiltroWalmart, 0, "customerRating", "asc", 12);
 
     //Método consulta ebay
-    listaResultadosEBay = busquedaPorClaveYCategoria(buscadoEnLaBarra, idCategoriaEbay, 12, 1);
+    busquedaPorClaveYCategoria(buscadoEnLaBarra, idCategoriaEbay, 12, 1);
 
     /*
         OJOOO----------------
         Puede ser por esto que solo muestros los elementos de las busquedass de ebay
     */
-    ListaObjetosBuscados.push(listaResultadosWalmart, listaResultadosEBay);
-    return ListaObjetosBuscados;
 }
 
+var aux = [];
+var contador = 0;
 function construccion(arrayObjetosVenta) {
-    objetosAleatorios = arrayObjetosVenta;
-    ReactDOM.render(React.createElement(ListaResultados, { list: objetosAleatorios }), document.getElementById("Cuerpo"));
+    for (var i in arrayObjetosVenta) {
+        aux.push(arrayObjetosVenta[i]);
+    }
+    contador++;
+
+    if (contador == 2) {
+        renderizar(aux);
+        contador = 0;
+        aux = [];
+    }
+
+    //ObjetosConsultas = arrayObjetosVenta;
+    //renderizar(ObjetosConsultas);
+}
+
+function renderizar(resultadosBusqueda) {
+    ReactDOM.render(React.createElement(ListaResultados, { list: resultadosBusqueda }), document.getElementById("Cuerpo"));
 }
