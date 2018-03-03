@@ -1,26 +1,28 @@
 .resultado{
     display: flex;
     flex-wrap: wrap;
-    justify-content:space-around;    
     align-items:flex-start;
+    justify-content:space-around;
 }
 
 .sombraTexto{    
-  text-shadow:
-   -1.5px -1.5px 0 #000,  
-    1.5px -1.5px 0 #000,
-    -1.5px 1.5px 0 #000,
-     1.5px 1.5px 0 #000;
+    text-shadow:
+        -1.5px -1.5px 0 #000,  
+        1.5px -1.5px 0 #000,
+        -1.5px 1.5px 0 #000,
+        1.5px 1.5px 0 #000;
 }
 
 .producto{
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
-    max-width: 300px;
+    max-width: 350px;
     background-color: #2474A6;
     margin-top: 20px;
     height: 500px;
+    overflow: scroll;
+    overflow-x: hidden;
 }
 
 .cabezaproducto{
@@ -49,19 +51,17 @@
 }
 
 #Productonombre{
-   font-weight: bold;
-   text-align:justify;
-   margin-bottom: 5px;
-   font-size: 1.1em;
-   color:#1A2A40;
-   margin-bottom: 7px;   
+    font-weight: bold;
+    color:#1A2A40;
+    width: 100%;
+    border:2px solid;
 }
 
 #Productodescripcion{
-   text-align:justify;
-   margin-bottom: 7px;
-   font-size: 0.9em;
-   color:white;
+    text-align:justify;
+    margin-bottom: 7px;
+    font-size: 0.9em;
+    color:white;
 }
 
 .ProductoInfo > p{
@@ -70,9 +70,9 @@
 }
 
 .ProductoInfo > p{
-   color: #1A2A40;
-   font-weight:bold;
-   text-align:left;
+    color: #1A2A40;
+    font-weight:bold;
+    text-align:left;
 }
 
 .ProductoInfo > p:nth-child(1){
@@ -85,8 +85,8 @@
 }
 
 .precioCarrito{
-   display: flex;
-   justify-content:space-between;
+    display: flex;
+    justify-content:space-between;
 }
 
 #Productoprecio{
@@ -105,7 +105,7 @@
 
 /* RESPONSIVE TABLETS */
 @media only screen and (max-width: 1000px) {
-    
+
 }
 
 /* RESPONSIVE TELEFONOS */
@@ -114,4 +114,20 @@
         max-width: 100%;
         width: 100%;
     }
+}
+
+/* SCROOL*/
+.producto::-webkit-scrollbar {
+    width: 7px;
+    background: rgba(255,255,255,0.5); /*fondo de la barra*/
+}
+
+.producto::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}
+
+.producto::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
 }
