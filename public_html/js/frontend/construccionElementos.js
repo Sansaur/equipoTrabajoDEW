@@ -6,6 +6,10 @@ $(document).ready(function(){
     getFiltros();
     nombreUsuarioLogeado();
     busquedaSinFiltrado();
+
+    $( "#bloqueFiltro" ).accordion({
+        collapsible: true
+      });
 });
 
 /*
@@ -85,10 +89,13 @@ const Nav = () => {
 
 const ListaFiltros = props => {
     const listaFiltros = props.list.map((filtro,i) => <Filtro filtro={filtro} key={i}/>)
+
     return (
         <div id="bloqueFiltro" className="sombra">
             <h3 className="fuenteTitulos">Filtros</h3>
+
             {listaFiltros}
+        
         </div>
     )
 };

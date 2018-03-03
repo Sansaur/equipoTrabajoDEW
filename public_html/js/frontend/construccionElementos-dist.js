@@ -8,6 +8,10 @@ $(document).ready(function () {
     getFiltros();
     nombreUsuarioLogeado();
     busquedaSinFiltrado();
+
+    $("#bloqueFiltro").accordion({
+        collapsible: true
+    });
 });
 
 /*
@@ -110,6 +114,7 @@ var ListaFiltros = function ListaFiltros(props) {
     var listaFiltros = props.list.map(function (filtro, i) {
         return React.createElement(Filtro, { filtro: filtro, key: i });
     });
+
     return React.createElement(
         "div",
         { id: "bloqueFiltro", className: "sombra" },
