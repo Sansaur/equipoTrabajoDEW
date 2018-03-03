@@ -1,0 +1,259 @@
+/* 
+    PALETA DE COLORES     
+    blanco roto -> #EBF4F7
+    rojo        -> #E00B27
+    azul marino -> #1A2A40
+    azul flojo  -> #2474A6
+    mostaza     -> #F2A30F
+*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Dosis', sans-serif;
+}
+
+body{
+    background-color: #EBF4F7;
+}
+
+.formatoIcono{
+    width: 20px;   
+    height: 20px;
+}
+
+.fuenteTitulos{
+    font-family: 'Patua One', cursive;
+}
+
+.sombra1{
+    -webkit-box-shadow: 0px 0px 6px 2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 6px 2px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 6px 2px rgba(0,0,0,0.75);
+}
+
+.sombra{
+    -webkit-box-shadow: 0px 2px 11px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 2px 11px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 2px 11px 0px rgba(0,0,0,0.75);
+}
+
+#nav{
+    background-color: #E00B27;
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#logotipo > img{
+    width: 200px;
+}
+
+#bucador{
+    display: flex;
+    width: 50%;
+    max-width: 550px;
+}
+
+#TbxBuscar{
+    border-radius: 7px 0 0 7px;
+    padding: 6px;
+    width: 100%;
+    border: none;
+    background-color: rgba(255,255,255,0.9);
+}
+
+#TbxBuscar:hover{
+    background-color: rgba(255,255,255,1);    
+}
+
+#lupa{
+    display: block;
+    width: 50px;
+    border-radius: 0px 7px 7px 0px;
+    padding-left: 12px;
+    padding-top: 5px;
+    background-color: #F2A30F;
+    cursor: pointer;
+}
+
+#lupa > img:hover{
+    animation-duration: .3s;
+    animation-name: agitar;
+    animation-direction: alternate;   
+}
+
+@keyframes agitar {
+    from {
+        transform: rotate(0deg);
+    }
+
+    50%{
+        transform: rotate(80deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+#cesta{
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 5px;
+    color:white;
+}
+
+#cesta > span{
+    display: block;
+}
+
+#cesta > img{
+    margin: 0px 3px 0px 7px;
+}
+
+#login{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 5px;
+    color:white;
+}
+
+#login > span{
+    margin: 7px;
+}
+
+#iniciarSesion{
+    border:none;
+    background-color: white;
+    padding: 5px;
+}
+
+#cesta:hover, #login:hover{
+    transition: all .3s;
+    color:black;
+    cursor: pointer;
+}
+
+/*BLOQUE FILTRO*/
+.AbrirFiltro{
+    width: 75px;
+    display: flex;
+    padding-right: 5px;
+    background-color: #E00B27;
+    border-radius: 0 0 5px 5px;
+    margin-left: 15px;
+    padding: 3px;
+    font-weight: bold;
+    color:white;
+    border:0.5px solid black;
+    border-top: none;
+}
+
+.AbrirFiltro:hover{
+    cursor:pointer;
+}
+
+.AbrirFiltro >div{
+    width: 70%;
+    padding-left: 5px;
+}
+
+#bloqueFiltro{
+    padding: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 0.5px solid black;
+    background-color: #2474A6;
+    justify-content:space-around;
+}
+
+#bloqueFiltro > h3{
+    width: 100%;
+    padding-left: 10px;
+    font-weight: normal;
+}
+
+.columna{
+    width: 100%;
+    max-width: 500px;
+    background-color: rgba(255,255,255,0.5);
+    margin-top: 5px;
+}
+
+.columna > h3{
+    text-align: left;
+    padding-left: 10px;
+    margin-bottom: 5px;
+    font-weight: normal;
+}
+
+.columna > ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    list-style: none;
+}
+
+.columna > ul > li{
+    padding: 5px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.columna > ul > li:hover{
+    transition: .4s all;
+    background-color: #1A2A40;
+    color:white;
+}
+
+#resultado{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-around;    
+    align-items:flex-start;
+}
+
+/* RESPONSIVE TABLETS */
+@media only screen and (max-width: 1000px) {
+    #logotipo{
+        width: 100%;
+        text-align: center;
+    }
+
+    #bucador{
+        margin-bottom: 5px;
+    }
+
+    .columna{
+        max-width: 250px;
+    }
+}
+
+/* RESPONSIVE TELEFONOS */
+@media only screen and (max-width: 500px) {
+    #nav{
+        justify-content: center;
+    }
+
+    #bucador{
+        width: 70%;      
+        margin-bottom: 5px;
+    }    
+
+    #cesta{
+        justify-content: center;
+        width: 50%;        
+    }
+    
+    .columna{
+        max-width: 100%;
+    }
+}

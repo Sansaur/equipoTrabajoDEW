@@ -1,17 +1,38 @@
 <!DOCTYPE html>
 <!--
-    Esto es "Redirigir a la página de login de Twitter"
-    
+        QUERYSTRING
+        oauth_consumer_key: kG3fjcP4RWMFEAv5IdBTPZS2m
+
+        oauth_nonce: 9299767718821643271519411106
+
+        oauth_signature: HJotdO/FJ7g+wwJGg9KHpF/mkp0=
+
+        oauth_signature_method: HMAC-SHA1
+
+        oauth_timestamp: 1519411106
+
+        oauth_token: 966623389430550528-xzFrcifPVzO6GTMLcyhWS8ZzQSqbE7B
+
+        oauth_version: 1.0
+
+        PARAMETERS
+        oauth_callback: https://trello.com/b/0bSrWBXK/tareas-del-equipo-de-dew
 -->
 <html>
     <head>
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="../js/libs/jquery-1.12.4.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-messaging.js"></script>
+        <script src="../js/backend/Login.js"></script>
     </head>
     <body>
-        <form action="https://api.twitter.com/oauth/authenticate?oauth_token=966623389430550528-xzFrcifPVzO6GTMLcyhWS8ZzQSqbE7B" method="POST">
-            <input type="submit">
-        </form>
+        <h1>Login de Twitter</h1>
+        <button onclick="ejecutarLogin()">boton Twitter</button>
     </body>
 </html>
