@@ -42,7 +42,7 @@
 
 .formulario__input:focus{
     outline: none;
-    border-bottom: 2px solid red;
+    border-bottom: 2px solid #F2A30F;
 }
 
 .formulario__input:focus + .formulario__label{
@@ -64,13 +64,12 @@
     color:white;
     padding: 10px 20px;
     cursor: pointer;
-    border:1px solid #2474A6;
+    border: none;
 }
 
 .formulario__submit:hover{
     transition: .1s all;
-    background-color: #2474A6;
-    border:1px solid #1A2A40;
+    background-color: #F2A30F;
 }
 
 /* fomrulario elementos añadidos*/
