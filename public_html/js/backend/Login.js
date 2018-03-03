@@ -47,6 +47,7 @@ var loginFacebook = {
 
 var loginGitHub = {
     iniciar: function () {
+        localStorage.setItem('UsuarioLogueado','gitUser');
         location.replace("https://github.com/login/oauth/authorize?scope=user&client_id=d671fd09fe12180a0a2f");
     }
 };
@@ -186,6 +187,7 @@ firebase.auth().getRedirectResult().then(function (result) {
     console.warn(user);
     console.warn(user.displayName);
     localStorage.setItem('UsuarioLogueado', user.displayName);
+    location.replace('index.html');
 }).catch(function (error) {
     // Handle Errors here.
     var errorCode = error.code;
