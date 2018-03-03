@@ -3,6 +3,7 @@
     flex-wrap: wrap;
     align-items:flex-start;
     justify-content:space-around;
+    padding-bottom: 10px;
 }
 
 .sombraTexto{    
@@ -20,14 +21,14 @@
     max-width: 350px;
     background-color: #2474A6;
     margin-top: 20px;
-    height: 500px;
+    height: 350px;
     overflow: scroll;
     overflow-x: hidden;
 }
 
 .cabezaproducto{
     width: 100%;
-    height: 150px;
+    height: 30%;
     background-color: #1A2A40;
     position: relative;
 }
@@ -47,6 +48,7 @@
 }
 
 .ProductInfo{
+    height: 70%;
     padding: 5px;
 }
 
