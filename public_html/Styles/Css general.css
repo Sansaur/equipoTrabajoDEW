@@ -8,14 +8,14 @@
 */
 
 .toast-warning{
-    background: black;
-    color:white !important;
     opacity: 1 !important;
 }
 
-
-.toast{
-    opacity: 1 !important;
+.toast{    
+    background-color:#1A2A40;
+    color:#F2A30F !important;
+    font-weight: bold;
+    box-shadow: none !important;
 }
 
 *{
@@ -45,7 +45,7 @@ body{
 }
 
 .fuenteTitulos{
-    font-family: 'Patua One', cursive;
+    font-family: 'Patua One';
 }
 
 .sombra1{
@@ -268,7 +268,7 @@ body{
         justify-content: center;
         width: 50%;        
     }
-    
+
     .columna{
         max-width: 100%;
     }
