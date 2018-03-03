@@ -38,6 +38,8 @@
 
             <input type="password" class="formulario__input">
             <label for="" class="formulario__label">Contraseña</label> 
+            
+            <input type="button" class="formulario__submit" value="Entrar">
 
             <div class="botonesLogin">
                 <div class="fomaIcono" onclick="loginGitHub.iniciar()">
@@ -53,9 +55,9 @@
                 <div class="fomaIcono" onclick="ejecutarLogin()">
                     <img class="LoginIcon" src="addons/icons/twitter.svg"/>                
                     <span>Twitter</span>
-                </div>
+                </div>               
                 
-               <fb:login-button size="large" onlogin="Log.info.bind('onlogin callback')">Facebook</fb:login-button>
+                <fb:login-button size="large" onlogin="Log.info.bind('onlogin callback')">Facebook</fb:login-button>
             </div>            
         </form>
     </body>
