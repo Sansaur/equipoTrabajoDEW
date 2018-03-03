@@ -25,7 +25,6 @@
     font-family: 'Dosis', sans-serif;
 }
 
-
 .marcadoSinTransition{
     background-color: #1A2A40 ;
     color:white !important;
@@ -41,11 +40,13 @@ body{
 }
 
 .loginLink{
-    color:inherit;text-decoration:inherit;
+    color:inherit;
+    text-decoration:inherit;
 }
 
 .fuenteTitulos{
-    font-family: 'Patua One';
+    font-family: 'Francois One', sans-serif;
+    padding-top: 5px;
 }
 
 .sombra1{

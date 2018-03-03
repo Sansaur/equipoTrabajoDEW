@@ -53,36 +53,26 @@
 }
 
 #Productonombre{
-    font-weight: bold;
     color:#1A2A40;
     width: 100%;
+    font-size: 1.2em;
+    text-align: center;
+    margin-bottom: 10px;
+    font-family: 'Francois One', sans-serif;
 }
 
 #Productodescripcion{
     text-align:justify;
-    margin-bottom: 7px;
+    margin-bottom: 10px;
     font-size: 0.9em;
     color:white;
-}
-
-.ProductoInfo > p{
-    color: #1A2A40;
-    font-weight: bold;
-}
-
-.ProductoInfo > p{
-    color: #1A2A40;
-    font-weight:bold;
-    text-align:left;
-}
-
-.ProductoInfo > p:nth-child(1){
-    color:white;
+    font-family: 'Montserrat', sans-serif;
 }
 
 #Productopuntuacion{
     padding-left: 20px;
-    color: white;
+    color: white;    
+    font-weight: bold;
 }
 
 .precioCarrito{
@@ -97,6 +87,7 @@
     width: 50%;
     text-align:left;
     padding-left: 30px;
+    font-family: 'Anton', sans-serif;
 }
 
 #addItem{
