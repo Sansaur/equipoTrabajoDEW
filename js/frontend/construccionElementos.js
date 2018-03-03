@@ -2,6 +2,7 @@ let _data;
 
 $(document).ready(function(){
     getFiltros();
+    nombreUsuarioLogeado();
 });
 
 /*
@@ -13,12 +14,10 @@ function getFiltros(){
         dataType: "JSON",
         success:function(data){
             _data = data;
-            //let auxLista = construyeFiltros();
-            //ReactDOM.render(<ListaFiltros list={auxLista}/>, document.getElementById('bloqueFiltro'));
             ReactDOM.render(<Cabecera />,document.body);
         },
         error:function(){
-            alert("Errorrrr");
+            alert("Error en cElementos");
         }
     })
 }
@@ -40,39 +39,32 @@ const Cabecera = () => {
 const Nav = () => {
     return( 
         <div id="nav" className="sombra">
-                <a id="logotipo" href="index.html">
-                    <img src="addons/images/icono-Claro.png" alt="logotipo"/>
-                </a>  
+            <a id="logotipo" href="index.html">
+                <img src="addons/images/icono-Claro.png" alt="logotipo"/>
+            </a>  
 
-                <div id="bucador">
-                    <input type="text" id="TbxBuscar" />
-                    <span id="lupa">
-                        <img src="addons/icons/lupa.svg" alt="lupa buscar" className="formatoIcono" />
-                    </span>
-                </div>
-
-                <div id="cesta">
-                    <span id="numObjCesta">0</span>
-                    <img src="addons/icons/carro.svg" alt="carrito" className="formatoIcono"/> 
-                    <p>Carrito</p>
-                </div>
-                
+            <div id="bucador">
+                <input type="text" id="TbxBuscar" />
+                <span id="lupa">
+                    <img src="addons/icons/lupa.svg" alt="lupa buscar" className="formatoIcono" />
+                </span>
             </div>
+
+            <div id="cesta">
+                <span id="numObjCesta">0</span>
+                <img src="addons/icons/carro.svg" alt="carrito" className="formatoIcono"/> 
+                <p>Carrito</p>
+            </div>
+                
+            <div id="login">
+                <a id="loginLink" className="loginLink" href="login.html"> 
+                    <img src="addons/icons/usuario.svg" alt="usuario" className="formatoIcono"/> 
+                    <span>Hola. Identifícate</span>
+                </a>
+                <img src="addons/icons/salir.svg" alt="salir" className="formatoIcono"/> 
+            </div>
+        </div>
     )
-    /*
-       ------------------ Esto va despues del Div cesta----------
-       <div id="login">
-                    <a id="loginLink" style="color:inherit;text-decoration:inherit;" href="login.html"> <img src="addons/icons/usuario.svg" alt="usuario" className="formatoIcono"/> 
-                        <span>Hola. Identifícate</span></a>
-                    <script>
-                        let user = localStorage.getItem('UsuarioLogueado')
-                        if (user && user !== "undefined") {
-                            $('#loginLink').find('span').text('Bienvenido ' + user);
-                        }
-                    </script>
-                    <img src="addons/icons/salir.svg" alt="salir" className="formatoIcono" style="display:none"/> 
-                </div>
-    */
 }
 
 const ListaFiltros = props => {
@@ -110,6 +102,14 @@ const AbrirFiltro = () =>{
             <img src="addons/icons/row-down.svg" alt="abrirFiltro" className="formatoIcono"/> 
         </div>
     )
+}
+
+
+function nombreUsuarioLogeado(){
+    let user = localStorage.getItem('UsuarioLogueado')
+        if (user && user !== "undefined") {
+            $('#loginLink').find('span').text('Bienvenido ' + user)
+        }
 }
 
 function construyeFiltros(){
