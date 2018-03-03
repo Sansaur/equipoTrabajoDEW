@@ -8,6 +8,7 @@
         <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
         <link rel="stylesheet" href="Styles/Css general.css" type="text/css"/>
         <link href="Styles/Css Login.css" rel="stylesheet" type="text/css"/>
+        <link href="Styles/elementos.css" rel="stylesheet" type="text/css"/>
 
         <script src="../js/libs/jquery-1.12.4.js"></script>
         <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-app.js"></script>
@@ -48,6 +49,30 @@
             
             <input type="button" clasS="formulario__submit" value="enviar">
         </form>
+        
+        <div class="producto">
+                <div class="cabezaproducto">
+                    <img id="ProductoImagen" src="http://thumbs1.ebaystatic.com/m/mmyduWQeHEiPQ6Py0fnfbSQ/140.jpg" alt="imagen"/>            
+                    <img class="Tipoproducto" src="addons/images/ebay_icon.svg" alt=""/>
+                </div>
+
+                <div class="ProductoInfo">
+
+                    <div id="Productonombre">Auricular ayuda auditiva Sennheiser SET 840 TV Wireless Auricular para TV</div>
+                    
+                    <p>
+                        <label>Puntuación: </label>
+                        <label id="Productopuntuacion">9 puntos</label>                        
+                    </p>
+                    <p>
+                        <label>Precio:</label>
+                        <div class="precioCarrito">
+                            <label id="Productoprecio" class="sombraTexto">129€</label>
+                            <img id="addItem" src="addons/icons/add_item.svg" alt=""/>                     
+                        </div>                        
+                    </p>
+                </div>                
+            </div>
     </body>
 </html>
 <!--
