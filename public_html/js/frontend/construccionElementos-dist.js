@@ -1,10 +1,13 @@
 "use strict";
 
+//Contiene las propiedades de los filtros
 var _data = void 0;
+var objetosAleatorios = void 0;
 
 $(document).ready(function () {
     getFiltros();
     nombreUsuarioLogeado();
+    busquedaSinFiltrado();
 });
 
 /*
@@ -16,14 +19,27 @@ function getFiltros() {
         dataType: "JSON",
         success: function success(data) {
             _data = data;
-            ReactDOM.render(React.createElement(Cabecera, null), document.body);
+            ReactDOM.render(React.createElement(App, null), document.body);
+            $(".subFiltro").on("click", busquedaFiltrada);
         },
         error: function error() {
-            alert("Error en cElementos Dist");
+            alert("Error en Elementos");
         }
     });
 }
 
+var App = function App() {
+    return React.createElement(
+        "div",
+        { className: "App" },
+        React.createElement(Cabecera, null),
+        React.createElement(Cuerpo, null)
+    );
+};
+
+/*---------------------------------
+    Cabecera contiene todos los componentes que necesitamos para visualizar los filtros
+-----------------------------------*/
 var Cabecera = function Cabecera() {
     /*
     ------------- Falta----------
@@ -120,7 +136,7 @@ var Filtro = function Filtro(props) {
         ),
         React.createElement(
             "ul",
-            null,
+            { data: props.filtro["eBay"] },
             listaSubFiltros
         )
     );
@@ -129,7 +145,7 @@ var Filtro = function Filtro(props) {
 var SubFiltro = function SubFiltro(props) {
     return React.createElement(
         "li",
-        null,
+        { className: "subFiltro", data: props.subFiltro["id"] },
         props.subFiltro["nombreSubfiltro"]
     );
 };
@@ -144,6 +160,46 @@ var AbrirFiltro = function AbrirFiltro() {
             "Filtro"
         ),
         React.createElement("img", { src: "addons/icons/row-down.svg", alt: "abrirFiltro", className: "formatoIcono" })
+    );
+};
+
+/*---------------------------------
+    Cabecera termina 
+-----------------------------------*/
+
+/*--------------------------------
+    Resultados contiene todos los componentes necesarios para mostrar los productos de la tienda
+..................................*/
+
+var Cuerpo = function Cuerpo() {
+    return React.createElement("div", { className: "Cuerpo", id: "Cuerpo" });
+};
+
+var ListaResultados = function ListaResultados(props) {
+    var listaResultados = props.list.map(function (resultado, c) {
+        return React.createElement(Resultado, { resultado: resultado, key: c });
+    });
+    return React.createElement(
+        "div",
+        { className: "resultado" },
+        listaResultados
+    );
+};
+
+var Resultado = function Resultado(props) {
+    return React.createElement(
+        "div",
+        { className: "producto" },
+        React.createElement(
+            "div",
+            { className: "cabezaproducto" },
+            React.createElement("img", { id: "ProductoImagen", src: props.resultado["imagen"] })
+        ),
+        React.createElement(
+            "p",
+            null,
+            props.resultado["nombre"]
+        )
     );
 };
 
@@ -163,11 +219,34 @@ function construyeFiltros() {
     return x;
 }
 
-function construccion(arrayObjetosVenta) {
-    for (var i in arrayObjetosVenta) {
-        construyeElemento(arrayObjetosVenta[i]);
-    }
+function busquedaSinFiltrado() {
+    construirFiltros("HideDuplicateItems", "true");
+    buscarPorClave("Deporte", 10, 1);
 }
+
+function busquedaFiltrada(event) {
+    var ListaObjetosBuscados = [];
+    //Comprobar que siempre haya texto de búsqueda 
+    var buscadoEnLaBarra = $("#TbxBuscar").val();
+
+    var idSubFiltroWalmart = this.getAttribute("data");
+    var idCategoriaEbay = $(this).parent().attr("data");
+
+    //Método busqueda api Walmart, recoge :
+    listaResultadosWalmart = search(buscadoEnLaBarra, idSubFiltroWalmart, 0, "customerRating", "asc", 10);
+
+    //Método consulta ebay
+    listaResultadosEBay = busquedaPorClaveYCategoria(buscadoEnLaBarra, idCategoriaEbay, 10, 1);
+
+    ListaObjetosBuscados.push(listaResultadosWalmart, listaResultadosEBay);
+    return ListaObjetosBuscados;
+}
+
+function construccion(arrayObjetosVenta) {
+    objetosAleatorios = arrayObjetosVenta;
+    ReactDOM.render(React.createElement(ListaResultados, { list: objetosAleatorios }), document.getElementById("Cuerpo"));
+}
+
 function construyeElemento(objetoVenta) {
     /*let text = '<div>';
     text += "<p><strong>ID:</strong> "+objetoVenta.id+"</p>";
