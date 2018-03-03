@@ -11,7 +11,7 @@ $(document).ready(function () {
 */
 function getFiltros() {
     $.ajax({
-        url: "/public_html/js/backend/asociacionCategoriasNuevo.json",
+        url: "/js/backend/asociacionCategoriasNuevo.json",
         dataType: "JSON",
         success: function success(data) {
             _data = data;
