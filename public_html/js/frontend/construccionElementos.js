@@ -139,7 +139,7 @@ const Cuerpo = () =>{
 const ListaResultados = props =>{
     const listaResultados = props.list.map((resultado, c) => <Resultado resultado={resultado} key={c}/>)
     return(
-        <div className="Resultados">
+        <div className="resultado">
             {listaResultados}
         </div>
     )
@@ -149,6 +149,9 @@ const ListaResultados = props =>{
 const Resultado = props => {
     return(
         <div className="producto">
+            <div className="cabezaproducto">
+                <img id="ProductoImagen" src={props.resultado["imagen"]}/>
+            </div>
             <p>{props.resultado["nombre"]}</p>
         </div>
     )
@@ -171,6 +174,7 @@ function construyeFiltros(){
 }
 
 function busquedaSinFiltrado(){
+    construirFiltros("HideDuplicateItems", "true");
     buscarPorClave("Deporte",10,1);
 }
 

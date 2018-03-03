@@ -181,7 +181,7 @@ var ListaResultados = function ListaResultados(props) {
     });
     return React.createElement(
         "div",
-        { className: "Resultados" },
+        { className: "resultado" },
         listaResultados
     );
 };
@@ -190,6 +190,11 @@ var Resultado = function Resultado(props) {
     return React.createElement(
         "div",
         { className: "producto" },
+        React.createElement(
+            "div",
+            { className: "cabezaproducto" },
+            React.createElement("img", { id: "ProductoImagen", src: props.resultado["imagen"] })
+        ),
         React.createElement(
             "p",
             null,
@@ -215,6 +220,7 @@ function construyeFiltros() {
 }
 
 function busquedaSinFiltrado() {
+    construirFiltros("HideDuplicateItems", "true");
     buscarPorClave("Deporte", 10, 1);
 }
 
