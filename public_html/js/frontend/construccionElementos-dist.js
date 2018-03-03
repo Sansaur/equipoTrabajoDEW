@@ -4,6 +4,7 @@ var _data = void 0;
 
 $(document).ready(function () {
     getFiltros();
+    nombreUsuarioLogeado();
 });
 
 /*
@@ -72,22 +73,23 @@ var Nav = function Nav() {
                 null,
                 "Carrito"
             )
+        ),
+        React.createElement(
+            "div",
+            { id: "login" },
+            React.createElement(
+                "a",
+                { id: "loginLink", style: "color:inherit;text-decoration:inherit;", href: "login.html" },
+                React.createElement("img", { src: "addons/icons/usuario.svg", alt: "usuario", className: "formatoIcono" }),
+                React.createElement(
+                    "span",
+                    null,
+                    "Hola. Identif\xEDcate"
+                )
+            ),
+            React.createElement("img", { src: "addons/icons/salir.svg", alt: "salir", className: "formatoIcono", style: "display:none" })
         )
     );
-    /*
-       ------------------ Esto va despues del Div cesta----------
-       <div id="login">
-                    <a id="loginLink" style="color:inherit;text-decoration:inherit;" href="login.html"> <img src="addons/icons/usuario.svg" alt="usuario" className="formatoIcono"/> 
-                        <span>Hola. Identifícate</span></a>
-                    <script>
-                        let user = localStorage.getItem('UsuarioLogueado')
-                        if (user && user !== "undefined") {
-                            $('#loginLink').find('span').text('Bienvenido ' + user);
-                        }
-                    </script>
-                    <img src="addons/icons/salir.svg" alt="salir" className="formatoIcono" style="display:none"/> 
-                </div>
-    */
 };
 
 var ListaFiltros = function ListaFiltros(props) {
@@ -146,6 +148,13 @@ var AbrirFiltro = function AbrirFiltro() {
         React.createElement("img", { src: "addons/icons/row-down.svg", alt: "abrirFiltro", className: "formatoIcono" })
     );
 };
+
+function nombreUsuarioLogeado() {
+    var user = localStorage.getItem('UsuarioLogueado');
+    if (user && user !== "undefined") {
+        $('#loginLink').find('span').text('Bienvenido ' + user);
+    }
+}
 
 function construyeFiltros() {
     var x = [];

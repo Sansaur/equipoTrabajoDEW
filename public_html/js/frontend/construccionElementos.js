@@ -2,6 +2,7 @@ let _data;
 
 $(document).ready(function(){
     getFiltros();
+    nombreUsuarioLogeado();
 });
 
 /*
@@ -57,22 +58,15 @@ const Nav = () => {
                     <p>Carrito</p>
                 </div>
                 
-            </div>
-    )
-    /*
-       ------------------ Esto va despues del Div cesta----------
-       <div id="login">
-                    <a id="loginLink" style="color:inherit;text-decoration:inherit;" href="login.html"> <img src="addons/icons/usuario.svg" alt="usuario" className="formatoIcono"/> 
-                        <span>Hola. Identifícate</span></a>
-                    <script>
-                        let user = localStorage.getItem('UsuarioLogueado')
-                        if (user && user !== "undefined") {
-                            $('#loginLink').find('span').text('Bienvenido ' + user);
-                        }
-                    </script>
+                <div id="login">
+                    <a id="loginLink" style="color:inherit;text-decoration:inherit;" href="login.html"> 
+                        <img src="addons/icons/usuario.svg" alt="usuario" className="formatoIcono"/> 
+                        <span>Hola. Identifícate</span>
+                    </a>
                     <img src="addons/icons/salir.svg" alt="salir" className="formatoIcono" style="display:none"/> 
                 </div>
-    */
+            </div>
+    )
 }
 
 const ListaFiltros = props => {
@@ -110,6 +104,14 @@ const AbrirFiltro = () =>{
             <img src="addons/icons/row-down.svg" alt="abrirFiltro" className="formatoIcono"/> 
         </div>
     )
+}
+
+
+function nombreUsuarioLogeado(){
+    let user = localStorage.getItem('UsuarioLogueado')
+        if (user && user !== "undefined") {
+            $('#loginLink').find('span').text('Bienvenido ' + user)
+        }
 }
 
 function construyeFiltros(){
