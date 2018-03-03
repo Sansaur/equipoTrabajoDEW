@@ -20,6 +20,7 @@
     max-width: 300px;
     background-color: #2474A6;
     margin-top: 20px;
+    height: 500px;
 }
 
 .cabezaproducto{
@@ -43,7 +44,7 @@
     height: 50px;
 }
 
-.ProductoInfo{
+.ProductInfo{
     padding: 5px;
 }
 
@@ -53,7 +54,7 @@
    margin-bottom: 5px;
    font-size: 1.1em;
    color:#1A2A40;
-   margin-bottom: 7px;
+   margin-bottom: 7px;   
 }
 
 #Productodescripcion{
