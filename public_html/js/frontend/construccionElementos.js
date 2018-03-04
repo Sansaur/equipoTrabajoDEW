@@ -6,15 +6,48 @@ $(document).ready(function(){
     getFiltros();
     nombreUsuarioLogeado();
     busquedaSinFiltrado();
-
+/*
     $( "#bloqueFiltro" ).accordion({
         collapsible: true
       });
+*/
+/*
+      $('#paginado').pagination({
+        items: 1500,
+        itemsOnPage: 10,
+        displayedPages: 3,
+        cssStyle: 'light-theme',
+        onPageClick: function (pageNumber, event) {
+            $('#paginado').pagination('disable');
+            $('#contenidosIzquierda').hide("fade", 500, function () {
+                $('#contenidosIzquierda').empty();
+                listaTodosComics = [];
+                listaTodosPersonajes = [];
+                paginaActual = parseInt(pageNumber) - 1;
+                recibirComics();
+                recibirPersonajes();
+            });
+        }
+    });
+    */
 });
 
 /*
     Lee el Json asocionCategorias para obtener las categorias de filtrado.
 */
+
+function paginador(){
+    $('#paginado').pagination({
+        items: 500,
+        itemsOnPage: 10,
+        displayedPages: 3,
+        cssStyle: 'light-theme',
+        onPageClick: function(pageNumber,event){
+            busquedaPaginator(pageNumber);
+        }
+    });
+}
+
 function getFiltros(){
     $.ajax({
         url:"js/backend/asociacionCategoriasNuevo.json",
@@ -35,6 +68,7 @@ const App = () => {
         <div className="App">
             <Cabecera />
             <Cuerpo />
+            <div id="paginado"></div>
         </div>
     )
 }
@@ -138,7 +172,15 @@ const AbrirFiltro = () =>{
 const Cuerpo = () =>{
     return(
         <div className="Cuerpo" id="Cuerpo">
-            
+
+        </div>
+    )
+}
+
+const Paginator = () =>{
+    return(
+        <div id="paginado">
+
         </div>
     )
 }
@@ -151,30 +193,8 @@ const ListaResultados = props =>{
         </div>
     )
     
-}/*
-                <div class="cabezaproducto">
-                    <img id="ProductoImagen" src="${objetoVenta.imagen}" alt="imagen"/>            
-                    <img class="Tipoproducto" src="addons/images/ebay_icon.svg" alt=""/>
-                </div>
-                <div class="ProductoInfo">
-                    <div id="Productonombre">${objetoVenta.nombre}</div>
-                    <div id="Productodescripcion">${objetoVenta.descripcionCorta}</div>
-                    <p>
-                        <label>Puntuación: </label>
-                        <label id="Productopuntuacion">${objetoVenta.puntuacion} puntos</label>                        
-                    </p>
-                    <p>
-                        <label>Precio:</label>
-                        <div class="precioCarrito">
-                            <label id="Productoprecio" class="sombraTexto">${objetoVenta.precio} €</label>
-                            <img id="addItem" src="addons/icons/add_item.svg" alt=""/>                     
-                        </div>                        
-                    </p>
-                </div>                
-            </div>`;
-            */
-//Hay que distinguir si es eBay o de Walmart para poner la foto de la tienda
-//<img class="Tipoproducto" src="addons/images/ebay_icon.svg" alt=""/>
+}
+
 const Resultado = props => {
     let foto = "addons/images/";
     if(props.resultado["tienda"] == "eBay"){
@@ -231,6 +251,8 @@ function busquedaSinFiltrado(){
     search("Sports",null,1,"customerRating","desc",12);
 }
 
+let idSubFiltroWalmart;
+let idCategoriaEbay;
 function busquedaFiltrada(event){
     $(".marcadoSinTransition").removeClass("marcadoSinTransition")
     
@@ -243,8 +265,8 @@ function busquedaFiltrada(event){
     }
    
 
-    let idSubFiltroWalmart = this.getAttribute("data");
-    let idCategoriaEbay = $(this).parent().attr("data");
+    idSubFiltroWalmart = this.getAttribute("data");
+    idCategoriaEbay = $(this).parent().attr("data");
 
     //Método busqueda api Walmart, recoge :
     search(buscadoEnLaBarra, idSubFiltroWalmart, 0, "customerRating","asc",12);
@@ -252,10 +274,20 @@ function busquedaFiltrada(event){
     //Método consulta ebay
     busquedaPorClaveYCategoria(buscadoEnLaBarra, idCategoriaEbay,12,1);
 
-    /*
-        OJOOO----------------
-        Puede ser por esto que solo muestros los elementos de las busquedass de ebay
-    */
+}
+
+function busquedaPaginator(page){
+    let buscadoEnLaBarra = $("#TbxBuscar").val();
+    //Comprobar que siempre haya texto de búsqueda 
+    if(buscadoEnLaBarra.length == 0){
+        toastr.warning("Debe insertar texto de búsqueda");
+    }
+
+    //Método busqueda api Walmart, recoge :
+    search(buscadoEnLaBarra, idSubFiltroWalmart, 2, "customerRating","asc",12);
+
+    //Método consulta ebay
+    busquedaPorClaveYCategoria(buscadoEnLaBarra, idCategoriaEbay,12,2);
 }
 
 var aux = []
@@ -271,12 +303,9 @@ function construccion(arrayObjetosVenta){
         contador = 0;
         aux = [];
     }
-        
-
-    //ObjetosConsultas = arrayObjetosVenta;
-    //renderizar(ObjetosConsultas);
 }
 
 function renderizar(resultadosBusqueda){
     ReactDOM.render(<ListaResultados list={resultadosBusqueda}/>,document.getElementById("Cuerpo"));
+    paginador();
 }

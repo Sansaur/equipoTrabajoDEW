@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 //Contiene las propiedades de los filtros
 var _data = void 0;
@@ -8,15 +8,48 @@ $(document).ready(function () {
     getFiltros();
     nombreUsuarioLogeado();
     busquedaSinFiltrado();
-
-    $("#bloqueFiltro").accordion({
-        collapsible: true
-    });
+    /*
+        $( "#bloqueFiltro" ).accordion({
+            collapsible: true
+          });
+    */
+    /*
+          $('#paginado').pagination({
+            items: 1500,
+            itemsOnPage: 10,
+            displayedPages: 3,
+            cssStyle: 'light-theme',
+            onPageClick: function (pageNumber, event) {
+                $('#paginado').pagination('disable');
+                $('#contenidosIzquierda').hide("fade", 500, function () {
+                    $('#contenidosIzquierda').empty();
+                    listaTodosComics = [];
+                    listaTodosPersonajes = [];
+                    paginaActual = parseInt(pageNumber) - 1;
+                    recibirComics();
+                    recibirPersonajes();
+                });
+            }
+        });
+        */
 });
 
 /*
     Lee el Json asocionCategorias para obtener las categorias de filtrado.
 */
+
+function paginador() {
+    $('#paginado').pagination({
+        items: 500,
+        itemsOnPage: 10,
+        displayedPages: 3,
+        cssStyle: 'light-theme',
+        onPageClick: function onPageClick(pageNumber, event) {
+            busquedaPaginator(pageNumber);
+        }
+    });
+}
+
 function getFiltros() {
     $.ajax({
         url: "js/backend/asociacionCategoriasNuevo.json",
@@ -34,10 +67,11 @@ function getFiltros() {
 
 var App = function App() {
     return React.createElement(
-        "div",
-        { className: "App" },
+        'div',
+        { className: 'App' },
         React.createElement(Cabecera, null),
-        React.createElement(Cuerpo, null)
+        React.createElement(Cuerpo, null),
+        React.createElement('div', { id: 'paginado' })
     );
 };
 
@@ -50,8 +84,8 @@ var Cabecera = function Cabecera() {
     despues del div cabecera, que es un botón de prueba de armando
     */
     return React.createElement(
-        "div",
-        { className: "cabecera" },
+        'div',
+        { className: 'cabecera' },
         React.createElement(Nav, null),
         React.createElement(ListaFiltros, { list: construyeFiltros() }),
         React.createElement(AbrirFiltro, null)
@@ -60,52 +94,52 @@ var Cabecera = function Cabecera() {
 
 var Nav = function Nav() {
     return React.createElement(
-        "div",
-        { id: "nav", className: "sombra" },
+        'div',
+        { id: 'nav', className: 'sombra' },
         React.createElement(
-            "a",
-            { id: "logotipo", href: "index.html" },
-            React.createElement("img", { src: "addons/images/icono-Claro.png", alt: "logotipo" })
+            'a',
+            { id: 'logotipo', href: 'index.html' },
+            React.createElement('img', { src: 'addons/images/icono-Claro.png', alt: 'logotipo' })
         ),
         React.createElement(
-            "div",
-            { id: "bucador" },
-            React.createElement("input", { type: "text", id: "TbxBuscar" }),
+            'div',
+            { id: 'bucador' },
+            React.createElement('input', { type: 'text', id: 'TbxBuscar' }),
             React.createElement(
-                "span",
-                { id: "lupa" },
-                React.createElement("img", { src: "addons/icons/lupa.svg", alt: "lupa buscar", className: "formatoIcono" })
+                'span',
+                { id: 'lupa' },
+                React.createElement('img', { src: 'addons/icons/lupa.svg', alt: 'lupa buscar', className: 'formatoIcono' })
             )
         ),
         React.createElement(
-            "div",
-            { id: "cesta" },
+            'div',
+            { id: 'cesta' },
             React.createElement(
-                "span",
-                { id: "numObjCesta" },
-                "0"
+                'span',
+                { id: 'numObjCesta' },
+                '0'
             ),
-            React.createElement("img", { src: "addons/icons/carro.svg", alt: "carrito", className: "formatoIcono" }),
+            React.createElement('img', { src: 'addons/icons/carro.svg', alt: 'carrito', className: 'formatoIcono' }),
             React.createElement(
-                "p",
+                'p',
                 null,
-                "Carrito"
+                'Carrito'
             )
         ),
         React.createElement(
-            "div",
-            { id: "login" },
+            'div',
+            { id: 'login' },
             React.createElement(
-                "a",
-                { id: "loginLink", className: "loginLink", href: "login.html" },
-                React.createElement("img", { src: "addons/icons/usuario.svg", alt: "usuario", className: "formatoIcono" }),
+                'a',
+                { id: 'loginLink', className: 'loginLink', href: 'login.html' },
+                React.createElement('img', { src: 'addons/icons/usuario.svg', alt: 'usuario', className: 'formatoIcono' }),
                 React.createElement(
-                    "span",
+                    'span',
                     null,
-                    "Hola. Identif\xEDcate"
+                    'Hola. Identif\xEDcate'
                 )
             ),
-            React.createElement("img", { src: "addons/icons/salir.svg", alt: "salir", className: "formatoIcono" })
+            React.createElement('img', { src: 'addons/icons/salir.svg', alt: 'salir', className: 'formatoIcono' })
         )
     );
 };
@@ -116,12 +150,12 @@ var ListaFiltros = function ListaFiltros(props) {
     });
 
     return React.createElement(
-        "div",
-        { id: "bloqueFiltro", className: "sombra" },
+        'div',
+        { id: 'bloqueFiltro', className: 'sombra' },
         React.createElement(
-            "h3",
-            { className: "fuenteTitulos" },
-            "Filtros"
+            'h3',
+            { className: 'fuenteTitulos' },
+            'Filtros'
         ),
         listaFiltros
     );
@@ -132,15 +166,15 @@ var Filtro = function Filtro(props) {
         return React.createElement(SubFiltro, { subFiltro: subFiltro, key: j });
     });
     return React.createElement(
-        "div",
-        { className: "columna" },
+        'div',
+        { className: 'columna' },
         React.createElement(
-            "h3",
-            { className: "fuenteTitulos" },
+            'h3',
+            { className: 'fuenteTitulos' },
             props.filtro["nombreFiltro"]
         ),
         React.createElement(
-            "ul",
+            'ul',
             { data: props.filtro["eBay"] },
             listaSubFiltros
         )
@@ -149,22 +183,22 @@ var Filtro = function Filtro(props) {
 
 var SubFiltro = function SubFiltro(props) {
     return React.createElement(
-        "li",
-        { className: "subFiltro", data: props.subFiltro["id"] },
+        'li',
+        { className: 'subFiltro', data: props.subFiltro["id"] },
         props.subFiltro["nombreSubfiltro"]
     );
 };
 
 var AbrirFiltro = function AbrirFiltro() {
     return React.createElement(
-        "div",
-        { className: "AbrirFiltro sombra" },
+        'div',
+        { className: 'AbrirFiltro sombra' },
         React.createElement(
-            "div",
+            'div',
             null,
-            "Filtro"
+            'Filtro'
         ),
-        React.createElement("img", { src: "addons/icons/row-down.svg", alt: "abrirFiltro", className: "formatoIcono" })
+        React.createElement('img', { src: 'addons/icons/row-down.svg', alt: 'abrirFiltro', className: 'formatoIcono' })
     );
 };
 
@@ -177,7 +211,11 @@ var AbrirFiltro = function AbrirFiltro() {
 ..................................*/
 
 var Cuerpo = function Cuerpo() {
-    return React.createElement("div", { className: "Cuerpo", id: "Cuerpo" });
+    return React.createElement('div', { className: 'Cuerpo', id: 'Cuerpo' });
+};
+
+var Paginator = function Paginator() {
+    return React.createElement('div', { id: 'paginado' });
 };
 
 var ListaResultados = function ListaResultados(props) {
@@ -185,34 +223,12 @@ var ListaResultados = function ListaResultados(props) {
         return React.createElement(Resultado, { resultado: resultado, key: c });
     });
     return React.createElement(
-        "div",
-        { className: "resultado" },
+        'div',
+        { className: 'resultado' },
         listaResultados
     );
-}; /*
-                  <div class="cabezaproducto">
-                      <img id="ProductoImagen" src="${objetoVenta.imagen}" alt="imagen"/>            
-                      <img class="Tipoproducto" src="addons/images/ebay_icon.svg" alt=""/>
-                  </div>
-                  <div class="ProductoInfo">
-                      <div id="Productonombre">${objetoVenta.nombre}</div>
-                      <div id="Productodescripcion">${objetoVenta.descripcionCorta}</div>
-                      <p>
-                          <label>Puntuación: </label>
-                          <label id="Productopuntuacion">${objetoVenta.puntuacion} puntos</label>                        
-                      </p>
-                      <p>
-                          <label>Precio:</label>
-                          <div class="precioCarrito">
-                              <label id="Productoprecio" class="sombraTexto">${objetoVenta.precio} €</label>
-                              <img id="addItem" src="addons/icons/add_item.svg" alt=""/>                     
-                          </div>                        
-                      </p>
-                  </div>                
-              </div>`;
-              */
-//Hay que distinguir si es eBay o de Walmart para poner la foto de la tienda
-//<img class="Tipoproducto" src="addons/images/ebay_icon.svg" alt=""/>
+};
+
 var Resultado = function Resultado(props) {
     var foto = "addons/images/";
     if (props.resultado["tienda"] == "eBay") {
@@ -221,59 +237,59 @@ var Resultado = function Resultado(props) {
         foto += "walmart_icon.png";
     }
     return React.createElement(
-        "div",
-        { className: "producto" },
+        'div',
+        { className: 'producto' },
         React.createElement(
-            "div",
-            { className: "cabezaproducto" },
-            React.createElement("img", { id: "ProductoImagen", src: props.resultado["imagen"] }),
-            React.createElement("img", { className: "Tipoproducto", src: foto })
+            'div',
+            { className: 'cabezaproducto' },
+            React.createElement('img', { id: 'ProductoImagen', src: props.resultado["imagen"] }),
+            React.createElement('img', { className: 'Tipoproducto', src: foto })
         ),
         React.createElement(
-            "div",
-            { className: "ProductInfo" },
+            'div',
+            { className: 'ProductInfo' },
             React.createElement(
-                "div",
-                { id: "Productonombre" },
+                'div',
+                { id: 'Productonombre' },
                 props.resultado["nombre"]
             ),
             React.createElement(
-                "div",
-                { id: "Productodescripcion" },
+                'div',
+                { id: 'Productodescripcion' },
                 props.resultado["descripcionCorta"]
             ),
             React.createElement(
-                "p",
+                'p',
                 null,
                 React.createElement(
-                    "label",
+                    'label',
                     null,
-                    "Puntuaci\xF3nV:"
+                    'Puntuaci\xF3nV:'
                 ),
                 React.createElement(
-                    "label",
-                    { id: "Productopuntuacion" },
+                    'label',
+                    { id: 'Productopuntuacion' },
                     props.resultado["puntuacion"]
                 )
             ),
             React.createElement(
-                "div",
+                'div',
                 null,
                 React.createElement(
-                    "label",
+                    'label',
                     null,
-                    "Precio:"
+                    'Precio:'
                 ),
                 React.createElement(
-                    "div",
-                    { className: "precioCarrito" },
+                    'div',
+                    { className: 'precioCarrito' },
                     React.createElement(
-                        "label",
-                        { id: "Productoprecio", "class": "sombraTexto" },
+                        'label',
+                        { id: 'Productoprecio', 'class': 'sombraTexto' },
                         props.resultado["precio"],
-                        "\u20AC"
+                        '\u20AC'
                     ),
-                    React.createElement("img", { id: "addItem", src: "addons/icons/add_item.svg" })
+                    React.createElement('img', { id: 'addItem', src: 'addons/icons/add_item.svg' })
                 )
             )
         )
@@ -302,6 +318,8 @@ function busquedaSinFiltrado() {
     search("Sports", null, 1, "customerRating", "desc", 12);
 }
 
+var idSubFiltroWalmart = void 0;
+var idCategoriaEbay = void 0;
 function busquedaFiltrada(event) {
     $(".marcadoSinTransition").removeClass("marcadoSinTransition");
 
@@ -313,19 +331,28 @@ function busquedaFiltrada(event) {
         toastr.warning("Debe insertar texto de búsqueda");
     }
 
-    var idSubFiltroWalmart = this.getAttribute("data");
-    var idCategoriaEbay = $(this).parent().attr("data");
+    idSubFiltroWalmart = this.getAttribute("data");
+    idCategoriaEbay = $(this).parent().attr("data");
 
     //Método busqueda api Walmart, recoge :
     search(buscadoEnLaBarra, idSubFiltroWalmart, 0, "customerRating", "asc", 12);
 
     //Método consulta ebay
     busquedaPorClaveYCategoria(buscadoEnLaBarra, idCategoriaEbay, 12, 1);
+}
 
-    /*
-        OJOOO----------------
-        Puede ser por esto que solo muestros los elementos de las busquedass de ebay
-    */
+function busquedaPaginator(page) {
+    var buscadoEnLaBarra = $("#TbxBuscar").val();
+    //Comprobar que siempre haya texto de búsqueda 
+    if (buscadoEnLaBarra.length == 0) {
+        toastr.warning("Debe insertar texto de búsqueda");
+    }
+
+    //Método busqueda api Walmart, recoge :
+    search(buscadoEnLaBarra, idSubFiltroWalmart, 2, "customerRating", "asc", 12);
+
+    //Método consulta ebay
+    busquedaPorClaveYCategoria(buscadoEnLaBarra, idCategoriaEbay, 12, 2);
 }
 
 var aux = [];
@@ -341,11 +368,9 @@ function construccion(arrayObjetosVenta) {
         contador = 0;
         aux = [];
     }
-
-    //ObjetosConsultas = arrayObjetosVenta;
-    //renderizar(ObjetosConsultas);
 }
 
 function renderizar(resultadosBusqueda) {
     ReactDOM.render(React.createElement(ListaResultados, { list: resultadosBusqueda }), document.getElementById("Cuerpo"));
+    paginador();
 }
