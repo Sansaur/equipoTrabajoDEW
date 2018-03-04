@@ -41,7 +41,7 @@ React: https://reactjs.org/ \
 Slack: https://pruebasslackespacio.slack.com \
 Trello: https://trello.com/b/0bSrWBXK/tareas-del-equipo-de-dew 
 
-*Lenguajes de código:* HTML, CSS, JavaScript. \
+*Lenguajes de código:* HTML, CSS, JavaScript. 
 
 ## Estructura del proyecto
 
