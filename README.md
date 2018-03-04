@@ -4,9 +4,9 @@
 
 Puchase es una aplicación de búsquedas en varias API y proyecto de clase realizado por:
 
-**Alejandro José Cordero Gutiérrez**
-**Eduardo Rodríguez Carballo**
-**Armando Sánchez Suárez**
+**Alejandro José Cordero Gutiérrez** \
+**Eduardo Rodríguez Carballo** \
+**Armando Sánchez Suárez** 
 
 ## Objetivos del proyecto
 
@@ -22,26 +22,26 @@ Con este proyecto, Purchase pretende conseguir los siguientes objetivos:
 
 También se ha preparado diferentes maneras de las que se pueda acceder a la documentación, ejecución y presentación:
 
-Link al Prezi:
-Link a gitHub pages: https://sansaur.github.io/equipoTrabajoDEW/
-Link a la documentación JSDoc: https://drive.google.com/open?id=1H5Xe9HrlHlKELD640Y73p2rjOkDh8N5H
+Link al Prezi: \
+Link a gitHub pages: https://sansaur.github.io/equipoTrabajoDEW/ \
+Link a la documentación JSDoc: https://drive.google.com/open?id=1H5Xe9HrlHlKELD640Y73p2rjOkDh8N5H 
 
 ## Herramientas usadas
 
-API de búsquedas Walmart: https://developer.walmartlabs.com/
-API de búsquedas de eBay: https://go.developer.ebay.com/
-API de "Personas" y "Autenticación" de Google: https://console.developers.google.com/apis?project=dew06-t02
-API de aplicaciones con autenticación de Twitter: https://apps.twitter.com
-Firebase (Usado para linkear la autenticación de Twitter): https://console.firebase.google.com
-API de aplicaciones de Facebook: https://developers.facebook.com
-API de desarrolladores de GitHub: https://github.com/settings/developers
-simplePagination: http://flaviusmatis.github.io/simplePagination.js/
-jQuery: https://jquery.com/
-React: https://reactjs.org/
-Slack: https://pruebasslackespacio.slack.com
-Trello: https://trello.com/b/0bSrWBXK/tareas-del-equipo-de-dew
+API de búsquedas Walmart: https://developer.walmartlabs.com/ \
+API de búsquedas de eBay: https://go.developer.ebay.com/ \
+API de "Personas" y "Autenticación" de Google: https://console.developers.google.com/apis?project=dew06-t02 \
+API de aplicaciones con autenticación de Twitter: https://apps.twitter.com \
+Firebase (Usado para linkear la autenticación de Twitter): https://console.firebase.google.com \
+API de aplicaciones de Facebook: https://developers.facebook.com \
+API de desarrolladores de GitHub: https://github.com/settings/developers \
+simplePagination: http://flaviusmatis.github.io/simplePagination.js/ \
+jQuery: https://jquery.com/ \
+React: https://reactjs.org/ \
+Slack: https://pruebasslackespacio.slack.com \
+Trello: https://trello.com/b/0bSrWBXK/tareas-del-equipo-de-dew 
 
-*Lenguajes de código:* HTML, CSS, JavaScript.
+*Lenguajes de código:* HTML, CSS, JavaScript. 
 
 ## Estructura del proyecto
 
