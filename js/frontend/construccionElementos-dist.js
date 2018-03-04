@@ -399,7 +399,7 @@ function controlEventosJquery() {
         items: 500,
         itemsOnPage: 10,
         displayedPages: 3,
-        cssStyle: 'light-theme',
+        cssStyle: 'dark-theme',
         onPageClick: function onPageClick(pageNumber, event) {
             busquedaPaginator(pageNumber);
         }
