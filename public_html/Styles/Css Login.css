@@ -130,3 +130,7 @@
 .fomaIcono:nth-child(3){
     color: #2E7FAE;
 }
+
+.fijar{
+   margin-top: -75px;
+}
