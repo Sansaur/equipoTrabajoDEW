@@ -355,7 +355,12 @@ function busquedaPaginator(page) {
     search(buscadoEnLaBarra, idSubFiltroWalmart, page, "customerRating", "asc", 12);
 
     //Método consulta ebay
-    busquedaPorClaveYCategoria(buscadoEnLaBarra, idCategoriaEbay, 12, page);
+    if(idCategoriaEbay){
+        busquedaPorClaveYCategoria(buscadoEnLaBarra, idCategoriaEbay, 12, page);
+    } else {
+        buscarPorClave(buscadoEnLaBarra,12,page);
+    }
+    
     window.scrollTo(0, 0);
 }
 
