@@ -10,9 +10,7 @@ $(document).ready(function () {
     nombreUsuarioLogeado();
     //Realizamos una búsqueda predeterminada para mostrar resultados.
     busquedaPrincipalPorDefecto();
-    if(localStorage.getItem('UsuarioLogueado')){
-        $('#loginLink').find('span').text('Hola, '+localStorage.getItem('UsuarioLogueado'));
-    }
+    
 });
 
 /*
@@ -317,6 +315,7 @@ function busquedaSinFiltro() {
     construirFiltros("HideDuplicateItems", "true");
     buscarPorClave(palabraBusqueda, 12, 1);
     search(palabraBusqueda, null, 1, "customerRating", "desc", 12);
+    
 }
 
 //Almacena la id del subfiltro de walmart buscado la última vez
@@ -343,6 +342,7 @@ function busquedaFiltrada(event) {
 
     //Método consulta ebay
     busquedaPorClaveYCategoria(buscadoEnLaBarra, idCategoriaEbay, 12, 1);
+    
 }
 
 /*
@@ -367,6 +367,9 @@ function busquedaPaginator(page) {
     }
     
     window.scrollTo(0, 0);
+    if(localStorage.getItem('UsuarioLogueado')){
+        $('#loginLink').find('span').text('Hola, '+localStorage.getItem('UsuarioLogueado'));
+    }
 }
 
 /*
@@ -384,6 +387,9 @@ function construccion(arrayObjetosVenta) {
         renderizar(aux);
         contador = 0;
         aux = [];
+    }
+    if(localStorage.getItem('UsuarioLogueado')){
+        $('#loginLink').find('span').text('Hola, '+localStorage.getItem('UsuarioLogueado'));
     }
 }
 /*
