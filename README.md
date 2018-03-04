@@ -1,4 +1,4 @@
-![GitHub Logo](/public_html/addons/images/icono-Oscuro.png)
+![GitHub Logo](/addons/images/icono-Oscuro.png)
 
 # Información sobre Purchase
 
