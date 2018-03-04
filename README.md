@@ -6,7 +6,7 @@ Puchase es una aplicación de búsquedas en varias API y proyecto de clase reali
 
 **Alejandro José Cordero Gutiérrez** \
 **Eduardo Rodríguez Carballo** \
-**Armando Sánchez Suárez** \
+**Armando Sánchez Suárez** 
 
 ## Objetivos del proyecto
 
@@ -24,7 +24,7 @@ También se ha preparado diferentes maneras de las que se pueda acceder a la doc
 
 Link al Prezi: \
 Link a gitHub pages: https://sansaur.github.io/equipoTrabajoDEW/ \
-Link a la documentación JSDoc: https://drive.google.com/open?id=1H5Xe9HrlHlKELD640Y73p2rjOkDh8N5H \
+Link a la documentación JSDoc: https://drive.google.com/open?id=1H5Xe9HrlHlKELD640Y73p2rjOkDh8N5H 
 
 ## Herramientas usadas
 
@@ -39,7 +39,7 @@ simplePagination: http://flaviusmatis.github.io/simplePagination.js/ \
 jQuery: https://jquery.com/ \
 React: https://reactjs.org/ \
 Slack: https://pruebasslackespacio.slack.com \
-Trello: https://trello.com/b/0bSrWBXK/tareas-del-equipo-de-dew \
+Trello: https://trello.com/b/0bSrWBXK/tareas-del-equipo-de-dew 
 
 *Lenguajes de código:* HTML, CSS, JavaScript. \
 
