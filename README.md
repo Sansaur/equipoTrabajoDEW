@@ -1,5 +1,4 @@
 ![GitHub Logo](/public_html/addons/images/icono-Oscuro.png)
-Format: ![Alt Text](url)
 
 # Información sobre Purchase
 
@@ -25,7 +24,7 @@ También se ha preparado diferentes maneras de las que se pueda acceder a la doc
 
 Link al Prezi:
 Link a gitHub pages: https://sansaur.github.io/equipoTrabajoDEW/
-Link a la documentación JSDoc:
+Link a la documentación JSDoc: https://drive.google.com/open?id=1H5Xe9HrlHlKELD640Y73p2rjOkDh8N5H
 
 ## Herramientas usadas
 
@@ -62,35 +61,3 @@ Trello: https://trello.com/b/0bSrWBXK/tareas-del-equipo-de-dew
 > sin embargo, debido a la falta de tiempo, no fueron implementados.
 
 
-*Texto cursiva*
-
-**texto gordo**
-
-### titulo más pequeño
-
-## titulo pequeño
-
-=== Seccion ===
-
-* Lista
-  * Desordenada
-  * Look at the
-  * desorden
-  
-1. Lista
-  1. Ordenada
-  
-
-http://github.com
-
-Blockquotes:
-
-> We're living the future so
-> the present is our past.
-
-~~Strikethrough~~ 
-
-Codigo en linea `<code></code>`
-
-Emojis
-:simple_smile:
