@@ -5,7 +5,7 @@ let ObjetosConsultas;
 $(document).ready(function(){
     getFiltros();
     nombreUsuarioLogeado();
-    busquedaSinFiltrado();
+    busquedaPrincipalPorDefecto();
 /*
     $( "#bloqueFiltro" ).accordion({
         collapsible: true
@@ -36,7 +36,7 @@ $(document).ready(function(){
     Lee el Json asocionCategorias para obtener las categorias de filtrado.
 */
 
-function paginador(){
+function controlEventosJquery(){
     $('#paginado').pagination({
         items: 500,
         itemsOnPage: 10,
@@ -46,7 +46,11 @@ function paginador(){
             busquedaPaginator(pageNumber);
         }
     });
+
+    $("#lupa").on("click", busquedaSinFiltro);
 }
+
+
 
 function getFiltros(){
     $.ajax({
@@ -245,11 +249,26 @@ function construyeFiltros(){
     return x;
 }
 
-function busquedaSinFiltrado(){
+function busquedaPrincipalPorDefecto(){
     construirFiltros("HideDuplicateItems", "true");
     buscarPorClave("Deporte",12,1);
     search("Sports",null,1,"customerRating","desc",12);
 }
+
+/*
+    Busco sin subfiltros desde el botón lupa
+*/
+function busquedaSinFiltro(){
+    let palabraBusqueda = $("#TbxBuscar").val();
+    if(palabraBusqueda.length == 0){
+        toastr.warning("Debe insertar texto de búsqueda");
+    }
+    construirFiltros("HideDuplicateItems", "true");
+    buscarPorClave(palabraBusqueda,12,1);
+    search(palabraBusqueda,null,1,"customerRating","desc",12);
+    
+}
+
 
 let idSubFiltroWalmart;
 let idCategoriaEbay;
@@ -307,5 +326,5 @@ function construccion(arrayObjetosVenta){
 
 function renderizar(resultadosBusqueda){
     ReactDOM.render(<ListaResultados list={resultadosBusqueda}/>,document.getElementById("Cuerpo"));
-    paginador();
+    controlEventosJquery();
 }
