@@ -1,4 +1,136 @@
 #contenedorTotal{
+    border: 2px solid red;
+    width: 500px;
+    margin: 10px auto;  
+    font-family: 'Pacifico', cursive;
+}
+
+#contenedorTotal > h3{
+    font-family: 'Pacifico', cursive;
+}
+
+/*formulario*/
+/* fomrulario base*/
+.formulario{
+    width: 500px;
+    max-width: 100%;
+    margin: auto;
+    margin-top: 30px;
+    padding: 20px;
+    box-shadow: 0 0 20px 1px rgba(0,0,0,0.3);
+    position: relative;
+}
+
+.formulario__input,.formulario__label,.formulario__submit{
+    display: block;
+    width: 100%;
+    font-size: 1.3em;
+}
+
+.formulario__input{
+    padding: 10px;
+    background:transparent;
+    border:none;
+    border-bottom: 2px solid rgba(0,0,0,0.5);
+    margin-top: 40px;
+}
+
+.formulario__input:hover{
+    transition: .2s all;
+    background-color: rgba(255,255,255,0.2);
+}
+
+.formulario__input:focus{
+    outline: none;
+    border-bottom: 2px solid #F2A30F;
+}
+
+.formulario__input:focus + .formulario__label{
+    margin-top: -75px;    
+}
+
+.formulario__label{
+    padding-left: 15px;
+    position: absolute;
+    margin-top: -35px;
+    z-index: -20;
+    color:rgba(0,0,0,0.5);
+    transition: all 0.2s;
+}
+
+.formulario__submit{
+    margin-top:20px;
+    background-color: #1A2A40;
+    color:white;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+}
+
+.formulario__submit:hover{
+    transition: .1s all;
+    background-color: #F2A30F;
+}
+
+/* fomrulario elementos añadidos*/
+.formulario > h4{
+    background-color: #E00B27;
+    margin: -20px;
+    margin-bottom: 20px;
+    text-align: center;
+    padding: 15px;
+    color:white;
+}
+
+.botonesLogin{
+    display:  flex;
+    flex-wrap: wrap;
+    justify-content: space-between;     
+    margin-top: 20px;
+}
+
+.fomaIcono{
+    height: 27px;
     display: flex;
-    flex-flow: column wrap;
+    align-items: center;
+    padding: 2px;
+    border-radius: 4px;
+}
+
+.fomaIcono:hover{
+    cursor: pointer;
+}
+
+.LoginIcon{    
+    height: 100%;
+    border-radius: 2px;
+}
+
+.fomaIcono > span{
+    display: block;
+    padding-left: 2px;
+    font-size: 0.8em;
+    font-weight: bold;
+    padding: 3px;
+}
+
+/*Github*/
+.fomaIcono{
+    background-color: white;
+    color:black;
+    border: 0.5px solid rgba(0,0,0,0.2);
+}
+
+/*Google*/
+.fomaIcono:nth-child(2){
+    color:#D9AC00;
+}
+
+/*Twiter*/
+.fomaIcono:nth-child(3){
+    color: #2E7FAE;
+}
+
+.fijar{
+   margin-top: -75px;
 }

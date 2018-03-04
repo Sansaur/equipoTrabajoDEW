@@ -1,23 +1,34 @@
+.resultado{
+    display: flex;
+    flex-wrap: wrap;
+    align-items:flex-start;
+    justify-content:space-around;
+    padding-bottom: 10px;
+}
+
 .sombraTexto{    
-  text-shadow:
-   -1.5px -1.5px 0 #000,  
-    1.5px -1.5px 0 #000,
-    -1.5px 1.5px 0 #000,
-     1.5px 1.5px 0 #000;
+    text-shadow:
+        -1.5px -1.5px 0 #000,  
+        1.5px -1.5px 0 #000,
+        -1.5px 1.5px 0 #000,
+        1.5px 1.5px 0 #000;
 }
 
 .producto{
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
-    max-width: 300px;
+    max-width: 350px;
     background-color: #2474A6;
     margin-top: 20px;
+    height: 350px;
+    overflow: scroll;
+    overflow-x: hidden;
 }
 
 .cabezaproducto{
     width: 100%;
-    height: 150px;
+    height: 30%;
     background-color: #1A2A40;
     position: relative;
 }
@@ -36,49 +47,37 @@
     height: 50px;
 }
 
-.ProductoInfo{
+.ProductInfo{
+    height: 70%;
     padding: 5px;
 }
 
 #Productonombre{
-   font-weight: bold;
-   text-align:justify;
-   margin-bottom: 5px;
-   font-size: 1.1em;
-   color:#1A2A40;
-   margin-bottom: 7px;
+    color:#1A2A40;
+    width: 100%;
+    font-size: 1.2em;
+    text-align: center;
+    margin-bottom: 10px;
+    font-family: 'Francois One', sans-serif;
 }
 
 #Productodescripcion{
-   text-align:justify;
-   margin-bottom: 7px;
-   font-size: 0.9em;
-   color:white;
-}
-
-.ProductoInfo > p{
-    color: #1A2A40;
-    font-weight: bold;
-}
-
-.ProductoInfo > p{
-   color: #1A2A40;
-   font-weight:bold;
-   text-align:left;
-}
-
-.ProductoInfo > p:nth-child(1){
+    text-align:justify;
+    margin-bottom: 10px;
+    font-size: 0.9em;
     color:white;
+    font-family: 'Montserrat', sans-serif;
 }
 
 #Productopuntuacion{
     padding-left: 20px;
-    color: white;
+    color: white;    
+    font-weight: bold;
 }
 
 .precioCarrito{
-   display: flex;
-   justify-content:space-between;
+    display: flex;
+    justify-content:space-between;
 }
 
 #Productoprecio{
@@ -88,22 +87,54 @@
     width: 50%;
     text-align:left;
     padding-left: 30px;
+    font-family: 'Anton', sans-serif;
 }
 
 #addItem{
-    height: 50px;
+    height: 45px;
+    margin-right: 5px;
+    margin-bottom: 5px;
     padding: 5px;
+    border-radius: 5px;
+}
+
+#addItem:hover{
+    transition: all .2s;
+    background-color: rgba(255,255,255,0.5);
 }
 
 /* RESPONSIVE TABLETS */
-@media only screen and (max-width: 1000px) {
-    
+@media only screen and (max-width: 772px) {
+    .columna{
+        max-width: 100%;
+        width: 100%;
+    }
 }
 
 /* RESPONSIVE TELEFONOS */
 @media only screen and (max-width: 500px) {
     .producto{
         max-width: 100%;
-        width: 100%;
+        width: 90%;
+        margin-bottom: 50px;
     }
+}
+
+/* SCROOL*/
+.producto::-webkit-scrollbar {
+    /*fondo de la barra*/
+    width: 8px;
+    background: rgba(255,255,255,0.5); 
+}
+
+.producto::-webkit-scrollbar-thumb {
+    /*barra en si*/
+    background-color: #E00B27;
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
+.producto::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
 }

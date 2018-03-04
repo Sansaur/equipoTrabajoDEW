@@ -6,6 +6,18 @@
     azul flojo  -> #2474A6
     mostaza     -> #F2A30F
 */
+
+.toast-warning{
+    opacity: 1 !important;
+}
+
+.toast{    
+    background-color:#1A2A40;
+    color:#F2A30F !important;
+    font-weight: bold;
+    box-shadow: none !important;
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -13,22 +25,28 @@
     font-family: 'Dosis', sans-serif;
 }
 
+.marcadoSinTransition{
+    background-color: #1A2A40 ;
+    color:white !important;
+}
+
 body{
     background-color: #EBF4F7;
 }
 
 .formatoIcono{
-    display:none;
     width: 20px;   
     height: 20px;
 }
 
 .loginLink{
-    color:inherit;text-decoration:inherit;
+    color:inherit;
+    text-decoration:inherit;
 }
 
 .fuenteTitulos{
-    font-family: 'Patua One', cursive;
+    font-family: 'Francois One', sans-serif;
+    padding-top: 5px;
 }
 
 .sombra1{
@@ -189,8 +207,8 @@ body{
 .columna{
     width: 100%;
     max-width: 500px;
-    background-color: rgba(255,255,255,0.5);
     margin-top: 5px;
+    background-color: rgba(255,255,255,0.5);
 }
 
 .columna > h3{
@@ -211,19 +229,13 @@ body{
     padding: 5px;
     cursor: pointer;
     margin: 5px;
+    color:black;
 }
 
 .columna > ul > li:hover{
     transition: .4s all;
     background-color: #1A2A40;
     color:white;
-}
-
-#resultado{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content:space-around;    
-    align-items:flex-start;
 }
 
 /* RESPONSIVE TABLETS */
@@ -257,8 +269,27 @@ body{
         justify-content: center;
         width: 50%;        
     }
-    
+
     .columna{
         max-width: 100%;
     }
+}
+
+
+/* SCROLL BODY*/
+body::-webkit-scrollbar {
+    /*fondo de la barra*/
+    width: 12px;
+    background: #F2A30F;
+}
+
+body::-webkit-scrollbar-thumb {
+    /*barra en si*/
+    background: #1A2A40; 
+    border-radius: 5px;
+}
+
+body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
 }
