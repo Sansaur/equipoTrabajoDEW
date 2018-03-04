@@ -1,63 +1,28 @@
 //Contiene las propiedades de los filtros
 let _data;
-let ObjetosConsultas;
+
 
 $(document).ready(function(){
+    //Obtenemos los filtros de un JSON en local.
     getFiltros();
+    //Obtenemos el usuario si está logeado.
     nombreUsuarioLogeado();
+    //Realizamos una búsqueda predeterminada para mostrar resultados.
     busquedaPrincipalPorDefecto();
-/*
-    $( "#bloqueFiltro" ).accordion({
-        collapsible: true
-      });
-*/
-/*
-      $('#paginado').pagination({
-        items: 1500,
-        itemsOnPage: 10,
-        displayedPages: 3,
-        cssStyle: 'light-theme',
-        onPageClick: function (pageNumber, event) {
-            $('#paginado').pagination('disable');
-            $('#contenidosIzquierda').hide("fade", 500, function () {
-                $('#contenidosIzquierda').empty();
-                listaTodosComics = [];
-                listaTodosPersonajes = [];
-                paginaActual = parseInt(pageNumber) - 1;
-                recibirComics();
-                recibirPersonajes();
-            });
-        }
-    });
-    */
 });
+
 
 /*
     Lee el Json asocionCategorias para obtener las categorias de filtrado.
 */
-
-function controlEventosJquery(){
-    $('#paginado').pagination({
-        items: 500,
-        itemsOnPage: 10,
-        displayedPages: 3,
-        cssStyle: 'light-theme',
-        onPageClick: function(pageNumber,event){
-            busquedaPaginator(pageNumber);
-        }
-    });
-
-    $("#lupa").on("click", busquedaSinFiltro);
-}
-
-
-
 function getFiltros(){
     $.ajax({
         url:"js/backend/asociacionCategoriasNuevo.json",
         dataType: "JSON",
         success:function(data){
             _data = data;
+            //Cuando ya estamos seguros de que la petición se ha realizado imprimimos el
+            //componente APP en el cuerpo del HTML
             ReactDOM.render(<App />,document.body);
             $(".subFiltro").on("click", busquedaFiltrada);
         },
@@ -67,6 +32,9 @@ function getFiltros(){
     })
 }
 
+/*
+    Elemento padre de la estructura HTML
+*/
 const App = () => {
     return (
         <div className="App">
@@ -77,14 +45,10 @@ const App = () => {
     )
 }
 
-/*---------------------------------
+/*
     Cabecera contiene todos los componentes que necesitamos para visualizar los filtros
------------------------------------*/
+*/
 const Cabecera = () => {
-    /*
-    ------------- Falta----------
-    despues del div cabecera, que es un botón de prueba de armando
-    */
     return(
         <div className="cabecera">
             <Nav />
@@ -124,7 +88,9 @@ const Nav = () => {
         </div>
     )
 }
-
+/*
+    Contenedor padre de los filtros
+*/
 const ListaFiltros = props => {
     const listaFiltros = props.list.map((filtro,i) => <Filtro filtro={filtro} key={i}/>)
 
@@ -138,6 +104,9 @@ const ListaFiltros = props => {
     )
 };
 
+/*
+    Contiene un filtro de EBay y la lista de subfiltros de ese filtro de EBay en Walmart
+*/
 const Filtro = props => {
     const listaSubFiltros = props.filtro["hijosWalmart"].map((subFiltro,j) => <SubFiltro subFiltro={subFiltro} key={j}/>)
     return(
@@ -150,6 +119,9 @@ const Filtro = props => {
     )
 };
 
+/*
+    Contiene cada uno de los subfiltros de Walmart
+*/
 const SubFiltro = props =>{
     return(
         <li className="subFiltro" data={props.subFiltro["id"]} >{props.subFiltro["nombreSubfiltro"]}</li>
@@ -166,13 +138,12 @@ const AbrirFiltro = () =>{
 }
 
 /*---------------------------------
-    Cabecera termina 
+    Termina la creación de los elementos de la cabecera.
 -----------------------------------*/
 
 /*--------------------------------
-    Resultados contiene todos los componentes necesarios para mostrar los productos de la tienda
+    Cuerpo contiene todos los componentes necesarios para mostrar los productos de la tienda
 ..................................*/
-
 const Cuerpo = () =>{
     return(
         <div className="Cuerpo" id="Cuerpo">
@@ -181,14 +152,9 @@ const Cuerpo = () =>{
     )
 }
 
-const Paginator = () =>{
-    return(
-        <div id="paginado">
-
-        </div>
-    )
-}
-
+/*
+    Contiene la lista con todos los resultados de búsqueda
+*/
 const ListaResultados = props =>{
     const listaResultados = props.list.map((resultado, c) => <Resultado resultado={resultado} key={c}/>)
     return(
@@ -198,7 +164,9 @@ const ListaResultados = props =>{
     )
     
 }
-
+/*
+    Contiene cada resultado de la búsqueda
+*/
 const Resultado = props => {
     let foto = "addons/images/";
     if(props.resultado["tienda"] == "eBay"){
@@ -233,13 +201,26 @@ const Resultado = props => {
     
 }
 
+const Paginator = () =>{
+    return(
+        <div id="paginado">
+
+        </div>
+    )
+}
+
+/*
+    Comprobamos si el usuario está logeado para mostrar su nombre
+*/
 function nombreUsuarioLogeado(){
     let user = localStorage.getItem('UsuarioLogueado')
         if (user && user !== "undefined") {
             $('#loginLink').find('span').text('Bienvenido ' + user)
         }
 }
-
+/*
+    Retorna una lista con todos los filtros
+*/
 function construyeFiltros(){
     let x = [];
 
@@ -248,7 +229,9 @@ function construyeFiltros(){
     }
     return x;
 }
-
+/*
+    Realiza una consulta definida para mostrar resultados de busqueda al entrar en la web
+*/
 function busquedaPrincipalPorDefecto(){
     construirFiltros("HideDuplicateItems", "true");
     buscarPorClave("Deporte",12,1);
@@ -256,7 +239,7 @@ function busquedaPrincipalPorDefecto(){
 }
 
 /*
-    Busco sin subfiltros desde el botón lupa
+    Busca sin subfiltros desde el botón lupa
 */
 function busquedaSinFiltro(){
     let palabraBusqueda = $("#TbxBuscar").val();
@@ -269,8 +252,9 @@ function busquedaSinFiltro(){
     
 }
 
-
+//Almacena la id del subfiltro de walmart buscado la última vez
 let idSubFiltroWalmart;
+//Almacena la id del filtro de ebay buscado la última vez
 let idCategoriaEbay;
 function busquedaFiltrada(event){
     $(".marcadoSinTransition").removeClass("marcadoSinTransition")
@@ -283,18 +267,19 @@ function busquedaFiltrada(event){
         toastr.warning("Debe insertar texto de búsqueda");
     }
    
-
     idSubFiltroWalmart = this.getAttribute("data");
     idCategoriaEbay = $(this).parent().attr("data");
 
-    //Método busqueda api Walmart, recoge :
+    //Método busqueda api Walmart
     search(buscadoEnLaBarra, idSubFiltroWalmart, 0, "customerRating","asc",12);
 
     //Método consulta ebay
     busquedaPorClaveYCategoria(buscadoEnLaBarra, idCategoriaEbay,12,1);
-
 }
 
+/*
+    Realizamos una búsqueda para mostrar los resultados de la siguiente página
+*/
 function busquedaPaginator(page){
     let buscadoEnLaBarra = $("#TbxBuscar").val();
     //Comprobar que siempre haya texto de búsqueda 
@@ -303,12 +288,16 @@ function busquedaPaginator(page){
     }
 
     //Método busqueda api Walmart, recoge :
-    search(buscadoEnLaBarra, idSubFiltroWalmart, 2, "customerRating","asc",12);
+    search(buscadoEnLaBarra, idSubFiltroWalmart, page, "customerRating","asc",12);
 
     //Método consulta ebay
-    busquedaPorClaveYCategoria(buscadoEnLaBarra, idCategoriaEbay,12,2);
+    busquedaPorClaveYCategoria(buscadoEnLaBarra, idCategoriaEbay,12,page);
+    window.scrollTo(0,0);
 }
 
+/*
+    Comprobamos que las dos apis nos devuelven resultados
+*/
 var aux = []
 var contador = 0;
 function construccion(arrayObjetosVenta){
@@ -323,8 +312,26 @@ function construccion(arrayObjetosVenta){
         aux = [];
     }
 }
-
+/*
+    Renderizamos el componene ListaResultados con sus subcomponentes en un div id=cuerpo
+    Recibe la lista de resultados
+*/
 function renderizar(resultadosBusqueda){
     ReactDOM.render(<ListaResultados list={resultadosBusqueda}/>,document.getElementById("Cuerpo"));
     controlEventosJquery();
+}
+/*
+    Añadimos una serie de propiedades y eventos a unos elementos html
+*/
+function controlEventosJquery(){
+    $('#paginado').pagination({
+        items: 500,
+        itemsOnPage: 10,
+        displayedPages: 3,
+        cssStyle: 'light-theme',
+        onPageClick: function(pageNumber,event){
+            busquedaPaginator(pageNumber);
+        }
+    });
+    $("#lupa").on("click", busquedaSinFiltro);
 }
