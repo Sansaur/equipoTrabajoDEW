@@ -40,6 +40,7 @@ var loginFacebook = {
             console.log(response);
             console.log(response.name);
             localStorage.setItem('UsuarioLogueado', response.name);
+            location.replace('index.html');
             // Aquí es cuando se usan los datos de la respuesta para decir "Conectado correctamente" o algo parecido.
         });
     }
