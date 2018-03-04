@@ -151,6 +151,7 @@ function peticionAJAX(tipoOperacion) {
         dataType: "jsonp",
         success: function (response) {
             console.warn(response);
+		
             construccion(transformarRespuesta(response, tipoOperacion));
         },
         complete: function () {
@@ -166,6 +167,9 @@ function peticionAJAX(tipoOperacion) {
 
 function transformarRespuesta(response, tipoOperacion) {
     var arrayObjetosRetorno = [];
+	if(response[0].ack[0] === "Failure"){
+		return arrayObjetosRetorno;
+		}
     // response['findItemsByKeywordsResponse'][0].searchResult[0].item
     for (var i in response[tipoOperacion][0].searchResult[0].item) {
         var objetoActual = response[tipoOperacion][0].searchResult[0].item[i];
