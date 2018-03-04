@@ -98,7 +98,7 @@ var url2 = "";
  */
 function buscarPorClave(parametro, numeroResultados, numeroPagina) {
     // Qué operación vamos a realizar.
-    url2 = "http://svcs.ebay.com/services/search/FindingService/v1";
+    url2 = "https://svcs.ebay.com/services/search/FindingService/v1";
     url2 += "?OPERATION-NAME=findItemsByKeywords";
     url2 += "&SERVICE-VERSION=1.0.0";
     // Nuestra Application Key
@@ -119,7 +119,7 @@ function buscarPorClave(parametro, numeroResultados, numeroPagina) {
 }
 function busquedaPorClaveYCategoria(parametro, categoria, numeroResultados, numeroPagina) {
     // Qué operación vamos a realizar.
-    url2 = "http://svcs.ebay.com/services/search/FindingService/v1";
+    url2 = "https://svcs.ebay.com/services/search/FindingService/v1";
     url2 += "?OPERATION-NAME=findItemsAdvanced";
     url2 += "&SERVICE-VERSION=1.0.0";
     // Nuestra Application Key
