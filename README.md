@@ -24,7 +24,8 @@ También se ha preparado diferentes maneras de las que se pueda acceder a la doc
 
 Link al Prezi: \
 Link a gitHub pages: https://sansaur.github.io/equipoTrabajoDEW/ \
-Link a la documentación JSDoc: https://drive.google.com/open?id=1H5Xe9HrlHlKELD640Y73p2rjOkDh8N5H 
+Link a la documentación JSDoc: https://drive.google.com/open?id=1H5Xe9HrlHlKELD640Y73p2rjOkDh8N5H \
+Link al manual de instrucciones: https://drive.google.com/open?id=1p4vhOVoaUID-hhfK4sOsfTK-FxcAUfip
 
 ## Herramientas usadas
 
