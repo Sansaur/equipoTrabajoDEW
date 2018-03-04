@@ -357,7 +357,7 @@ function busquedaPaginator(page) {
     }
 
     //Método busqueda api Walmart, recoge :
-    search(buscadoEnLaBarra, idSubFiltroWalmart, page, "customerRating", "asc", 12);
+    search(buscadoEnLaBarra, idSubFiltroWalmart, parseInt(page)*12, "customerRating", "desc", 12);
 
     //Método consulta ebay
     if(idCategoriaEbay){
