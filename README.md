@@ -22,7 +22,7 @@ Con este proyecto, Purchase pretende conseguir los siguientes objetivos:
 
 También se ha preparado diferentes maneras de las que se pueda acceder a la documentación, ejecución y presentación:
 
-Link al Prezi: \
+Link al Prezi: https://prezi.com/zk7fhyjlugor/creacion-de-elementos/ \
 Link a gitHub pages: https://sansaur.github.io/equipoTrabajoDEW/ \
 Link a la documentación JSDoc: https://drive.google.com/open?id=1H5Xe9HrlHlKELD640Y73p2rjOkDh8N5H \
 Link al manual de instrucciones: https://drive.google.com/open?id=1p4vhOVoaUID-hhfK4sOsfTK-FxcAUfip
