@@ -21,7 +21,7 @@ $.getJSON("js/backend/asociacionCategorias.json", function (data) {
  * @returns Array
  */
 function productLookup(ids) {
-    var url_walmart = "http://api.walmartlabs.com/v1/items";
+    var url_walmart = "https://api.walmartlabs.com/v1/items";
     url_walmart += "?apiKey=" + API_KEY;
     if (!ids) {
         return null;
@@ -59,7 +59,7 @@ function productLookup(ids) {
  * @returns {undefined}
  */
 function search(query, categoryId, start, sort, order, numItems) {
-    var url_walmart = "http://api.walmartlabs.com/v1/search";
+    var url_walmart = "https://api.walmartlabs.com/v1/search";
     url_walmart += "?apiKey=" + API_KEY;
     if (!query) {
         return null;
@@ -116,7 +116,7 @@ function pasarValorANumeros(valor){
  * No usar esto, no devuelve JSONP
  * 
 function busquedaPaginada(category, brand) {
-    var url_walmart = "http://api.walmartlabs.com/v1/paginated/items";
+    var url_walmart = "https://api.walmartlabs.com/v1/paginated/items";
     url_walmart += "?apiKey=" + API_KEY;
     if (category) {
         url_walmart += "&categoryId=" + category;
