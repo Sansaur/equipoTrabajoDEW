@@ -167,7 +167,7 @@ function peticionAJAX(tipoOperacion) {
 
 function transformarRespuesta(response, tipoOperacion) {
     var arrayObjetosRetorno = [];
-	if(response[0].ack[0] === "Failure"){
+	if(response[tipoOperacion][0].ack[0] === "Failure"){
 		return arrayObjetosRetorno;
 		}
     // response['findItemsByKeywordsResponse'][0].searchResult[0].item
