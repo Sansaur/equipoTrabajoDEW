@@ -10,6 +10,9 @@ $(document).ready(function () {
     nombreUsuarioLogeado();
     //Realizamos una búsqueda predeterminada para mostrar resultados.
     busquedaPrincipalPorDefecto();
+    if(localStorage.getItem('UsuarioLogueado')){
+        $('#loginLink').find('span').text('Hola, '+localStorage.getItem('UsuarioLogueado'));
+    }
 });
 
 /*
