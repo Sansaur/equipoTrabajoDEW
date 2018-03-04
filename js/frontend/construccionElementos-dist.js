@@ -329,6 +329,7 @@ function busquedaFiltrada(event) {
     //Comprobar que siempre haya texto de búsqueda 
     if (buscadoEnLaBarra.length == 0) {
         toastr.warning("Debe insertar texto de búsqueda");
+        return;
     }
 
     idSubFiltroWalmart = this.getAttribute("data");
@@ -349,6 +350,7 @@ function busquedaPaginator(page) {
     //Comprobar que siempre haya texto de búsqueda 
     if (buscadoEnLaBarra.length == 0) {
         toastr.warning("Debe insertar texto de búsqueda");
+        return;
     }
 
     //Método busqueda api Walmart, recoge :
