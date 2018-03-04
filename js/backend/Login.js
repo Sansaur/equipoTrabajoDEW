@@ -101,6 +101,7 @@ var loginGoogle = {
 
         }
         gapi.auth2.getAuthInstance().signIn();
+        location.replace('index.html');
     },
 
     handleSignOutClick: function (event) {
