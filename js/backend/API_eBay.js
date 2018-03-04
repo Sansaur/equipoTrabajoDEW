@@ -190,15 +190,15 @@ function transformarRespuesta(response, tipoOperacion) {
             descripcion: null,
             tienda: "eBay"
         };
-        var estado = objetoActual.condition[0].conditionDisplayName ? objetoActual.condition[0].conditionDisplayName[0] : "desconocido";
-        var pago = objetoActual.autoPay[0] ? "se permite auto-pago" : "no se permite auto-pago,  ";
-        var venta = objetoActual.location ? objetoActual.location[0] : "algún sitio ";
-        
-        var DESC = "Este es un objeto de eBay para pagar por él " + pago +
-        "se encuentra en estado: "+ estado + " y se encuentra a la venta en "+ venta +
-        "para pagar por el se usa "+ objetoActual.paymentMethod[0] + " y el objeto pertenece a la categoría " + objetoActual.primaryCategory[0].categoryName[0];
+        //var estado = objetoActual.condition[0].conditionDisplayName ? objetoActual.condition[0].conditionDisplayName[0] : "desconocido";
+        //var pago = objetoActual.autoPay[0] ? "se permite auto-pago" : "no se permite auto-pago,  ";
+        //var venta = objetoActual.location ? objetoActual.location[0] : "algún sitio ";
+        //
+        //var DESC = "Este es un objeto de eBay para pagar por él " + pago +
+        //"se encuentra en estado: "+ estado + " y se encuentra a la venta en "+ venta +
+        //"para pagar por el se usa "+ objetoActual.paymentMethod[0] + " y el objeto pertenece a la categoría " + objetoActual.primaryCategory[0].categoryName[0];
 
-        nuevoObjeto.descripcion = DESC;
+        //nuevoObjeto.descripcion = DESC;
         arrayObjetosRetorno.push(nuevoObjeto);
     }
     console.warn(arrayObjetosRetorno);
